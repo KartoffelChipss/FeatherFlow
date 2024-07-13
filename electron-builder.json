@@ -1,0 +1,253 @@
+{
+    "$schema": "http://json.schemastore.org/electron-builder",
+    "appId": "org.strassburger.featherflow",
+    "artifactName": "${productName}-${version}-${arch}.${ext}",
+    "productName": "FeatherFlow",
+    "directories": {
+        "output": "builds"
+    },
+    "linux": {
+        "category": "Development",
+        "icon": "public/img/logo.icns",
+        "target": [
+            "deb",
+            "AppImage",
+            "rpm",
+            "snap",
+            "pacman"
+        ]
+    },
+    "win": {
+        "target": {
+            "target": "nsis",
+            "arch": [
+                "x64",
+                "arm64"
+            ]
+        }
+    },
+    "nsis": {
+        "oneClick": false,
+        "perMachine": false,
+        "allowToChangeInstallationDirectory": true
+    },
+    "mac": {
+        "icon": "public/img/logo.icns",
+        "target": {
+            "target": "default",
+            "arch": [
+                "x64",
+                "arm64"
+            ]
+        },
+        "extendInfo": {
+            "NSHumanReadableCopyright": "© 2024 Jan Straßburger"
+        },
+        "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+        "category": "public.app-category.developer-tools",
+        "entitlements": "./build/mac/entitlements.plist",
+        "entitlementsInherit": "./build/mac/entitlements.plist",
+        "darkModeSupport": true,
+        "fileAssociations": [
+            {
+                "ext": "js",
+                "name": "JavaScript File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "py",
+                "name": "Python File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "java",
+                "name": "Java File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "cpp",
+                "name": "C++ Source File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "h",
+                "name": "C++ Header File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "cs",
+                "name": "C# File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "rb",
+                "name": "Ruby File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "php",
+                "name": "PHP File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "swift",
+                "name": "Swift File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "ts",
+                "name": "TypeScript File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "go",
+                "name": "Go File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "html",
+                "name": "HTML File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "xml",
+                "name": "XML File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "md",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "markdown",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "css",
+                "name": "CSS File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "scss",
+                "name": "SCSS File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "less",
+                "name": "LESS File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "json",
+                "name": "JSON File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": [ "yml", "yaml" ],
+                "name": "YAML File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "ini",
+                "name": "INI File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "toml",
+                "name": "TOML File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "sh",
+                "name": "Shell Script",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "ps1",
+                "name": "PowerShell Script",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "sql",
+                "name": "SQL File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "txt",
+                "name": "Text File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "log",
+                "name": "Log File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "diff",
+                "name": "Diff File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "patch",
+                "name": "Patch File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            },
+            {
+                "ext": "csv",
+                "name": "CSV File",
+                "role": "Editor",
+                "icon": "public/img/logo.icns"
+            }
+        ]
+    },
+    "dmg": {
+        "iconSize": 150,
+        "contents": [
+            {
+                "x": 130,
+                "y": 160
+            },
+            {
+                "x": 410,
+                "y": 160,
+                "type": "link",
+                "path": "/Applications"
+            }
+        ],
+        "window": {
+            "width": 540,
+            "height": 380
+        }
+    }
+}

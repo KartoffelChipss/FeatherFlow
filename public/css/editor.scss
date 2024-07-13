@@ -1,0 +1,110 @@
+:root {
+    --f: var(--font-color-dark);
+}
+
+// Font family for the editor
+.cm-s-featherflow {
+    font-family: var(--system-font-mono);
+}
+
+// Main editor styles
+.cm-s-featherflow.CodeMirror {
+    height: 100%;
+    background: var(--bg-1);
+    color: var(--f);
+    font-size: var(--font-size-editor);
+    font-weight: 500;
+}
+
+// Cursor
+.cm-s-featherflow .CodeMirror-cursor {
+    border-left: 2px solid var(--accent-color-1);
+}
+
+// Active line
+.cm-s-featherflow .CodeMirror-activeline-background {
+    background: var(--bg-3);
+}
+
+// Gutters
+.cm-s-featherflow .CodeMirror-gutters {
+    background: transparent;
+    border-right: none;
+    padding-right: 15px;
+}
+
+// Line numbers
+.cm-s-featherflow .CodeMirror-linenumber {
+    color: var(--f);
+    font-weight: 300;
+}
+
+// Headers
+.cm-s-featherflow .cm-header {
+    color: var(--accent-color-1);
+}
+
+// Matching brackets
+.cm-s-featherflow .CodeMirror-matchingbracket {
+    color: var(--f) !important;
+    outline: var(--green) solid 2px;
+    outline-offset: -2px;
+}
+
+// Selection
+.cm-s-featherflow div.CodeMirror-selected {
+    background: var(--accent-color-2)
+}
+
+.cm-s-featherflow .cm-keyword {
+    color: var(--keyword);
+}
+
+.cm-s-featherflow .cm-string {
+    color: var(--string);
+}
+
+.cm-s-featherflow .cm-property {
+    color: var(--property);
+}
+
+.cm-s-featherflow .cm-number {
+    color: var(--number);
+}
+
+.cm-s-featherflow .cm-variable {
+    color: var(--variable-1);
+}
+
+.cm-s-featherflow .cm-def {
+    color: var(--def);
+}
+
+.cm-s-featherflow .cm-atom {
+    color: var(--atom);
+}
+
+.cm-s-featherflow .cm-type {
+    color: var(--type);
+}
+
+.cm-s-featherflow .cm-comment {
+    color: var(--comment);
+}
+
+.cm-s-featherflow .cm-qualifier {
+    color: var(--qualifier);
+}
+
+.cm-s-featherflow .cm-tag {
+    color: var(--tag);
+}
+
+.cm-s-featherflow .cm-error {
+    color: #da3131;
+    text-decoration: line-through;
+}
+
+.cm-s-featherflow .cm-attribute {
+    color: var(--attribute);
+}

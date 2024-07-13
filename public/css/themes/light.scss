@@ -1,0 +1,31 @@
+:root {
+    --color-scheme: light;
+
+    --font-color: #000;
+    --font-color-dark: #222;
+
+    --accent-color-1: #304e75;
+    --accent-color-2: #8abffa;
+
+    --orange: #f2a965;
+    --green: #097969;
+
+    --button-active: rgba(0, 0, 0, 0.1);
+
+    --bg-1: #ffffff;
+    --bg-2: #f2eff2;
+    --bg-3: #f5f6f8;
+
+    --keyword: #9e00ff;
+    --variable-1: var(--font-color-dark);
+    --def: var(--font-color-dark);
+    --atom: #ff000b;
+    --property: #ff000b;
+    --string: #26981e;
+    --number: #9f5708;
+    --type: #136071;
+    --comment: #989898;
+    --qualifier: #bd946a;
+    --tag: #ff000b;
+    --attribute: #bd946a;
+}

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unbenannt.md</title>
+
+    <link rel="stylesheet" href="css/assets.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
+    <link rel="stylesheet" href="css/themes/dark.css" id="theme-link">
+    <link rel="stylesheet" href="css/editor.css">
+</head>
+
+<body>
+    <header>
+        <div class="left">
+            <div class="trafficlight"></div>
+            <span id="fileName" class="fileName">Unnamed</span>
+            <div class="dot" id="dot"></div>
+        </div>
+        <div class="right"></div>
+    </header>
+
+    <div class="searchbox" id="searchbox">
+        <input type="text" id="search" class="search" placeholder="Search" oninput="findAll()">
+        <span><span id="search-current-result">0</span>/<span id="search-result-count">0</span></span>
+        <button type="button" class="search-prev-btn" onclick="findPrev()">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 6L7 11M12 6L17 11" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </button>
+        <button type="button" class="search-next-btn" onclick="findNext()">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 18L7 13M12 18L17 13" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </button>
+        <button type="button" class="search-close" onclick="closeSearch()">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 6L18 18M18 6L6 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </button>
+    </div>
+
+    <div class="sections">
+        <section id="editor" class="editor active" style="width: 100%;">
+            <textarea id="editorTextarea" class="editorTextarea"></textarea>
+        </section>
+    </div>
+
+    <script src="js/libs/codemirror.min.js"></script>
+    <script src="js/libs/closetag.min.js"></script>
+    <script src="js/libs/active-line.min.js"></script>
+    <script src="js/libs/matchbrackets.min.js"></script>
+    <script src="js/libs/search.min.js"></script>
+    <script src="js/libs/searchcursor.min.js"></script>
+    <script src="js/libs/match-highlighter.min.js"></script>
+    <script src="js/libs/jump-to-line.min.js"></script>
+
+    <script src="js/libs/modes/clike.min.js"></script>
+    <script src="js/libs/modes/css.min.js"></script>
+    <script src="js/libs/modes/javascript.min.js"></script>
+    <script src="js/libs/modes/diff.min.js"></script>
+    <script src="js/libs/modes/go.min.js"></script>
+    <script src="js/libs/modes/htmlmixed.min.js"></script>
+    <script src="js/libs/modes/markdown.min.js"></script>
+    <script src="js/libs/modes/php.min.js"></script>
+    <script src="js/libs/modes/python.min.js"></script>
+    <script src="js/libs/modes/ruby.min.js"></script>
+    <script src="js/libs/modes/sass.min.js"></script>
+    <script src="js/libs/modes/shell.min.js"></script>
+    <script src="js/libs/modes/swift.min.js"></script>
+    <script src="js/libs/modes/xml.min.js"></script>
+    <script src="js/libs/modes/yaml.min.js"></script>
+
+    <script src="js/editor.js"></script>
+    <script src="js/files.js"></script>
+    <script src="js/theme.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/main.js"></script>
+</body>

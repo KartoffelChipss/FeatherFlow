@@ -1,0 +1,5 @@
+# Ignore compiled CSS files
+*.css
+
+# Ignore CSS map files
+*.css.map

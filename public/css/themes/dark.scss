@@ -1,0 +1,31 @@
+:root {
+    --color-scheme: dark;
+
+    --font-color: #e9e9e9;
+    --font-color-dark: #aaafb6;
+
+    --accent-color-1: #8abffa;
+    --accent-color-2: #304e75;
+
+    --orange: #f2a965;
+    --green: #097969;
+
+    --button-active: rgba(0, 0, 0, 0.3);
+
+    --bg-1: #101215;
+    --bg-2: #171b22;
+    --bg-3: #181c21;
+
+    --keyword: #c18ee1;
+    --variable-1: var(--font-color-dark);
+    --def: var(--font-color-dark);
+    --atom: #d17377;
+    --property: #d17377;
+    --string: #a0c281;
+    --number: #c99d6e;
+    --type: #70b4c0;
+    --comment: #515761;
+    --qualifier: #bd946a;
+    --tag: #cd6367;
+    --attribute: #bd946a;
+}
