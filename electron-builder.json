@@ -15,6 +15,188 @@
             "rpm",
             "snap",
             "pacman"
+        ],
+        "fileAssociations": [
+            {
+                "ext": "js",
+                "name": "JavaScript File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "py",
+                "name": "Python File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "java",
+                "name": "Java File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "cpp",
+                "name": "C++ Source File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "h",
+                "name": "C++ Header File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "cs",
+                "name": "C# File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "rb",
+                "name": "Ruby File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "php",
+                "name": "PHP File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "swift",
+                "name": "Swift File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "ts",
+                "name": "TypeScript File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "go",
+                "name": "Go File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "html",
+                "name": "HTML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "xml",
+                "name": "XML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "md",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "markdown",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "css",
+                "name": "CSS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "scss",
+                "name": "SCSS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "less",
+                "name": "LESS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "json",
+                "name": "JSON File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": [ "yml", "yaml" ],
+                "name": "YAML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "ini",
+                "name": "INI File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "toml",
+                "name": "TOML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "sh",
+                "name": "Shell Script",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "ps1",
+                "name": "PowerShell Script",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "sql",
+                "name": "SQL File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "txt",
+                "name": "Text File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "log",
+                "name": "Log File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "diff",
+                "name": "Diff File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "patch",
+                "name": "Patch File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": "csv",
+                "name": "CSV File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            }
         ]
     },
     "win": {
@@ -24,7 +206,189 @@
                 "x64",
                 "arm64"
             ]
-        }
+        },
+        "fileAssociations": [
+            {
+                "ext": "js",
+                "name": "JavaScript File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "py",
+                "name": "Python File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "java",
+                "name": "Java File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "cpp",
+                "name": "C++ Source File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "h",
+                "name": "C++ Header File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "cs",
+                "name": "C# File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "rb",
+                "name": "Ruby File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "php",
+                "name": "PHP File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "swift",
+                "name": "Swift File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "ts",
+                "name": "TypeScript File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "go",
+                "name": "Go File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "html",
+                "name": "HTML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "xml",
+                "name": "XML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "md",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "markdown",
+                "name": "Markdown File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "css",
+                "name": "CSS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "scss",
+                "name": "SCSS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "less",
+                "name": "LESS File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "json",
+                "name": "JSON File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": [ "yml", "yaml" ],
+                "name": "YAML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "ini",
+                "name": "INI File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "toml",
+                "name": "TOML File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "sh",
+                "name": "Shell Script",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "ps1",
+                "name": "PowerShell Script",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "sql",
+                "name": "SQL File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "txt",
+                "name": "Text File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "log",
+                "name": "Log File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "diff",
+                "name": "Diff File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "patch",
+                "name": "Patch File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": "csv",
+                "name": "CSV File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            }
+        ]
     },
     "nsis": {
         "oneClick": false,
@@ -53,185 +417,186 @@
                 "ext": "js",
                 "name": "JavaScript File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "py",
                 "name": "Python File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "java",
                 "name": "Java File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "cpp",
                 "name": "C++ Source File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "h",
                 "name": "C++ Header File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "cs",
                 "name": "C# File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "rb",
                 "name": "Ruby File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "php",
                 "name": "PHP File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "swift",
                 "name": "Swift File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "ts",
                 "name": "TypeScript File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "go",
                 "name": "Go File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "html",
                 "name": "HTML File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "xml",
                 "name": "XML File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "md",
                 "name": "Markdown File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "markdown",
                 "name": "Markdown File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "css",
                 "name": "CSS File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "scss",
                 "name": "SCSS File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "less",
                 "name": "LESS File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "json",
                 "name": "JSON File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": [ "yml", "yaml" ],
                 "name": "YAML File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "ini",
                 "name": "INI File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "toml",
                 "name": "TOML File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "sh",
                 "name": "Shell Script",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "ps1",
                 "name": "PowerShell Script",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "sql",
                 "name": "SQL File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "txt",
                 "name": "Text File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "log",
                 "name": "Log File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "diff",
                 "name": "Diff File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "patch",
                 "name": "Patch File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             },
             {
                 "ext": "csv",
                 "name": "CSV File",
                 "role": "Editor",
-                "icon": "public/img/logo.icns"
+                "icon": "public/img/logo_file.icns"
             }
         ]
     },
     "dmg": {
+        "icon": "public/img/logo_drive.icns",
         "iconSize": 150,
         "contents": [
             {

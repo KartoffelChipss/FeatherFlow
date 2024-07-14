@@ -3,7 +3,7 @@
     "description": "Lightweight Text editor with Syntax highlighting",
     "module": "index.ts",
     "main": "dist/main.js",
-    "version": "0.0.4",
+    "version": "0.0.5",
     "scripts": {
         "build": "tsc",
         "start": "npm run build && electron .",

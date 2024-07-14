@@ -102,6 +102,9 @@ app.on('window-all-closed', () => {
     }
 });
 
+app.on('browser-window-focus', updateMenu);
+app.on('browser-window-blur', updateMenu);
+
 export async function openFile() {
     if (fileDialogOpen) return;
     fileDialogOpen = true;
