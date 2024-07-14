@@ -52,6 +52,8 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         styleActiveLine: getStore().get("styleActiveLine"),
         indentUnit: getStore().get("indentSize"),
         tabSize: getStore().get("indentSize"),
+        matchBrackets: getStore().get("matchBrackets"),
+        autoShowHints: getStore().get("autoShowHints"),
     }
 });
 

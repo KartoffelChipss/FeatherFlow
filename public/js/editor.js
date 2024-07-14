@@ -31,6 +31,8 @@ const modeMapping = {
     'csv': 'text/x-csv'
 };
 
+let autoShowHints = true;
+
 const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea'), {
     mode: 'text/plain',
     lineNumbers: true,
@@ -45,6 +47,7 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
     extraKeys: {
         "Cmd-F": false,
         "Ctrl-F": false,
+        "Ctrl-Space": "autocomplete"
     },
 });
 
@@ -72,8 +75,32 @@ editor.on('contextmenu', function (editor, event) {
     window.api.invoke("showContextMenu", lineNumber, event.x, event.y);
 });
 
+function triggerAutocomplete() {
+    editor.showHint({completeSingle: false});
+}
+
+editor.on("inputRead", function(cm, event) {
+    if (autoShowHints) {
+        let cursor = cm.getCursor();
+        let token = cm.getTokenAt(cursor);
+        if (!cm.state.completionActive && /\S/.test(token.string)) triggerAutocomplete();
+    }
+});
+
+editor.on("keydown", function(cm, event) {
+    // If enter is pressed while the autocomplete dropdown is active
+    if (event.key === "Enter" && cm.state.completionActive) {
+        cm.state.completionActive.close();
+    }
+});
+
 function setSetting(setting, value) {
     console.log("Setting ", setting, " to ", value);
+
+    if (setting === "autoShowHints") {
+        autoShowHints = value;
+        return;
+    }
 
     editor.setOption(setting, value);
 }

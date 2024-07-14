@@ -62,6 +62,14 @@ const store = new Store({
             enum: ['space', 'tab'],
             default: 'tab',
         },
+        matchBrackets: {
+            type: 'boolean',
+            default: true,
+        },
+        autoShowHints: {
+            type: 'boolean',
+            default: true,
+        }
     }
 });
 

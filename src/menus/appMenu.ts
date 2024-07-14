@@ -80,6 +80,18 @@ export function updateMenu() {
                                 ]
                             },
                             {
+                                label: "Automatically show Hints",
+                                type: "checkbox",
+                                checked: store.get("autoShowHints") as boolean,
+                                click: () => {
+                                    store.set("autoShowHints", !store.get("autoShowHints"));
+                                    for (const window of getAllWindows()) {
+                                        window?.webContents.send("setEditorSetting", "autoShowHints", store.get("autoShowHints"));
+                                    }
+                                    updateMenu();
+                                }
+                            },
+                            {
                                 label: "Line Numbers",
                                 type: "checkbox",
                                 checked: store.get("lineNumbers") as boolean,
@@ -111,6 +123,18 @@ export function updateMenu() {
                                     store.set("styleActiveLine", !store.get("styleActiveLine"));
                                     for (const window of getAllWindows()) {
                                         window?.webContents.send("setEditorSetting", "styleActiveLine", store.get("styleActiveLine"));
+                                    }
+                                    updateMenu();
+                                }
+                            },
+                            {
+                                label: "Match Brackets",
+                                type: "checkbox",
+                                checked: store.get("matchBrackets") as boolean,
+                                click: () => {
+                                    store.set("matchBrackets", !store.get("matchBrackets"));
+                                    for (const window of getAllWindows()) {
+                                        window?.webContents.send("setEditorSetting", "matchBrackets", store.get("matchBrackets"));
                                     }
                                     updateMenu();
                                 }

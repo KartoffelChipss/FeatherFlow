@@ -16,6 +16,30 @@
     font-weight: 500;
 }
 
+// Editor hints
+.featherflow.CodeMirror-hints {
+    font-size: var(--font-size-editor);
+    font-family: var(--system-font-mono);
+    color: var(--f);
+    font-weight: 500;
+    background-color: var(--bg-2);
+    border: none;
+    border-radius: 3px;
+
+    .CodeMirror-hint {
+        font-size: var(--font-size-editor);
+        color: var(--font-color);
+    }
+
+    .CodeMirror-hint-active {
+        background-color: var(--accent-color-2);
+    }
+
+    ::-webkit-scrollbar-track {
+        background: green;
+    }
+}
+
 // Cursor
 .cm-s-featherflow .CodeMirror-cursor {
     border-left: 2px solid var(--accent-color-1);
@@ -101,7 +125,7 @@
 }
 
 .cm-s-featherflow .cm-error {
-    color: #da3131;
+    color: var(--error);
     text-decoration: line-through;
 }
 

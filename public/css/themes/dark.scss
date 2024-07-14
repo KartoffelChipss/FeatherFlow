@@ -19,8 +19,8 @@
     --keyword: #c18ee1;
     --variable-1: var(--font-color-dark);
     --def: var(--font-color-dark);
-    --atom: #d17377;
-    --property: #d17377;
+    --atom: var(--accent-color-1);
+    --property: var(--accent-color-1);
     --string: #a0c281;
     --number: #c99d6e;
     --type: #70b4c0;
@@ -28,4 +28,5 @@
     --qualifier: #bd946a;
     --tag: #cd6367;
     --attribute: #bd946a;
+    --error: #d17377;
 }
