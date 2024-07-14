@@ -387,6 +387,15 @@ export function updateMenu() {
                 },
                 { type: 'separator' },
                 {
+                    label: 'Toggle Read Mode',
+                    enabled: !!focusedWindow,
+                    accelerator: 'CmdOrCtrl+Alt+R',
+                    click: () => {
+                        getFocusedWindow()?.webContents.send("toggleReadMode");
+                    }
+                },
+                { type: 'separator' },
+                {
                     label: 'Actual size',
                     accelerator: 'CmdOrCtrl+0',
                     enabled: !!focusedWindow,

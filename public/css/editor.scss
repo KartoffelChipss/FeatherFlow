@@ -16,6 +16,13 @@
     font-weight: 500;
 }
 
+.cm-read-only .CodeMirror-cursor {
+    visibility: hidden;
+}
+.cm-read-only .CodeMirror-activeline-background {
+    display: none;
+}
+
 // Editor hints
 .featherflow.CodeMirror-hints {
     font-size: var(--font-size-editor);

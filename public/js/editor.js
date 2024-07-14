@@ -57,11 +57,8 @@ function setEditorMode(filePath) {
 
     console.log("Setting mode to ", mode);
 
-    if (mode) {
-        editor.setOption('mode', mode);
-    } else {
-        editor.setOption('mode', 'text/plain');
-    }
+    if (mode) editor.setOption('mode', mode);
+    else editor.setOption('mode', 'text/plain');
 
     console.log(editor.getOption('mode'));
 }
@@ -94,6 +91,11 @@ editor.on("keydown", function(cm, event) {
     }
 });
 
+editor.on("update", function(cm, change) {
+    if (cm.getOption("readOnly")) cm.getWrapperElement().classList.add("cm-read-only");
+    else cm.getWrapperElement().classList.remove("cm-read-only");
+})
+
 function setSetting(setting, value) {
     console.log("Setting ", setting, " to ", value);
 
@@ -113,6 +115,11 @@ window.api.invoke("getEditorSettings").then((settings) => {
     for (const setting in settings) {
         setSetting(setting, settings[setting]);
     }
+});
+
+window.bridge.toggleReadMode((event, value) => {
+    console.log("Setting readOnly to ", !editor.getOption('readOnly'));
+    editor.setOption("readOnly", !editor.getOption('readOnly'));
 });
 
 window.bridge.formatEditor((event, format) => {

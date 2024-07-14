@@ -65,6 +65,9 @@ contextBridge.exposeInMainWorld(
         closeWindow: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("closeWindow", message);
         },
+        toggleReadMode: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("toggleReadMode", message);
+        },
         onRequest: (channel: string, callback: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on(channel, callback);
         },
