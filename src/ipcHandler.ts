@@ -51,6 +51,7 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         lineWrapping: getStore().get("lineWrapping"),
         styleActiveLine: getStore().get("styleActiveLine"),
         indentUnit: getStore().get("indentSize"),
+        tabSize: getStore().get("indentSize"),
     }
 });
 

@@ -9,6 +9,7 @@ window.bridge.openSearch((event, data) => {
 function openSearch() {
     document.getElementById('searchbox').classList.add('active');
     document.getElementById('search').focus();
+    document.getElementById('search').select();
 }
 
 // Function to close the search box

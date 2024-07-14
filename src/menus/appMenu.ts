@@ -46,6 +46,7 @@ export function updateMenu() {
                                             store.set("indentSize", 2);
                                             for (const window of getAllWindows()) {
                                                 window?.webContents.send("setEditorSetting", "indentUnit", 2);
+                                                window?.webContents.send("setEditorSetting", "tabSize", 2);
                                             }
                                             updateMenu();
                                         }
@@ -58,6 +59,7 @@ export function updateMenu() {
                                             store.set("indentSize", 4);
                                             for (const window of getAllWindows()) {
                                                 window?.webContents.send("setEditorSetting", "indentUnit", 4);
+                                                window?.webContents.send("setEditorSetting", "tabSize", 4);
                                             }
                                             updateMenu();
                                         }
@@ -70,6 +72,7 @@ export function updateMenu() {
                                             store.set("indentSize", 8);
                                             for (const window of getAllWindows()) {
                                                 window?.webContents.send("setEditorSetting", "indentUnit", 8);
+                                                window?.webContents.send("setEditorSetting", "tabSize", 8);
                                             }
                                             updateMenu();
                                         }
@@ -183,7 +186,7 @@ export function updateMenu() {
 
     const recentFilesMenuItems: MenuItemConstructorOptions[] = recentFiles.map((file) => {
         return {
-            label: file.name.split(".")[0],
+            label: file.name,
             click: () => {
                 createWindow(file.path);
             }

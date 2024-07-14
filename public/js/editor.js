@@ -37,8 +37,11 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
     lineWrapping: true,
     styleActiveLine: true,
     matchBrackets: true,
+    autoCloseBrackets: true,
+    autoCloseTags: true,
     theme: "featherflow",
     indentUnit: 4,
+    tabSize: 4,
     extraKeys: {
         "Cmd-F": false,
         "Ctrl-F": false,
