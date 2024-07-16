@@ -99,7 +99,8 @@ editor.on("inputRead", function (cm, event) {
     if (autoShowHints) {
         let cursor = cm.getCursor();
         let token = cm.getTokenAt(cursor);
-        if (!cm.state.completionActive && /\S/.test(token.string)) triggerAutocomplete();
+        const lineEndCharacters = [';', '{', '}', '(', ')', '[', ']'];
+        if (!cm.state.completionActive && /\S/.test(token.string) && !lineEndCharacters.includes(token.string)) triggerAutocomplete();
     }
 });
 
