@@ -4,6 +4,8 @@ const modeMapping = {
     'java': 'text/x-java',
     'cpp': 'text/x-c++src',
     'cs': 'text/x-csharp',
+    'c': 'text/x-csrc',
+    'h': 'text/x-csrc',
     'rb': 'ruby',
     'php': 'php',
     'swift': 'swift',
@@ -32,6 +34,7 @@ const modeMapping = {
 };
 
 let autoShowHints = true;
+let autoLineDelete = true;
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea'), {
     mode: 'text/plain',
@@ -44,12 +47,28 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
     theme: "featherflow",
     indentUnit: 4,
     tabSize: 4,
+    indentWithTabs: false,
     extraKeys: {
         "Cmd-F": false,
         "Ctrl-F": false,
-        "Ctrl-Space": "autocomplete"
+        "Ctrl-Space": "autocomplete",
+        "Backspace": (cm) => {
+            const doc = cm.getDoc();
+            const cursor = doc.getCursor();
+            const line = doc.getLine(cursor.line);
+            const selection = doc.getSelection();
+
+            if (autoLineDelete && !selection && line.length !== 0 && /^\s*$/.test(line)) {
+                console.log("FOUND EMPTY LINE!!!!");
+                doc.replaceRange("", {line: cursor.line, ch: 0}, {line: cursor.line, ch: line.length});
+            }
+
+            CodeMirror.commands.delCharBefore(cm);
+        },
     },
 });
+
+editor.refresh();
 
 function setEditorMode(filePath) {
     const fileExtension = filePath.split('.').pop(); // Get the file extension
@@ -76,7 +95,7 @@ function triggerAutocomplete() {
     editor.showHint({completeSingle: false});
 }
 
-editor.on("inputRead", function(cm, event) {
+editor.on("inputRead", function (cm, event) {
     if (autoShowHints) {
         let cursor = cm.getCursor();
         let token = cm.getTokenAt(cursor);
@@ -84,14 +103,14 @@ editor.on("inputRead", function(cm, event) {
     }
 });
 
-editor.on("keydown", function(cm, event) {
+editor.on("keydown", function (cm, event) {
     // If enter is pressed while the autocomplete dropdown is active
     if (event.key === "Enter" && cm.state.completionActive) {
         cm.state.completionActive.close();
     }
 });
 
-editor.on("update", function(cm, change) {
+editor.on("update", function (cm, change) {
     if (cm.getOption("readOnly")) cm.getWrapperElement().classList.add("cm-read-only");
     else cm.getWrapperElement().classList.remove("cm-read-only");
 })
@@ -101,6 +120,11 @@ function setSetting(setting, value) {
 
     if (setting === "autoShowHints") {
         autoShowHints = value;
+        return;
+    }
+
+    if (setting === "autoLineDelete") {
+        autoLineDelete = value;
         return;
     }
 

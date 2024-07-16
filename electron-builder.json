@@ -4,7 +4,7 @@
     "artifactName": "${productName}-${version}-${arch}.${ext}",
     "productName": "FeatherFlow",
     "directories": {
-        "output": "builds"
+        "output": "release"
     },
     "linux": {
         "category": "Development",
@@ -132,7 +132,10 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [ "yml", "yaml" ],
+                "ext": [
+                    "yml",
+                    "yaml"
+                ],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
@@ -194,6 +197,14 @@
             {
                 "ext": "csv",
                 "name": "CSV File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": [
+                    "*"
+                ],
+                "name": "All Files",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
             }
@@ -323,7 +334,10 @@
                 "icon": "public/img/logo_file.ico"
             },
             {
-                "ext": [ "yml", "yaml" ],
+                "ext": [
+                    "yml",
+                    "yaml"
+                ],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.ico"
@@ -385,6 +399,14 @@
             {
                 "ext": "csv",
                 "name": "CSV File",
+                "role": "Editor",
+                "icon": "public/img/logo_file.ico"
+            },
+            {
+                "ext": [
+                    "*"
+                ],
+                "name": "All Files",
                 "role": "Editor",
                 "icon": "public/img/logo_file.ico"
             }
@@ -528,7 +550,10 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [ "yml", "yaml" ],
+                "ext": [
+                    "yml",
+                    "yaml"
+                ],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"

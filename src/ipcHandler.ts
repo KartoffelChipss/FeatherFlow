@@ -1,94 +1,100 @@
-import {BrowserWindow, dialog, ipcMain, shell} from "electron";
-import {getCalculatedTheme} from "./theme";
+import { BrowserWindow, dialog, ipcMain, shell } from "electron";
+import { getCalculatedTheme } from "./theme";
 import logger from "electron-log/main";
 import fs from "fs";
-import {closeWindow, setPath} from "./windowManager";
-import path, {basename} from "path";
+import { closeWindow, setPath } from "./windowManager";
+import path, { basename } from "path";
 import showUnsavedChangesDialog from "./dialog/unsavedChanges";
-import {popUpContextMenu} from "./menus/contextMenu";
-import {getStore} from "./store";
+import { popUpContextMenu } from "./menus/contextMenu";
+import { getStore } from "./store";
 
 ipcMain.handle("getTheme", (event, data) => {
-    return getCalculatedTheme();
+  return getCalculatedTheme();
 });
 
 ipcMain.handle("saveFile", async (event, data) => {
-    try {
-        logger.info("Saving file:", data.file + " to " + data.path);
-        await fs.promises.writeFile(data.path, data.content);
+  try {
+    logger.info("Saving file:", data.file + " to " + data.path);
+    await fs.promises.writeFile(data.path, data.content);
 
-        const window = BrowserWindow.fromWebContents(event.sender);
-        if (window) setPath(window, data.path);
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) setPath(window, data.path);
 
-        return {
-            content: data.content,
-            name: basename(data.path),
-            path: data.path,
-        };
-    } catch (error) {
-        logger.error("Error saving file:", error);
-        dialog.showErrorBox("Error saving file", "An error occurred while saving the file. Please try again.");
-        throw error;
-    }
+    return {
+      content: data.content,
+      name: basename(data.path),
+      path: data.path,
+    };
+  } catch (error) {
+    logger.error("Error saving file:", error);
+    dialog.showErrorBox(
+      "Error saving file",
+      "An error occurred while saving the file. Please try again.",
+    );
+    throw error;
+  }
 });
 
 ipcMain.handle("openLink", (event, data) => {
-    logger.info("Opening link:", data);
-    shell.openExternal(data);
+  logger.info("Opening link:", data);
+  shell.openExternal(data);
 });
 
 ipcMain.handle("openLinkInFinder", (event, data) => {
-    const basePath = path.dirname(data.path);
-    const fullPath = path.resolve(basePath, data.url);
+  const basePath = path.dirname(data.path);
+  const fullPath = path.resolve(basePath, data.url);
 
-    logger.info("Reveal in Finder:", fullPath);
-    shell.showItemInFolder(fullPath);
+  logger.info("Reveal in Finder:", fullPath);
+  shell.showItemInFolder(fullPath);
 });
 
 ipcMain.handle("getEditorSettings", (event, data) => {
-    return {
-        lineNumbers: getStore().get("lineNumbers"),
-        lineWrapping: getStore().get("lineWrapping"),
-        styleActiveLine: getStore().get("styleActiveLine"),
-        indentUnit: getStore().get("indentSize"),
-        tabSize: getStore().get("indentSize"),
-        matchBrackets: getStore().get("matchBrackets"),
-        autoShowHints: getStore().get("autoShowHints"),
-    }
+  return {
+    lineNumbers: getStore().get("lineNumbers"),
+    lineWrapping: getStore().get("lineWrapping"),
+    styleActiveLine: getStore().get("styleActiveLine"),
+    indentUnit: getStore().get("indentSize"),
+    tabSize: getStore().get("indentSize"),
+    matchBrackets: getStore().get("matchBrackets"),
+    autoShowHints: getStore().get("autoShowHints"),
+    autoLineDelete: getStore().get("autoLineDelete"),
+  };
 });
 
 ipcMain.handle("showContextMenu", (event, data) => {
-    popUpContextMenu();
+  popUpContextMenu();
 });
 
 ipcMain.handle("showUnsavedChangesDialog", async (event, data) => {
-    const action = await showUnsavedChangesDialog();
+  const action = await showUnsavedChangesDialog();
 
-    if (action === "save") {
-        try {
-            logger.info("Saving file:", data.file + " to " + data.path);
-            await fs.promises.writeFile(data.path, data.content);
+  if (action === "save") {
+    try {
+      logger.info("Saving file:", data.file + " to " + data.path);
+      await fs.promises.writeFile(data.path, data.content);
 
-            const window = BrowserWindow.fromWebContents(event.sender);
-            if (window) closeWindow(window);
-
-        } catch (error) {
-            logger.error("Error saving file:", error);
-            dialog.showErrorBox("Error saving file", "An error occurred while saving the file. Please try again.");
-            throw error;
-        }
+      const window = BrowserWindow.fromWebContents(event.sender);
+      if (window) closeWindow(window);
+    } catch (error) {
+      logger.error("Error saving file:", error);
+      dialog.showErrorBox(
+        "Error saving file",
+        "An error occurred while saving the file. Please try again.",
+      );
+      throw error;
     }
+  }
 
-    if (action === "discard") {
-        const window = BrowserWindow.fromWebContents(event.sender);
-        if (window) closeWindow(window);
-        return;
-    }
+  if (action === "discard") {
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) closeWindow(window);
+    return;
+  }
 
-    if (action === "cancel") return;
+  if (action === "cancel") return;
 });
 
 ipcMain.handle("close", (event, data) => {
-    const window = BrowserWindow.fromWebContents(event.sender);
-    if (window) closeWindow(window);
+  const window = BrowserWindow.fromWebContents(event.sender);
+  if (window) closeWindow(window);
 });

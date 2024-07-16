@@ -126,6 +126,18 @@ export default function (): MenuItemConstructorOptions {
                                     }
                                     updateMenu();
                                 }
+                            },
+                            {
+                                label: "Auto delete line",
+                                type: "checkbox",
+                                checked: store.get("autoLineDelete") as boolean,
+                                click: () => {
+                                    store.set("autoLineDelete", !store.get("autoLineDelete"));
+                                    for (const window of getAllWindows()) {
+                                        window?.webContents.send("setEditorSetting", "autoLineDelete", store.get("autoLineDelete"));
+                                    }
+                                    updateMenu();
+                                }
                             }
                         ]
                     },

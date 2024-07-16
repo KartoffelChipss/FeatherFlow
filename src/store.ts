@@ -69,7 +69,11 @@ const store = new Store({
         autoShowHints: {
             type: 'boolean',
             default: true,
-        }
+        },
+        autoLineDelete: {
+            type: 'boolean',
+            default: true,
+        },
     }
 });
 

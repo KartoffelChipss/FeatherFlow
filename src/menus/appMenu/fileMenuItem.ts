@@ -12,7 +12,6 @@ export default function (): MenuItemConstructorOptions {
     const focusedWindow = BrowserWindow.getFocusedWindow();
 
     const recentFilesMenuItems: MenuItemConstructorOptions[] = recentFiles.map((file) => {
-        console.log(iconPath("logo_file"))
         return {
             label: file.name,
             icon: iconNativeImage("logo_file"),

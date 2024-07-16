@@ -1,33 +1,34 @@
-import { app, BrowserWindow, nativeTheme, nativeImage, protocol } from 'electron';
-import logger from 'electron-log/main';
-import { closeWindow, createWindow, getAllWindows } from './windowManager';
-import fs from 'fs';
+import {app, BrowserWindow, nativeTheme, nativeImage, protocol} from "electron";
+import logger from "electron-log/main";
+import {closeWindow, createWindow, getAllWindows} from "./windowManager";
+import fs from "fs";
 import showOpenFileDialog from "./dialog/openFile";
-import { updateMenu } from './menus/appMenu';
-import { addRecentFile } from "./store";
-import path from 'path';
-import 'dotenv/config';
-import { updateTheme } from './theme';
-import './ipcHandler';
+import {updateMenu} from "./menus/appMenu";
+import {addRecentFile} from "./store";
+import path from "path";
+import "dotenv/config";
+import {updateTheme} from "./theme";
+import "./ipcHandler";
 
-export const devMode = process.env.NODE_ENV === 'development';
+export const devMode = process.env.NODE_ENV === "development";
 
 logger.transports.file.resolvePathFn = () => path.join(appRoot, "logs.log");
 logger.transports.file.level = "info";
 
-export const appRoot: string = path.join(`${app.getPath("appData") ?? "."}${path.sep}.featherFlow`);
-if (!fs.existsSync(appRoot)) fs.mkdirSync(appRoot, { recursive: true });
+export const appRoot: string = path.join(`${app.getPath("appData") ?? "."}${path.sep}.featherFlow`,);
+if (!fs.existsSync(appRoot)) fs.mkdirSync(appRoot, {recursive: true});
 
 const iconPath = path.resolve(path.join(__dirname + "/../public/img/logo.png"));
 
 let fileDialogOpen = false;
 let initialFile: string | null = null;
 
-protocol.registerSchemesAsPrivileged([
-    { scheme: "featherflow", privileges: { standard: true, secure: true, supportFetchAPI: true } }
-]);
+protocol.registerSchemesAsPrivileged([{
+    scheme: "featherflow",
+    privileges: {standard: true, secure: true, supportFetchAPI: true},
+}]);
 
-app.on('ready', () => {
+app.on("ready", () => {
     logger.log(" ");
     logger.log("====== ======");
     logger.log("App Started!");
@@ -67,7 +68,7 @@ app.on('ready', () => {
         openedInitialFile = true;
     }
 
-    app.on('activate', () => {
+    app.on("activate", () => {
         // Only open the if there are no windows open and there is no initial file or the initial file was already opened
         if (BrowserWindow.getAllWindows().length === 0 && (!initialFile || openedInitialFile)) openFile();
     });
@@ -77,7 +78,7 @@ app.on('ready', () => {
     if (!initialFile) openFile();
 });
 
-app.on('open-file', (event, filePath) => {
+app.on("open-file", (event, filePath) => {
     logger.info("Opening file from event:", filePath);
 
     event.preventDefault();
@@ -90,20 +91,20 @@ app.on('open-file', (event, filePath) => {
     }
 });
 
-app.on('before-quit', (event) => {
+app.on("before-quit", (event) => {
     for (const window of getAllWindows()) {
         if (window) closeWindow(window);
     }
-})
+});
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
         app.quit();
     }
 });
 
-app.on('browser-window-focus', updateMenu);
-app.on('browser-window-blur', updateMenu);
+app.on("browser-window-focus", updateMenu);
+app.on("browser-window-blur", updateMenu);
 
 export async function openFile() {
     if (fileDialogOpen) return;
