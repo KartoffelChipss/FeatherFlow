@@ -173,6 +173,38 @@ export default function (): MenuItemConstructorOptions {
                             }
                         ]
                     },
+                    {
+                        label: "Activate Action",
+                        submenu: [
+                            {
+                                label: "Open",
+                                type: "radio",
+                                checked: store.get("activateAction") === "open",
+                                click: () => {
+                                    store.set("activateAction", "open");
+                                    updateMenu();
+                                }
+                            },
+                            {
+                                label: "New File",
+                                type: "radio",
+                                checked: store.get("activateAction") === "newFile",
+                                click: () => {
+                                    store.set("activateAction", "newFile");
+                                    updateMenu();
+                                }
+                            },
+                            {
+                                label: "Nothing",
+                                type: "radio",
+                                checked: store.get("activateAction") === "nothing",
+                                click: () => {
+                                    store.set("activateAction", "nothing");
+                                    updateMenu();
+                                }
+                            }
+                        ]
+                    }
                 ]
             },
             {type: 'separator'},

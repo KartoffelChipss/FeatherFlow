@@ -70,7 +70,7 @@ export function createWindow(filePath: string | null = null) {
         },
     });
 
-    const fileLoaded = mainWindow.loadFile(path.join(__dirname, '../public/index.html'));
+    const fileLoaded = mainWindow.loadFile(path.join(__dirname, '../public/main.html'));
 
     mainWindow.on("move", () => getStore().set(`windowPosition`, mainWindow.getBounds()));
     mainWindow.on("resize", () => getStore().set(`windowPosition`, mainWindow.getBounds()));

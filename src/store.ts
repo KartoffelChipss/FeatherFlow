@@ -74,6 +74,11 @@ const store = new Store({
             type: 'boolean',
             default: true,
         },
+        activateAction: {
+            type: 'string',
+            enum: ['open', 'newFile', 'nothing'],
+            default: 'open',
+        },
     }
 });
 

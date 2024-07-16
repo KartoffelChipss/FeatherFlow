@@ -4,7 +4,7 @@ import {closeWindow, createWindow, getAllWindows} from "./windowManager";
 import fs from "fs";
 import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
-import {addRecentFile} from "./store";
+import {addRecentFile, getStore} from "./store";
 import path from "path";
 import "dotenv/config";
 import {updateTheme} from "./theme";
@@ -70,12 +70,12 @@ app.on("ready", () => {
 
     app.on("activate", () => {
         // Only open the if there are no windows open and there is no initial file or the initial file was already opened
-        if (BrowserWindow.getAllWindows().length === 0 && (!initialFile || openedInitialFile)) openFile();
+        if (BrowserWindow.getAllWindows().length === 0 && (!initialFile || openedInitialFile)) activateAction();
     });
 
     updateMenu();
 
-    if (!initialFile) openFile();
+    if (!initialFile) activateAction();
 });
 
 app.on("open-file", (event, filePath) => {
@@ -105,6 +105,19 @@ app.on("window-all-closed", () => {
 
 app.on("browser-window-focus", updateMenu);
 app.on("browser-window-blur", updateMenu);
+
+function activateAction() {
+    switch (getStore().get("activateAction")) {
+        case "newFile":
+            createWindow();
+            break;
+        case "open":
+            openFile();
+            break;
+        default:
+            break
+    }
+}
 
 export async function openFile() {
     if (fileDialogOpen) return;

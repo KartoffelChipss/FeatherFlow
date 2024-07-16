@@ -41,6 +41,9 @@ contextBridge.exposeInMainWorld(
         fileOpened: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("fileOpened", message);
         },
+        fileUpdated: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("fileUpdated", message);
+        },
         requestFileSave: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("requestFileSave", message);
         },

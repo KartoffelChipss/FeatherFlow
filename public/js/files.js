@@ -23,7 +23,9 @@ window.bridge.fileOpened((e, file) => {
     openedFile = file;
     setEditorMode(file.path);
 
+    const cursorPos = editor.getCursor();
     editor.setValue(file.content);
+    editor.setCursor(cursorPos);
 });
 
 editor.on("change", () => {

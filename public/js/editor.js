@@ -59,7 +59,6 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
             const selection = doc.getSelection();
 
             if (autoLineDelete && !selection && line.length !== 0 && /^\s*$/.test(line)) {
-                console.log("FOUND EMPTY LINE!!!!");
                 doc.replaceRange("", {line: cursor.line, ch: 0}, {line: cursor.line, ch: line.length});
             }
 
@@ -70,9 +69,11 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
 
 editor.refresh();
 
+editor.focus();
+
 function setEditorMode(filePath) {
-    const fileExtension = filePath.split('.').pop(); // Get the file extension
-    const mode = modeMapping[fileExtension]; // Get corresponding CodeMirror mode
+    const fileExtension = filePath.split('.').pop();
+    const mode = modeMapping[fileExtension];
 
     console.log("Setting mode to ", mode);
 
@@ -105,7 +106,6 @@ editor.on("inputRead", function (cm, event) {
 });
 
 editor.on("keydown", function (cm, event) {
-    // If enter is pressed while the autocomplete dropdown is active
     if (event.key === "Enter" && cm.state.completionActive) {
         cm.state.completionActive.close();
     }
@@ -150,32 +150,18 @@ window.bridge.toggleReadMode((event, value) => {
 window.bridge.formatEditor((event, format) => {
     switch (format) {
         case "copy":
-            copySelection();
+            navigator.clipboard.writeText(editor.getSelection());
             break;
         case "cut":
-            cutSelection();
+            navigator.clipboard.writeText(editor.getSelection());
+            editor.replaceSelection("");
+            editor.focus();
             break;
         case "paste":
-            pasteClipboard();
+            navigator.clipboard.readText().then((text) => {
+                editor.replaceSelection(text);
+                editor.focus();
+            });
             break;
     }
 });
-
-function copySelection() {
-    const selection = editor.getSelection();
-    navigator.clipboard.writeText(selection);
-}
-
-function cutSelection() {
-    const selection = editor.getSelection();
-    navigator.clipboard.writeText(selection);
-    editor.replaceSelection("");
-    editor.focus();
-}
-
-function pasteClipboard() {
-    navigator.clipboard.readText().then((text) => {
-        editor.replaceSelection(text);
-        editor.focus();
-    });
-}
