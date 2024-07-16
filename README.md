@@ -7,7 +7,7 @@
 
 ## Installation
 
-### away:
+### Easy way:
 
 Go to the [Releases](https://github.com/KartoffelChipss/FeatherFlow/releases), download the latest installer for your OS and install it.
 
