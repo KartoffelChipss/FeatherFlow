@@ -4,6 +4,7 @@ import path from "path";
 import { getStore } from "./store";
 import fs from "fs";
 import { updateMenu } from "./menus/appMenu";
+import {devMode} from "./main";
 
 const windows: { [key: string]: BrowserWindow } = {};
 
@@ -49,7 +50,7 @@ export function createWindow(filePath: string | null = null) {
 
     logger.info("Opening window for file:", filePath);
 
-    const mainWindow = new BrowserWindow({
+    const fileWindow = new BrowserWindow({
         minWidth: 400,
         minHeight: 45,
         width: getStore().get("windowPosition.width") ?? 1300,
@@ -70,21 +71,21 @@ export function createWindow(filePath: string | null = null) {
         },
     });
 
-    const fileLoaded = mainWindow.loadFile(path.join(__dirname, '../public/editor.html'));
+    const fileLoaded = fileWindow.loadFile(path.join(__dirname, '../public/editor.html'));
 
-    mainWindow.on("move", () => getStore().set(`windowPosition`, mainWindow.getBounds()));
-    mainWindow.on("resize", () => getStore().set(`windowPosition`, mainWindow.getBounds()));
+    fileWindow.on("move", () => getStore().set(`windowPosition`, fileWindow.getBounds()));
+    fileWindow.on("resize", () => getStore().set(`windowPosition`, fileWindow.getBounds()));
 
-    mainWindow.on("close", (e) => {
+    fileWindow.on("close", (e) => {
         e.preventDefault();
-        requestWindowClose(mainWindow);
+        requestWindowClose(fileWindow);
     });
 
-    mainWindow.on("enter-full-screen", () => mainWindow.webContents.send("fullscreenChanged", true));
-    mainWindow.on("leave-full-screen", () => mainWindow.webContents.send("fullscreenChanged", false));
+    fileWindow.on("enter-full-screen", () => fileWindow.webContents.send("fullscreenChanged", true));
+    fileWindow.on("leave-full-screen", () => fileWindow.webContents.send("fullscreenChanged", false));
 
     if (filePath) {
-        windows[filePath] = mainWindow;
+        windows[filePath] = fileWindow;
 
         fs.readFile(filePath, 'utf-8', async (err, data) => {
             if (err) {
@@ -98,18 +99,18 @@ export function createWindow(filePath: string | null = null) {
 
             const fileName = path.basename(filePath);
 
-            mainWindow.webContents.send('fileOpened', {
+            fileWindow.webContents.send('fileOpened', {
                 path: filePath,
                 name: fileName,
                 content: data,
             });
-            mainWindow.show();
-            mainWindow.setOpacity(0);
+            fileWindow.show();
+            fileWindow.setOpacity(0);
 
             let opacity = 0;
             const interval = setInterval(() => {
                 opacity += 0.3;
-                mainWindow.setOpacity(opacity);
+                fileWindow.setOpacity(opacity);
 
                 if (opacity >= 1) {
                     clearInterval(interval);
@@ -117,19 +118,21 @@ export function createWindow(filePath: string | null = null) {
             }, 50);
         });
     } else {
-        mainWindow.show();
-        mainWindow.setOpacity(0);
+        fileWindow.show();
+        fileWindow.setOpacity(0);
 
         let opacity = 0;
         const interval = setInterval(() => {
             opacity += 0.3;
-            mainWindow.setOpacity(opacity);
+            fileWindow.setOpacity(opacity);
 
             if (opacity >= 1) {
                 clearInterval(interval);
             }
         }, 50);
     }
+
+    closeMainWindow();
 }
 
 export function openFileInWindow(filePath: string, window: BrowserWindow) {
@@ -150,4 +153,49 @@ export function openFileInWindow(filePath: string, window: BrowserWindow) {
         });
         window.show();
     });
+}
+
+export function isMainWindow(BrowserWindow: BrowserWindow): boolean {
+    return BrowserWindow.getTitle() === "FeatherFlow";
+}
+
+export function closeMainWindow() {
+    const mainWindow = BrowserWindow.getAllWindows().find(isMainWindow);
+    if (mainWindow) mainWindow.close();
+}
+
+export function openMainWindow() {
+    const width = 700;
+    const height = 400;
+
+    const mainWindow = new BrowserWindow({
+        minWidth: width,
+        minHeight: height,
+        width: width,
+        height: height,
+        resizable: devMode,
+        backgroundColor: "#101215",
+        darkTheme: true,
+        frame: false,
+        titleBarStyle: 'hiddenInset',
+        trafficLightPosition: { x: 15, y: 15 },
+        roundedCorners: true,
+        hasShadow: true,
+        show: false,
+        center: true,
+        title: "FeatherFlow",
+        maximizable: false,
+        minimizable: false,
+        fullscreenable: false,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js'),
+            contextIsolation: true,
+            nodeIntegration: false,
+            sandbox: true,
+        },
+    });
+
+    const fileLoaded = mainWindow.loadFile(path.join(__dirname, '../public/main.html'));
+
+    fileLoaded.then(() => mainWindow.show());
 }

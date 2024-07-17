@@ -2,11 +2,12 @@ import {BrowserWindow, dialog, ipcMain, shell} from "electron";
 import {getCalculatedTheme} from "./theme";
 import logger from "electron-log/main";
 import fs from "fs";
-import {closeWindow, setPath} from "./windowManager";
+import {closeWindow, createWindow, setPath} from "./windowManager";
 import path, {basename} from "path";
 import showUnsavedChangesDialog from "./dialog/unsavedChanges";
 import {popUpContextMenu} from "./menus/contextMenu";
 import {getStore} from "./store";
+import {openFile} from "./main";
 
 ipcMain.handle("getTheme", (event, data) => {
     return getCalculatedTheme();
@@ -104,4 +105,16 @@ ipcMain.handle("showUnsavedChangesDialog", async (event, data) => {
 ipcMain.handle("close", (event, data) => {
     const window = BrowserWindow.fromWebContents(event.sender);
     if (window) closeWindow(window);
+});
+
+ipcMain.handle("openFile", (event) => {
+    openFile();
+});
+
+ipcMain.handle("newFile", (event) => {
+    createWindow();
+});
+
+ipcMain.handle("openHelp", (event) => {
+    shell.openExternal("https://github.com/Kartoffelchipss/FeatherFlow");
 });

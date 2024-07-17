@@ -184,6 +184,15 @@ export default function (): MenuItemConstructorOptions {
                         label: "Activate Action",
                         submenu: [
                             {
+                                label: "Main Window",
+                                type: "radio",
+                                checked: store.get("activateAction") === "mainWindow",
+                                click: () => {
+                                    store.set("activateAction", "mainWindow");
+                                    updateMenu();
+                                }
+                            },
+                            {
                                 label: "Open",
                                 type: "radio",
                                 checked: store.get("activateAction") === "open",

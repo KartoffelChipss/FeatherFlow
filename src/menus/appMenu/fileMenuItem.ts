@@ -1,6 +1,6 @@
 import {BrowserWindow, clipboard, MenuItemConstructorOptions, shell} from "electron";
 import {iconNativeImage, iconPath, isMac} from "../util";
-import {createWindow, getPath, setPath} from "../../windowManager";
+import {createWindow, getPath, setPath, isMainWindow} from "../../windowManager";
 import {addRecentFile, clearRecentFiles, getRecentFiles} from "../../store";
 import {openFile} from "../../main";
 import path, {basename} from "path";
@@ -60,7 +60,7 @@ export default function (): MenuItemConstructorOptions {
                 label: 'Save',
                 accelerator: 'CmdOrCtrl+S',
                 id: 'save',
-                enabled: !!focusedWindow,
+                enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
                 click: () => {
                     const focusedWindow = BrowserWindow.getFocusedWindow();
                     if (focusedWindow) {
@@ -83,7 +83,7 @@ export default function (): MenuItemConstructorOptions {
                 label: 'Save As...',
                 accelerator: 'CmdOrCtrl+Shift+S',
                 id: 'saveAs',
-                enabled: !!focusedWindow,
+                enabled:   !!focusedWindow && !isMainWindow(focusedWindow),
                 click: () => {
                     const focusedWindow = BrowserWindow.getFocusedWindow();
                     if (focusedWindow) {
@@ -100,7 +100,7 @@ export default function (): MenuItemConstructorOptions {
             {type: 'separator'},
             {
                 label: "Reveal in Finder",
-                enabled: !!focusedWindow,
+                enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
                 accelerator: "Option+CmdOrCtrl+R",
                 click: () => {
                     const focusedWindow = BrowserWindow.getFocusedWindow();
@@ -116,7 +116,7 @@ export default function (): MenuItemConstructorOptions {
                     {
                         label: "File Path",
                         accelerator: "CmdOrCtrl+Shift+F",
-                        enabled: !!focusedWindow,
+                        enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
                         click: () => {
                             const focusedWindow = BrowserWindow.getFocusedWindow();
                             if (focusedWindow) {
@@ -129,7 +129,7 @@ export default function (): MenuItemConstructorOptions {
                     },
                     {
                         label: "Folder Path",
-                        enabled: !!focusedWindow,
+                        enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
                         click: () => {
                             const focusedWindow = BrowserWindow.getFocusedWindow();
                             if (focusedWindow) {

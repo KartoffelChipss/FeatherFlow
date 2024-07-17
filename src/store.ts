@@ -80,7 +80,7 @@ const store = new Store({
         },
         activateAction: {
             type: 'string',
-            enum: ['open', 'newFile', 'nothing'],
+            enum: ['mainWindow', 'open', 'newFile', 'nothing'],
             default: 'open',
         },
     }

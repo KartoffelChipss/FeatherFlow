@@ -1,4 +1,4 @@
-import {getFocusedWindow} from "../../windowManager";
+import {getFocusedWindow, isMainWindow} from "../../windowManager";
 import type {MenuItemConstructorOptions} from "electron";
 
 export default function (): MenuItemConstructorOptions {
@@ -20,7 +20,7 @@ export default function (): MenuItemConstructorOptions {
             {
                 label: 'Find',
                 accelerator: 'CmdOrCtrl+F',
-                enabled: !!focusedWindow,
+                enabled: !!focusedWindow && !isMainWindow(focusedWindow),
                 click: () => {
                     getFocusedWindow()?.webContents.send("openSearch");
                 }

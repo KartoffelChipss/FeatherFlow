@@ -27,7 +27,10 @@ contextBridge.exposeInMainWorld(
                 "getTheme",
                 "getEditorSettings",
                 "showContextMenu",
-                "showUnsavedChangesDialog"
+                "showUnsavedChangesDialog",
+                "openFile",
+                "newFile",
+                "openHelp",
             ];
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);

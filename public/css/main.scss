@@ -1,0 +1,102 @@
+:root {
+    --svg-color: var(--font-color);
+}
+
+header {
+    padding-left: 0px;
+    width: 100%;
+
+    .center {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+
+    img {
+        height: 22px;
+    }
+}
+
+main {
+    --padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: var(--nav-height);
+    width: calc(100% - var(--padding) * 2);
+    height: calc(100vh - var(--nav-height) - var(--padding) * 2);
+    max-height: calc(100% - var(--nav-height) - var(--padding) * 2);
+
+    padding: var(--padding);
+
+    user-select: none;
+
+    h1 {
+        margin: 0px;
+        margin-bottom: 5px;
+        margin-top: -10px;
+        font-weight: 500;
+        font-size: 36px;
+
+        .highlight {
+            // Gradient text
+            background: linear-gradient(90deg, #00BFFF, #007BFF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+    }
+
+    p {
+        margin: 0px;
+        font-size: 15px;
+        font-weight: 500;
+        color: var(--font-color-dark);
+    }
+
+    .actions {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        margin-top: 50px;
+
+        .action {
+            all: unset;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            width: 80px;
+            height: 80px;
+
+            padding: 30px;
+            outline: dashed 2px var(--font-color-dark);
+            border-radius: 5px;
+
+            &:hover {
+                cursor: pointer;
+            }
+
+            svg {
+                display: flex;
+                --hw: 50px;
+                height: var(--hw);
+                width: var(--hw);
+                margin-bottom: 5px;
+            }
+
+            .accelerator {
+                position: absolute;
+                display: none;
+                bottom: 15px;
+                font-size: 10px;
+                color: #929498;
+            }
+        }
+    }
+}

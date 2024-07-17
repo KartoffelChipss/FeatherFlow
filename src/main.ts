@@ -1,6 +1,6 @@
 import {app, BrowserWindow, nativeTheme, nativeImage, protocol} from "electron";
 import logger from "electron-log/main";
-import {closeWindow, createWindow, getAllWindows} from "./windowManager";
+import {closeWindow, createWindow, getAllWindows,openMainWindow} from "./windowManager";
 import fs from "fs";
 import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
@@ -9,7 +9,7 @@ import path from "path";
 import "dotenv/config";
 import {updateTheme} from "./theme";
 import "./ipcHandler";
-import { checkForUpdates } from "./updater";
+import {checkForUpdates} from "./updater";
 
 export const devMode = process.env.NODE_ENV === "development";
 
@@ -118,6 +118,9 @@ app.on("browser-window-blur", updateMenu);
 
 function activateAction() {
     switch (getStore().get("activateAction")) {
+        case "mainWindow":
+            openMainWindow();
+            break;
         case "newFile":
             createWindow();
             break;
