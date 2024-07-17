@@ -4,6 +4,7 @@ import {setTheme} from "../../theme";
 import {appRoot} from "../../main";
 import {getStore} from "../../store";
 import {updateMenu} from "./index";
+import {checkForUpdates} from "../../updater";
 
 export default function (): MenuItemConstructorOptions {
     const store = getStore();
@@ -14,6 +15,12 @@ export default function (): MenuItemConstructorOptions {
             {
                 role: 'about',
                 label: 'About FeatherFlow'
+            },
+            {
+                label: "Check for Updates",
+                click: () => {
+                    checkForUpdates();
+                }
             },
             {type: 'separator'},
             {

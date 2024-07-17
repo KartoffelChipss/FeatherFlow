@@ -36,6 +36,10 @@ const store = new Store({
             },
             default: [],
         },
+        lastUpdateReminder: {
+            type: 'number',
+            default: 0,
+        },
         theme: {
             type: 'string',
             enum: ['light', 'dark', 'system'],

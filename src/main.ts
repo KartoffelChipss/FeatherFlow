@@ -9,6 +9,7 @@ import path from "path";
 import "dotenv/config";
 import {updateTheme} from "./theme";
 import "./ipcHandler";
+import { checkForUpdates } from "./updater";
 
 export const devMode = process.env.NODE_ENV === "development";
 
@@ -34,6 +35,15 @@ app.on("ready", () => {
     logger.log("App Started!");
     if (devMode) logger.log("Running in development mode");
     logger.log("====== ======\n");
+
+    const lastUpdateReminder = getStore().get("lastUpdateReminder") as number;
+
+    if (lastUpdateReminder) {
+        const timeSinceLastUpdate = Date.now() - lastUpdateReminder;
+        const daysSinceLastUpdate = timeSinceLastUpdate / (1000 * 60 * 60 * 24);
+
+        if (daysSinceLastUpdate > 1) checkForUpdates();
+    } else checkForUpdates();
 
     let openedInitialFile = false;
     if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
