@@ -4,8 +4,8 @@
     --font-color: #000;
     --font-color-dark: #222;
 
-    --accent-color-1: #304e75;
-    --accent-color-2: #8abffa;
+    --accent-color-1: #00BFFF;
+    --accent-color-2: #007BFF;
 
     --orange: #f2a965;
     --green: #097969;
@@ -16,17 +16,17 @@
     --bg-2: #f2eff2;
     --bg-3: #f5f6f8;
 
-    --keyword: #9e00ff;
+    --keyword: #6500ff;
     --variable-1: var(--font-color-dark);
     --def: var(--font-color-dark);
-    --atom: #ff000b;
-    --property: #ff000b;
-    --string: #26981e;
-    --number: #9f5708;
-    --type: #136071;
-    --comment: #989898;
-    --qualifier: #bd946a;
+    --atom: var(--accent-color-2);
+    --property: var(--accent-color-2);
+    --string: #27a61d;
+    --number: #a5631b;
+    --type: #22becf;
+    --comment: #77787a;
+    --qualifier: #a5631b;
     --tag: #ff000b;
-    --attribute: #bd946a;
+    --attribute: #a5631b;
     --error: #ff000b;
 }

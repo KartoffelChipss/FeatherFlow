@@ -36,9 +36,23 @@
     .CodeMirror-hint {
         font-size: var(--font-size-editor);
         color: var(--font-color);
+
+        &::before {
+            content: '';
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin-right: 10px;
+            background-color: var(--accent-color-1);
+            border-radius: 50%;
+        }
+
+        &:hover {
+            background-color: var(--bg-1);
+        }
     }
 
-    .CodeMirror-hint-active {
+    .CodeMirror-hint-active, .CodeMirror-hint-active:hover {
         background-color: var(--accent-color-2);
     }
 
