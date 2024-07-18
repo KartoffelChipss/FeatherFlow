@@ -5,6 +5,9 @@
   <p align="center" >Lightweight Text editor with Syntax highlighting</p>
 </p>
 
+> [!NOTE]  
+> Currently the app is only optimised and tested for MacOS, but support for Windows and Linux will follow
+
 ## Installation
 
 ### Easy way:
