@@ -42,6 +42,21 @@ export function closeWindow(window: BrowserWindow) {
     updateMenu();
 }
 
+function fadeInWindow(window: BrowserWindow, durationMS = 50, stepSize = 0.3) {
+    window.show();
+    window.setOpacity(0);
+
+    let opacity = 0;
+    const interval = setInterval(() => {
+        opacity += stepSize;
+        window.setOpacity(opacity);
+
+        if (opacity >= 1) {
+            clearInterval(interval);
+        }
+    }, durationMS);
+}
+
 export function createWindow(filePath: string | null = null) {
     if (filePath && windows[filePath]) {
         windows[filePath].focus();
@@ -104,33 +119,10 @@ export function createWindow(filePath: string | null = null) {
                 name: fileName,
                 content: data,
             });
-            fileWindow.show();
-            fileWindow.setOpacity(0);
 
-            let opacity = 0;
-            const interval = setInterval(() => {
-                opacity += 0.3;
-                fileWindow.setOpacity(opacity);
-
-                if (opacity >= 1) {
-                    clearInterval(interval);
-                }
-            }, 50);
+            fadeInWindow(fileWindow);
         });
-    } else {
-        fileWindow.show();
-        fileWindow.setOpacity(0);
-
-        let opacity = 0;
-        const interval = setInterval(() => {
-            opacity += 0.3;
-            fileWindow.setOpacity(opacity);
-
-            if (opacity >= 1) {
-                clearInterval(interval);
-            }
-        }, 50);
-    }
+    } else fadeInWindow(fileWindow);
 
     closeMainWindow();
 }
@@ -201,7 +193,7 @@ export function openMainWindow() {
 
     const fileLoaded = mainWindow.loadFile(path.join(__dirname, '../public/main.html'));
 
-    fileLoaded.then(() => mainWindow.show());
+    fileLoaded.then(() => fadeInWindow(mainWindow));
 }
 
 export function isSettingsWindow(BrowserWindow: BrowserWindow) {
@@ -246,5 +238,5 @@ export function openSettingsWindow() {
 
     const fileLoaded = settingsWindow.loadFile(path.join(__dirname, '../public/settings.html'));
 
-    fileLoaded.then(() => settingsWindow.show());
+    fadeInWindow(settingsWindow, 40, 0.3)
 }
