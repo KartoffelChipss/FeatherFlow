@@ -31,6 +31,7 @@ contextBridge.exposeInMainWorld(
                 "openFile",
                 "newFile",
                 "openHelp",
+                "setSetting",
             ];
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);

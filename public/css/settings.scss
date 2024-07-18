@@ -1,0 +1,125 @@
+body {
+    background-color: var(--bg-1);
+}
+
+main {
+    font-family: var(--system-font);
+    --padding: 15px;
+    display: flex;
+    gap: 30px;
+
+    margin-top: var(--nav-height);
+    width: calc(100% - var(--padding) * 2);
+    height: calc(100vh - var(--nav-height) - var(--padding) * 2);
+    max-height: calc(100% - var(--nav-height) - var(--padding) * 2);
+
+    padding: var(--padding);
+
+    nav {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        button {
+            all: unset;
+            width: 150px;
+            display: flex;
+            align-items: center;
+            font-family: var(--system-font);
+            background-color: transparent;
+            padding: 7px 15px;
+            border-radius: 5px;
+
+            &:hover {
+                //background-color: rgba(255, 255, 255, 0.1);
+                background-color: var(--bg-3);
+                cursor: pointer;
+            }
+
+            &.active {
+                //background-color: rgba(255, 255, 255, 0.15);
+                background-color: var(--bg-2);
+            }
+        }
+    }
+
+    section {
+        flex-grow: 1;
+        display: none;
+        flex-direction: column;
+
+        margin-top: 0;
+        height: 100%;
+        max-height: 100%;
+
+        &._shown {
+            display: flex;
+        }
+
+        h2 {
+            margin: 0;
+            margin-bottom: 15px;
+        }
+
+        label span.title {
+            font-size: 1.1em;
+            color: var(--font-color);
+        }
+
+        label span.description {
+            font-size: 0.9em;
+            color: var(--font-color-dark);
+        }
+
+        .settingsbox.checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+
+            margin-bottom: 15px;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+            }
+
+            input {
+                scale: 1.1;
+                margin-top: 7px;
+            }
+        }
+
+        .settingsbox.select {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            margin-bottom: 20px;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+            }
+
+            select {
+                padding: 7px 15px;
+                border-radius: 5px;
+                background-color: var(--bg-2);
+                color: var(--font-color);
+                font-family: var(--system-font);
+                font-weight: 500;
+                border: 1px solid var(--bg-3);
+                cursor: pointer;
+
+                border-right: 16px solid transparent;
+
+                &:hover {
+                    background-color: var(--bg-3);
+                }
+            }
+        }
+    }
+}

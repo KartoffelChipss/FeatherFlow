@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Settings</title>
+
+    <link rel="stylesheet" href="css/assets.css">
+    <link rel="stylesheet" href="css/settings.css">
+</head>
+<body>
+    <header>
+        <div class="left">
+            <div class="trafficlight"></div>
+            <span id="fileName" class="fileName">Settings</span>
+        </div>
+        <div class="right"></div>
+    </header>
+
+    <main>
+        <nav>
+            <button type="button" id="sec-btn-general" onclick="changeSection('general')" class="active">General</button>
+            <button type="button" id="sec-btn-editor" onclick="changeSection('editor')">Editor</button>
+            <button type="button" id="sec-btn-addons" onclick="changeSection('addons')">Addons</button>
+            <button type="button" id="sec-btn-legal" onclick="changeSection('legal')">Legal</button>
+        </nav>
+
+        <section class="sec-general _shown">
+            <div class="settingsbox select">
+                <label for="settings-activateAction">
+                    <span class="title">Activate Action</span>
+                    <span class="description">What should happen when you open the app</span>
+                </label>
+                <select id="settings-activateAction" oninput="setSetting('activateAction', this.value)">
+                    <option value="mainWindow">Welcome window</option>
+                    <option value="open">Open File</option>
+                    <option value="newFile">New File</option>
+                    <option value="nothing">Nothing</option>
+                </select>
+            </div>
+        </section>
+
+        <section class="sec-editor">
+            <div class="settingsbox select">
+                <label for="settings-indentSize">
+                    <span class="title">Indent Size</span>
+                    <span class="description">The number of spaces to use for indentation</span>
+                </label>
+                <select id="settings-indentSize" oninput="setSetting('indentSize', this.value, Number.parseInt)">
+                    <option value="2">2</option>
+                    <option value="4">4</option>
+                    <option value="8">8</option>
+                </select>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-autoShowHints" oninput="setSetting('autoShowHints', this.checked)" checked>
+                <label for="settings-autoShowHints">
+                    <span class="title">Automatically show hints</span>
+                    <span class="description">Automatically show completion hints when typing</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-lineNumbers" oninput="setSetting('lineNumbers', this.checked)" checked>
+                <label for="settings-lineNumbers">
+                    <span class="title">Line Numbers</span>
+                    <span class="description">Show line numbers at the left of the Editor</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-lineWrapping" oninput="setSetting('lineWrapping', this.checked)" checked>
+                <label for="settings-lineWrapping">
+                    <span class="title">Line Wrapping</span>
+                    <span class="description">Wrap lines when they exceed the width of the Editor</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-styleActiveLine" oninput="setSetting('styleActiveLine', this.checked)" checked>
+                <label for="settings-styleActiveLine">
+                    <span class="title">Active Line Indicator</span>
+                    <span class="description">Highlight the line where the cursor is</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-matchBrackets" oninput="setSetting('matchBrackets', this.checked)" checked>
+                <label for="settings-matchBrackets">
+                    <span class="title">Match Brackets</span>
+                    <span class="description">Highlight matching brackets</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-autoLineDelete" oninput="setSetting('autoLineDelete', this.checked)" checked>
+                <label for="settings-autoLineDelete">
+                    <span class="title">Autodelete Line</span>
+                    <span class="description">Delete the whole line when empty</span>
+                </label>
+            </div>
+        </section>
+
+        <section class="sec-addons">
+            <h2>Addons</h2>
+        </section>
+
+        <section class="sec-legal">
+            <h2>Legal</h2>
+        </section>
+    </main>
+
+    <script src="js/settings.js"></script>
+    <script>
+        function changeSection(section) {
+            document.querySelectorAll('section').forEach((el) => {
+                el.classList.remove("_shown");
+            });
+
+            document.querySelectorAll('nav button').forEach((el) => {
+                el.classList.remove("active");
+            });
+
+            document.querySelector(`.sec-${section}`).classList.add("_shown");
+            document.querySelector(`#sec-btn-${section}`).classList.add("active");
+        }
+    </script>
+</body>
+</html>

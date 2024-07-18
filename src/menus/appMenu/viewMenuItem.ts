@@ -1,5 +1,5 @@
 import {BrowserWindow, type MenuItemConstructorOptions} from "electron";
-import {getFocusedWindow, getPath, openFileInWindow, isMainWindow} from "../../windowManager";
+import {getFocusedWindow, getPath, openFileInWindow, isSpecialWindow} from "../../windowManager";
 
 export default function (): MenuItemConstructorOptions {
     const focusedWindow = getFocusedWindow();
@@ -26,7 +26,7 @@ export default function (): MenuItemConstructorOptions {
                 {type: 'separator'},
                 {
                     label: 'Toggle Read Mode',
-                    enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
+                    enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
                     accelerator: 'CmdOrCtrl+Alt+R',
                     click: () => {
                         getFocusedWindow()?.webContents.send("toggleReadMode");
@@ -36,7 +36,7 @@ export default function (): MenuItemConstructorOptions {
                 {
                     label: 'Actual size',
                     accelerator: 'CmdOrCtrl+0',
-                    enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
+                    enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
                     click: () => {
                         getFocusedWindow()?.webContents.send("changeZoom", {
                             instruction: "reset",
@@ -47,7 +47,7 @@ export default function (): MenuItemConstructorOptions {
                 {
                     label: 'Zoom In',
                     accelerator: 'CmdOrCtrl+Plus',
-                    enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
+                    enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
                     click: () => {
                         getFocusedWindow()?.webContents.send("changeZoom", {
                             instruction: "increase",
@@ -58,7 +58,7 @@ export default function (): MenuItemConstructorOptions {
                 {
                     label: 'Zoom Out',
                     accelerator: 'CmdOrCtrl+-',
-                    enabled:  !!focusedWindow && !isMainWindow(focusedWindow),
+                    enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
                     click: () => {
                         getFocusedWindow()?.webContents.send("changeZoom", {
                             instruction: "decrease",

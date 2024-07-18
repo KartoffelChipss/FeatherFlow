@@ -62,11 +62,17 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         styleActiveLine: getStore().get("styleActiveLine"),
         indentUnit: getStore().get("indentSize"),
         tabSize: getStore().get("indentSize"),
+        indentSize: getStore().get("indentSize"),
         matchBrackets: getStore().get("matchBrackets"),
         autoShowHints: getStore().get("autoShowHints"),
         autoLineDelete: getStore().get("autoLineDelete"),
         activateAction: getStore().get("activateAction"),
     };
+});
+
+ipcMain.handle("setSetting", (event, data) => {
+    console.log(data);
+    getStore().set(data.setting, data.value);
 });
 
 ipcMain.handle("showContextMenu", (event, data) => {
