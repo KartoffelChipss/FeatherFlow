@@ -6,6 +6,7 @@
 
     <link rel="stylesheet" href="css/assets.css">
     <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/colorSchemes/dark.css" id="theme-link">
 </head>
 <body>
     <header>
@@ -31,10 +32,22 @@
                     <span class="description">What should happen when you open the app</span>
                 </label>
                 <select id="settings-activateAction" oninput="setSetting('activateAction', this.value)">
-                    <option value="mainWindow">Welcome window</option>
+                    <option value="mainWindow">Show Welcome window</option>
                     <option value="open">Open File</option>
                     <option value="newFile">New File</option>
                     <option value="nothing">Nothing</option>
+                </select>
+            </div>
+
+            <div class="settingsbox select">
+                <label for="settings-colorScheme">
+                    <span class="title">Color Scheme</span>
+                    <span class="description">The color scheme to use for the app</span>
+                </label>
+                <select id="settings-colorScheme" oninput="setSetting('colorScheme', this.value); window.api.invoke('updateColorScheme');">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
                 </select>
             </div>
         </section>
@@ -111,6 +124,7 @@
     </main>
 
     <script src="js/settings.js"></script>
+    <script src="js/theme.js"></script>
     <script>
         function changeSection(section) {
             document.querySelectorAll('section').forEach((el) => {

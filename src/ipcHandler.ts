@@ -1,5 +1,5 @@
 import {BrowserWindow, dialog, ipcMain, shell} from "electron";
-import {getCalculatedTheme} from "./theme";
+import {getCalculatedColorSheme, updateColorScheme} from "./theme";
 import logger from "electron-log/main";
 import fs from "fs";
 import {closeWindow, createWindow, setPath} from "./windowManager";
@@ -9,8 +9,12 @@ import {popUpContextMenu} from "./menus/contextMenu";
 import {getStore} from "./store";
 import {openFile} from "./main";
 
-ipcMain.handle("getTheme", (event, data) => {
-    return getCalculatedTheme();
+ipcMain.handle("getColorScheme", (event, data) => {
+    return getCalculatedColorSheme();
+});
+
+ipcMain.handle("updateColorScheme", (event, data) => {
+    updateColorScheme();
 });
 
 ipcMain.handle("saveFile", async (event, data) => {
@@ -67,6 +71,7 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         autoShowHints: getStore().get("autoShowHints"),
         autoLineDelete: getStore().get("autoLineDelete"),
         activateAction: getStore().get("activateAction"),
+        colorScheme: getStore().get("colorScheme"),
     };
 });
 

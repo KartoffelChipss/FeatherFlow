@@ -1,6 +1,6 @@
 import {app, MenuItemConstructorOptions, shell} from "electron";
 import {getAllWindows, openSettingsWindow} from "../../windowManager";
-import {setTheme} from "../../theme";
+import {setColorScheme} from "../../theme";
 import {appRoot} from "../../main";
 import {getStore} from "../../store";
 import {updateMenu} from "./index";

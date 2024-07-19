@@ -24,7 +24,8 @@ contextBridge.exposeInMainWorld(
                 "openLinkInFinder",
                 "saveFile",
                 "convertMDtoHTML",
-                "getTheme",
+                "getColorScheme",
+                "updateColorScheme",
                 "getEditorSettings",
                 "showContextMenu",
                 "showUnsavedChangesDialog",
@@ -54,8 +55,8 @@ contextBridge.exposeInMainWorld(
         fullscreenChanged: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("fullscreenChanged", message);
         },
-        setTheme: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
-            ipcRenderer.on("setTheme", message);
+        setColorScheme: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("setColorScheme", message);
         },
         setEditorSetting: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("setEditorSetting", message);

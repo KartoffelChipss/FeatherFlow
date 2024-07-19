@@ -8,6 +8,7 @@ function setSetting(setting, value, fun) {
 function updateSettings() {
     window.api.invoke("getEditorSettings").then((settings) => {
         for (const setting in settings) {
+            // console.log(`Setting ${setting} to`, settings[setting]);
             setInputValue(document.getElementById(`settings-${setting}`), settings[setting]);
         }
     });

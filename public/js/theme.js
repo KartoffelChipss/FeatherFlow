@@ -6,11 +6,11 @@ function setProperty(name, value) {
     root.style.setProperty(name, value);
 }
 
-function updateTheme(theme) {
+function updateColorScheme(theme) {
     console.log("Setting theme: ", theme);
-    themeLink.setAttribute("href", `css/themes/${theme}.css`);
+    themeLink.setAttribute("href", `css/colorSchemes/${theme}.css`);
 }
 
-window.api.invoke("getTheme").then((theme) => updateTheme(theme));
+window.api.invoke("getColorScheme").then((theme) => updateColorScheme(theme));
 
-window.bridge.setTheme((e, theme) => updateTheme(theme));
+window.bridge.setColorScheme((e, theme) => updateColorScheme(theme));

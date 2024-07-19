@@ -1,27 +1,31 @@
 import { nativeTheme } from 'electron';
 import { getStore } from './store';
-import { getAllWindows, getFocusedWindow } from './windowManager';
+import { getAllWindows } from './windowManager';
 
-export type Theme = 'light' | 'dark' | 'system';
+export type ColorScheme = 'light' | 'dark' | 'system';
 
-export function getTheme() {
-    return getStore().get('theme') as Theme;
+nativeTheme.on("updated", () => {
+    updateColorScheme();
+});
+
+export function getColorSheme() {
+    return getStore().get('colorScheme') as ColorScheme;
 }
 
-export function getCalculatedTheme() {
-    let theme = getTheme();
-    if (theme === 'system') theme = (nativeTheme.shouldUseDarkColors ? 'dark' : 'light');
-    return theme;
+export function getCalculatedColorSheme() {
+    let colorSheme = getColorSheme();
+    if (colorSheme === 'system') colorSheme = (nativeTheme.shouldUseDarkColors ? 'dark' : 'light');
+    return colorSheme;
 }
 
-export function setTheme(theme: Theme) {
-    getStore().set('theme', theme);
-    if (theme === 'system') theme = (nativeTheme.shouldUseDarkColors ? 'dark' : 'light');
+export function setColorScheme(colorScheme: ColorScheme) {
+    getStore().set('colorScheme', colorScheme);
+    if (colorScheme === 'system') colorScheme = (nativeTheme.shouldUseDarkColors ? 'dark' : 'light');
     for (const window of getAllWindows()) {
-        window?.webContents.send('setTheme', theme);
+        window?.webContents.send('setColorScheme', colorScheme);
     }
 }
 
-export function updateTheme() {
-    setTheme(getTheme());
+export function updateColorScheme() {
+    setColorScheme(getColorSheme());
 }

@@ -40,7 +40,7 @@ const store = new Store({
             type: 'number',
             default: 0,
         },
-        theme: {
+        colorScheme: {
             type: 'string',
             enum: ['light', 'dark', 'system'],
             default: 'system',

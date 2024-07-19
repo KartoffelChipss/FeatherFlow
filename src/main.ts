@@ -7,7 +7,7 @@ import {updateMenu} from "./menus/appMenu";
 import {addRecentFile, getStore} from "./store";
 import path from "path";
 import "dotenv/config";
-import {updateTheme} from "./theme";
+import {updateColorScheme} from "./theme";
 import "./ipcHandler";
 import {checkForUpdates} from "./updater";
 
@@ -55,11 +55,7 @@ app.on("ready", () => {
 
     if (process.platform === "darwin") app.dock.setIcon(nativeImage.createFromPath(iconPath));
 
-    updateTheme();
-
-    nativeTheme.on("updated", () => {
-        updateTheme();
-    });
+    updateColorScheme();
 
     app.setAboutPanelOptions({
         applicationName: "FeatherFlow",
