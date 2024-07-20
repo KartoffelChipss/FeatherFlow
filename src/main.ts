@@ -14,11 +14,13 @@ import {exec} from "child_process";
 
 export const devMode = process.env.NODE_ENV === "development";
 
-logger.transports.file.resolvePathFn = () => path.join(appRoot, "logs.log");
-logger.transports.file.level = "info";
-
 export const appRoot: string = path.join(`${app.getPath("appData") ?? "."}${path.sep}.featherFlow`,);
 if (!fs.existsSync(appRoot)) fs.mkdirSync(appRoot, {recursive: true});
+export const logPath = path.join(appRoot, "log.log");
+
+logger.transports.file.resolvePathFn = () => logPath;
+logger.transports.file.level = "info";
+Object.assign(console, logger.functions);
 
 const iconPath = path.resolve(path.join(__dirname + "/../public/img/logo.png"));
 

@@ -1,9 +1,7 @@
 import {app, MenuItemConstructorOptions, shell} from "electron";
-import {getAllWindows, openSettingsWindow} from "../../windowManager";
-import {setColorScheme} from "../../theme";
-import {appRoot} from "../../main";
+import {openSettingsWindow} from "../../windowManager";
+import {appRoot, logPath} from "../../main";
 import {getStore} from "../../store";
-import {updateMenu} from "./index";
 import {checkForUpdates} from "../../updater";
 
 export default function (): MenuItemConstructorOptions {
@@ -28,61 +26,38 @@ export default function (): MenuItemConstructorOptions {
                 accelerator: "CmdOrCtrl+,",
                 click: () => {
                     openSettingsWindow();
-                },
-                // submenu: [
-                //     {
-                //         label: "Theme",
-                //         submenu: [
-                //             {
-                //                 label: "System",
-                //                 type: "radio",
-                //                 checked: store.get("theme") === "system",
-                //                 click: () => {
-                //                     setTheme("system");
-                //                     updateMenu();
-                //                 }
-                //             },
-                //             {
-                //                 label: "Dark",
-                //                 type: "radio",
-                //                 checked: store.get("theme") === "dark",
-                //                 click: () => {
-                //                     setTheme("dark");
-                //                     updateMenu();
-                //                 }
-                //             },
-                //             {
-                //                 label: "Light",
-                //                 type: "radio",
-                //                 checked: store.get("theme") === "light",
-                //                 click: () => {
-                //                     setTheme("light");
-                //                     updateMenu();
-                //                 }
-                //             }
-                //         ]
-                //     },
-                // ]
+                }
             },
             {type: 'separator'},
             {role: 'services'},
             {
                 label: "Developer",
                 submenu: [
+                    {
+                        label: 'Open',
+                        submenu: [
+                            {
+                                label: "App root",
+                                click: () => {
+                                    shell.openPath(appRoot);
+                                }
+                            },
+                            {
+                                label: "Config file",
+                                click: () => {
+                                    store.openInEditor();
+                                }
+                            },
+                            {
+                                label: "Log file",
+                                click: () => {
+                                    shell.openPath(logPath);
+                                }
+                            }
+                        ]
+                    },
                     {role: 'toggleDevTools'},
                     {role: 'forceReload'},
-                    {
-                        label: "Open app folder",
-                        click: () => {
-                            shell.openPath(appRoot);
-                        }
-                    },
-                    {
-                        label: "Open config file",
-                        click: () => {
-                            store.openInEditor();
-                        }
-                    },
                 ]
             },
             {type: 'separator'},
