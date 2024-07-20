@@ -26,6 +26,7 @@
     "releaseType": "release"
   },
   "dependencies": {
+    "dotenv": "^16.4.5",
     "electron-log": "^5.1.5",
     "electron-store": "8.2.0",
     "electron-updater": "^6.2.1"
