@@ -1,4 +1,6 @@
 import { app, dialog } from "electron";
+import {getStore} from "../store";
+import path from "path";
 
 /**
  * Open a file dialog
@@ -38,10 +40,12 @@ export default async function showOpenFileDialog(): Promise<string | null> {
             { name: 'Diff', extensions: ['diff', 'patch'] },
             { name: 'CSV', extensions: ['csv'] }
         ],
-        defaultPath: app.getPath('documents'),
+        defaultPath: getStore().get('lastOpenFolder') as string || app.getPath('documents'),
     });
 
     if (result.canceled || !result.filePaths || result.filePaths.length < 1 || !result.filePaths[0]) return null;
+
+    getStore().set('lastOpenFolder', path.dirname(result.filePaths[0]));
 
     return result.filePaths[0];
 }

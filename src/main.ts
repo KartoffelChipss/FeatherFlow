@@ -10,6 +10,7 @@ import "dotenv/config";
 import {updateColorScheme} from "./theme";
 import "./ipcHandler";
 import {checkForUpdates} from "./updater";
+import {exec} from "child_process";
 
 export const devMode = process.env.NODE_ENV === "development";
 
@@ -136,8 +137,8 @@ export async function openFile() {
 
     fileDialogOpen = false;
 
-    if (filePath) {
-        createWindow(filePath);
-        addRecentFile(filePath);
-    }
+    if (!filePath) return;
+
+    createWindow(filePath);
+    addRecentFile(filePath);
 }

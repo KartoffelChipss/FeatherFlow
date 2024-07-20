@@ -36,6 +36,10 @@ const store = new Store({
             },
             default: [],
         },
+        lastOpenFolder: {
+            type: 'string',
+            default: '',
+        },
         lastUpdateReminder: {
             type: 'number',
             default: 0,

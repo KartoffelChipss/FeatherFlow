@@ -129,6 +129,8 @@ function setSetting(setting, value) {
         return;
     }
 
+    if (setting === "theme") return;
+
     editor.setOption(setting, value);
 }
 
