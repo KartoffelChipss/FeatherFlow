@@ -45,6 +45,10 @@ const store = new Store({
             enum: ['light', 'dark', 'system'],
             default: 'system',
         },
+        theme: {
+            type: 'string',
+            default: 'Default',
+        },
         lineNumbers: {
             type: 'boolean',
             default: true,

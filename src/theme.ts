@@ -29,3 +29,14 @@ export function setColorScheme(colorScheme: ColorScheme) {
 export function updateColorScheme() {
     setColorScheme(getColorSheme());
 }
+
+export function getThemeName() {
+    return getStore().get('theme') as string;
+}
+
+export function setTheme(theme: string) {
+    getStore().set('theme', theme);
+    for (const window of getAllWindows()) {
+        window?.webContents.send('setTheme', theme);
+    }
+}

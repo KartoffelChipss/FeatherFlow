@@ -21,8 +21,8 @@
         <nav>
             <button type="button" id="sec-btn-general" onclick="changeSection('general')" class="active">General</button>
             <button type="button" id="sec-btn-editor" onclick="changeSection('editor')">Editor</button>
-            <button type="button" id="sec-btn-addons" onclick="changeSection('addons')">Addons</button>
-            <button type="button" id="sec-btn-legal" onclick="changeSection('legal')">Legal</button>
+<!--            <button type="button" id="sec-btn-addons" onclick="changeSection('addons')">Addons</button>-->
+<!--            <button type="button" id="sec-btn-legal" onclick="changeSection('legal')">Legal</button>-->
         </nav>
 
         <section class="sec-general _shown">
@@ -42,12 +42,22 @@
             <div class="settingsbox select">
                 <label for="settings-colorScheme">
                     <span class="title">Color Scheme</span>
-                    <span class="description">The color scheme to use for the app</span>
+                    <span class="description">The color scheme to use for the app.</span>
                 </label>
                 <select id="settings-colorScheme" oninput="setSetting('colorScheme', this.value); window.api.invoke('updateColorScheme');">
                     <option value="system">System</option>
                     <option value="dark">Dark</option>
                     <option value="light">Light</option>
+                </select>
+            </div>
+
+            <div class="settingsbox select">
+                <label for="settings-theme">
+                    <span class="title">Theme</span>
+                    <span class="description">The theme to use for the app. Each theme has a dark and light color scheme.</span>
+                </label>
+                <select id="settings-theme" oninput="setSetting('theme', this.value); window.api.invoke('updateColorScheme');">
+                    <option value="system">Default</option>
                 </select>
             </div>
         </section>

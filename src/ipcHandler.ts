@@ -72,6 +72,7 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         autoLineDelete: getStore().get("autoLineDelete"),
         activateAction: getStore().get("activateAction"),
         colorScheme: getStore().get("colorScheme"),
+        theme: getStore().get("theme"),
     };
 });
 
