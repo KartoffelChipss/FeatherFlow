@@ -24,8 +24,11 @@ window.bridge.fileOpened((e, file) => {
     setEditorMode(file.path);
 
     const cursorPos = editor.getCursor();
+    const scrollInfo = editor.getScrollInfo();  // Capture the current scroll position
+
     editor.setValue(file.content);
     editor.setCursor(cursorPos);
+    editor.scrollTo(scrollInfo.left, scrollInfo.top);  // Restore the scroll position
 });
 
 editor.on("change", () => {
