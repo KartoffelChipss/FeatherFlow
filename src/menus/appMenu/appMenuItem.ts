@@ -17,7 +17,7 @@ export default function (): MenuItemConstructorOptions {
             {
                 label: "Check for Updates",
                 click: () => {
-                    checkForUpdates();
+                    checkForUpdates(true);
                 }
             },
             {type: 'separator'},

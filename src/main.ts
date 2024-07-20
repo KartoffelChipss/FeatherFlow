@@ -1,4 +1,4 @@
-import {app, BrowserWindow, nativeTheme, nativeImage, protocol} from "electron";
+import {app, BrowserWindow, nativeImage, protocol} from "electron";
 import logger from "electron-log/main";
 import {closeWindow, createWindow, getAllWindows,openMainWindow} from "./windowManager";
 import fs from "fs";
@@ -9,8 +9,7 @@ import path from "path";
 import "dotenv/config";
 import {updateColorScheme} from "./theme";
 import "./ipcHandler";
-import {checkForUpdates} from "./updater";
-import {exec} from "child_process";
+import {startCheckingForUpdates} from "./updater";
 
 export const devMode = process.env.NODE_ENV === "development";
 
@@ -39,14 +38,7 @@ app.on("ready", () => {
     if (devMode) logger.log("Running in development mode");
     logger.log("====== ======\n");
 
-    const lastUpdateReminder = getStore().get("lastUpdateReminder") as number;
-
-    if (lastUpdateReminder) {
-        const timeSinceLastUpdate = Date.now() - lastUpdateReminder;
-        const daysSinceLastUpdate = timeSinceLastUpdate / (1000 * 60 * 60 * 24);
-
-        if (daysSinceLastUpdate > 1 && getStore().get("checkForUpdates")) checkForUpdates();
-    } else if (getStore().get("checkForUpdates")) checkForUpdates();
+    startCheckingForUpdates();
 
     let openedInitialFile = false;
     if (devMode && process.argv.length >= 3) initialFile = process.argv[2];

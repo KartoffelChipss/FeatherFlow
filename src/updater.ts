@@ -4,11 +4,37 @@ import {app, shell} from "electron";
 import updatePrompt from "./dialog/updatePrompt";
 import {getStore} from "./store";
 import updateDownloaded from "./dialog/updateDownloaded";
+import noUpdate from "./dialog/noUpdate";
 
 autoUpdater.autoDownload = false;
 autoUpdater.autoInstallOnAppQuit = false;
+autoUpdater.logger = logger;
 
-export function checkForUpdates(): void {
+let manualCheck = false;
+
+export function startCheckingForUpdates(): void {
+    const lastUpdateReminder = getStore().get("lastUpdateReminder") as number;
+
+    if (lastUpdateReminder) {
+        const timeSinceLastUpdate = Date.now() - lastUpdateReminder;
+        const daysSinceLastUpdate = timeSinceLastUpdate / (1000 * 60 * 60 * 24);
+
+        if (daysSinceLastUpdate < 1) {
+            logger.info("Last update reminder was less than a day ago. Skipping update check.");
+            return;
+        }
+
+        if (!getStore().get("checkForUpdates")) {
+            logger.info("Update checks are disabled. Skipping update check.");
+            return;
+        }
+
+        checkForUpdates();
+    } else if (getStore().get("checkForUpdates")) checkForUpdates();
+}
+
+export function checkForUpdates(manual: boolean = false): void {
+    manualCheck = manual;
     autoUpdater.checkForUpdates();
 }
 
@@ -16,6 +42,7 @@ autoUpdater.on("update-available", async () => {
     logger.info("Update available! Current version: " + app.getVersion());
 
     const promptResult = await updatePrompt();
+    manualCheck = false;
 
     if (promptResult === "update") {
         // If on macos, open link to github releases
@@ -30,10 +57,11 @@ autoUpdater.on("update-available", async () => {
 
 autoUpdater.on("update-not-available", () => {
     logger.info("No update available. Current version: " + app.getVersion());
-});
-
-autoUpdater.on("update-not-available", () => {
-    logger.info("No update available. Current version: " + app.getVersion());
+    if (manualCheck) {
+        getStore().set("lastUpdateReminder", Date.now());
+        noUpdate();
+        manualCheck = false;
+    }
 });
 
 autoUpdater.on('download-progress', (progressObj) => {
