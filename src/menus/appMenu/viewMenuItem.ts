@@ -27,7 +27,6 @@ export default function (): MenuItemConstructorOptions {
                 {
                     label: 'Toggle Read Mode',
                     enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
-                    accelerator: 'CmdOrCtrl+Alt+R',
                     click: () => {
                         getFocusedWindow()?.webContents.send("toggleReadMode");
                     }

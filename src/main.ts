@@ -6,9 +6,9 @@ import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
 import {addRecentFile, getStore} from "./store";
 import path from "path";
-import "dotenv/config";
 import {updateColorScheme} from "./theme";
 import "./ipcHandler";
+import "dotenv/config";
 import {startCheckingForUpdates} from "./updater";
 
 export const devMode = process.env.NODE_ENV === "development";

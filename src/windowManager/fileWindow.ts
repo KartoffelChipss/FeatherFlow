@@ -4,7 +4,7 @@ import logger from "electron-log";
 import {getStore} from "../store";
 import path from "path";
 import fs from "fs";
-import {closeMainWindow} from "../windowManager";
+import {closeMainWindow, getAllWindows} from "../windowManager";
 import {fadeInWindow} from "./index";
 
 const windows: { [key: string]: BrowserWindow } = {};
@@ -43,11 +43,17 @@ export function createWindow(filePath: string | null = null) {
 
     logger.info("Opening window for file:", filePath);
 
+    const windowCountModifier = getAllWindows().length + 1;
+    const x: number = getStore().get("windowPosition.x") as number + windowCountModifier * 20;
+    const y: number = getStore().get("windowPosition.y") as number + windowCountModifier * 20;
+
     const fileWindow = new BrowserWindow({
         minWidth: 400,
         minHeight: 45,
-        width: getStore().get("windowPosition.width") ?? 1300,
-        height: getStore().get("windowPosition.height") ?? 800,
+        width: getStore().get("windowPosition.width"),
+        height: getStore().get("windowPosition.height"),
+        x,
+        y,
         backgroundColor: "#101215",
         darkTheme: true,
         frame: false,

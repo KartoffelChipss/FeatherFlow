@@ -8,9 +8,11 @@ const store = new Store({
             properties: {
                 width: {
                     type: 'number',
+                    default: 1300,
                 },
                 height: {
                     type: 'number',
+                    default: 800,
                 },
                 x: {
                     type: 'number',
