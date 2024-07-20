@@ -29,7 +29,7 @@
             <div class="settingsbox select">
                 <label for="settings-activateAction">
                     <span class="title">Activate Action</span>
-                    <span class="description">What should happen when you open the app</span>
+                    <span class="description">What should happen when the app starts</span>
                 </label>
                 <select id="settings-activateAction" oninput="setSetting('activateAction', this.value)">
                     <option value="mainWindow">Show Welcome window</option>
@@ -37,6 +37,14 @@
                     <option value="newFile">New File</option>
                     <option value="nothing">Nothing</option>
                 </select>
+            </div>
+
+            <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-checkForUpdates" oninput="setSetting('checkForUpdates', this.checked)" checked>
+                <label for="settings-checkForUpdates">
+                    <span class="title">Check for Updates</span>
+                    <span class="description">Automatically check for updates when the app starts</span>
+                </label>
             </div>
 
             <div class="settingsbox select">

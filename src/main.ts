@@ -43,8 +43,8 @@ app.on("ready", () => {
         const timeSinceLastUpdate = Date.now() - lastUpdateReminder;
         const daysSinceLastUpdate = timeSinceLastUpdate / (1000 * 60 * 60 * 24);
 
-        if (daysSinceLastUpdate > 1) checkForUpdates();
-    } else checkForUpdates();
+        if (daysSinceLastUpdate > 1 && getStore().get("checkForUpdates")) checkForUpdates();
+    } else if (getStore().get("checkForUpdates")) checkForUpdates();
 
     let openedInitialFile = false;
     if (devMode && process.argv.length >= 3) initialFile = process.argv[2];

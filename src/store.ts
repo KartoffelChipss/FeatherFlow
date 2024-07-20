@@ -36,6 +36,10 @@ const store = new Store({
             },
             default: [],
         },
+        checkForUpdates: {
+            type: 'boolean',
+            default: true,
+        },
         lastOpenFolder: {
             type: 'string',
             default: '',

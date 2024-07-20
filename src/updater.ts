@@ -32,6 +32,10 @@ autoUpdater.on("update-not-available", () => {
     logger.info("No update available. Current version: " + app.getVersion());
 });
 
+autoUpdater.on("update-not-available", () => {
+    logger.info("No update available. Current version: " + app.getVersion());
+});
+
 autoUpdater.on('download-progress', (progressObj) => {
     let log_message = "Download speed: " + progressObj.bytesPerSecond;
     log_message = log_message + ' - Downloaded ' + progressObj.percent + '%';

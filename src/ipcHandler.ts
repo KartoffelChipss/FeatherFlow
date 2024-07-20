@@ -73,6 +73,7 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         activateAction: getStore().get("activateAction"),
         colorScheme: getStore().get("colorScheme"),
         theme: getStore().get("theme"),
+        checkForUpdates: getStore().get("checkForUpdates"),
     };
 });
 
