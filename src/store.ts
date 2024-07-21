@@ -92,6 +92,10 @@ const store = new Store({
             type: 'boolean',
             default: true,
         },
+        replaceTabsWithSpaces: {
+            type: 'boolean',
+            default: false,
+        },
         activateAction: {
             type: 'string',
             enum: ['mainWindow', 'open', 'newFile', 'nothing'],

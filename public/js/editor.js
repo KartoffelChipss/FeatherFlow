@@ -35,6 +35,7 @@ const modeMapping = {
 
 let autoShowHints = true;
 let autoLineDelete = true;
+let alloReplaceTabsWithSpaces = true;
 
 const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea'), {
     mode: 'text/plain',
@@ -70,6 +71,41 @@ const editor = CodeMirror.fromTextArea(document.getElementById('editorTextarea')
 editor.refresh();
 
 editor.focus();
+
+function replaceTabsWithSpaces(str, tabSize) {
+    var spaces = ' '.repeat(tabSize);
+    return str.replace(/\t/g, spaces);
+}
+
+let replacingTabs = false;
+
+editor.on('change', function(instance, changeObj) {
+    if (replacingTabs || !alloReplaceTabsWithSpaces) return;
+
+    console.log("Allow: "+ alloReplaceTabsWithSpaces)
+
+    if (changeObj.text.some(line => line.includes('\t'))) {
+        console.log("REPLACING TABS YAYYY!");
+        replacingTabs = true;
+
+        const tabSize = instance.getOption('tabSize');
+        let cursor = instance.getCursor();
+
+        let newContent = instance.getValue().split('\n').map((line, index) => {
+            let newLine = replaceTabsWithSpaces(line, tabSize);
+            if (index === cursor.line) {
+                var addedSpaces = newLine.length - line.length;
+                cursor.ch += addedSpaces;
+            }
+            return newLine;
+        }).join('\n');
+
+        instance.setValue(newContent);
+        instance.setCursor(cursor);
+
+        replacingTabs = false;
+    }
+});
 
 function setEditorMode(filePath) {
     const fileExtension = filePath.split('.').pop();
@@ -126,6 +162,11 @@ function setSetting(setting, value) {
 
     if (setting === "autoLineDelete") {
         autoLineDelete = value;
+        return;
+    }
+
+    if (setting === "replaceTabsWithSpaces") {
+        alloReplaceTabsWithSpaces = value;
         return;
     }
 

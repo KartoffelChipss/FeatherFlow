@@ -84,6 +84,14 @@
             </div>
 
             <div class="settingsbox checkbox">
+                <input type="checkbox" id="settings-replaceTabsWithSpaces" oninput="setSetting('replaceTabsWithSpaces', this.checked)">
+                <label for="settings-replaceTabsWithSpaces">
+                    <span class="title">Replace Tabs with Spaces</span>
+                    <span class="description">Automatically replaces tabs with spaces</span>
+                </label>
+            </div>
+
+            <div class="settingsbox checkbox">
                 <input type="checkbox" id="settings-autoShowHints" oninput="setSetting('autoShowHints', this.checked)" checked>
                 <label for="settings-autoShowHints">
                     <span class="title">Automatically show hints</span>

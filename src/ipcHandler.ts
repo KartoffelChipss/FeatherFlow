@@ -74,6 +74,7 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         colorScheme: getStore().get("colorScheme"),
         theme: getStore().get("theme"),
         checkForUpdates: getStore().get("checkForUpdates"),
+        replaceTabsWithSpaces: getStore().get("replaceTabsWithSpaces"),
     };
 });
 

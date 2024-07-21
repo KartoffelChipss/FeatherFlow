@@ -55,10 +55,10 @@
     .CodeMirror-hint-active, .CodeMirror-hint-active:hover {
         background-color: var(--accent-color-2);
     }
+}
 
-    ::-webkit-scrollbar-track {
-        background: green;
-    }
+.cm-s-featherflow .CodeMirror-scrollbar-filler {
+    background-color: #2f2f2f;
 }
 
 // Cursor
@@ -73,7 +73,7 @@
 
 // Gutters
 .cm-s-featherflow .CodeMirror-gutters {
-    background: transparent;
+    background-color: var(--bg-1);
     border-right: none;
     padding-right: 15px;
 }
