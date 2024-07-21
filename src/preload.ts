@@ -25,7 +25,10 @@ contextBridge.exposeInMainWorld(
                 "saveFile",
                 "convertMDtoHTML",
                 "getColorScheme",
+                "getTheme",
                 "updateColorScheme",
+                "updateTheme",
+                "getThemeList",
                 "getEditorSettings",
                 "showContextMenu",
                 "showUnsavedChangesDialog",
@@ -57,6 +60,9 @@ contextBridge.exposeInMainWorld(
         },
         setColorScheme: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("setColorScheme", message);
+        },
+        setTheme: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("setTheme", message);
         },
         setEditorSetting: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("setEditorSetting", message);

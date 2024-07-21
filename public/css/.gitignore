@@ -1,5 +1,8 @@
 # Ignore compiled CSS files
 *.css
 
+# Except CSS files in the themes folder
+!themes/**/*.css
+
 # Ignore CSS map files
 *.css.map

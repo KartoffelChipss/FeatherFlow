@@ -1,5 +1,5 @@
 import {BrowserWindow, dialog, ipcMain, shell} from "electron";
-import {getCalculatedColorSheme, updateColorScheme} from "./theme";
+import {getCalculatedColorSheme, getThemeList, updateColorScheme, updateTheme} from "./theme";
 import logger from "electron-log/main";
 import fs from "fs";
 import {closeWindow, createWindow, setPath} from "./windowManager";
@@ -15,6 +15,18 @@ ipcMain.handle("getColorScheme", (event, data) => {
 
 ipcMain.handle("updateColorScheme", (event, data) => {
     updateColorScheme();
+});
+
+ipcMain.handle("getTheme", (event, data) => {
+    return getStore().get("theme");
+});
+
+ipcMain.handle("updateTheme", (event, data) => {
+    updateTheme();
+});
+
+ipcMain.handle("getThemeList", (event, data) => {
+    return getThemeList();
 });
 
 ipcMain.handle("saveFile", async (event, data) => {

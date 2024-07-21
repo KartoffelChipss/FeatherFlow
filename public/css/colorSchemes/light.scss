@@ -1,34 +1,34 @@
 :root {
     --color-scheme: light;
 
-    --font-color: #000;
-    --font-color-dark: #222;
+    --font-color: var(--l-font-color);
+    --font-color-dark: var(--l-font-color-dark);
 
-    --accent-color-1: #00BFFF;
-    --accent-color-2: #007BFF;
+    --accent-color-1: var(--l-accent-color-1);
+    --accent-color-2: var(--l-accent-color-2);
 
     --orange: #f2a965;
     --green: #097969;
 
-    --button-active: rgba(0, 0, 0, 0.1);
+    --button-active: var(--l-button-active);
 
-    --bg-1: #ffffff;
-    --bg-2: #f2eff2;
-    --bg-3: #f5f6f8;
+    --bg-1: var(--l-bg-1);
+    --bg-2: var(--l-bg-2);
+    --bg-3: var(--l-bg-3);
 
     --selection: rgba(0, 122, 255, 0.3);
 
-    --keyword: #6500ff;
-    --variable-1: var(--font-color-dark);
-    --def: var(--font-color-dark);
-    --atom: var(--accent-color-2);
-    --property: var(--accent-color-2);
-    --string: #27a61d;
-    --number: #a5631b;
-    --type: #22becf;
-    --comment: #77787a;
-    --qualifier: #a5631b;
-    --tag: #ff000b;
-    --attribute: #a5631b;
-    --error: #ff000b;
+    --keyword: var(--l-keyword);
+    --variable-1: var(--l-variable-1);
+    --def: var(--l-def);
+    --atom: var(--l-atom);
+    --property: var(--l-property);
+    --string: var(--l-string);
+    --number: var(--l-number);
+    --type: var(--l-type);
+    --comment: var(--l-comment);
+    --qualifier: var(--l-qualifier);
+    --tag: var(--l-tag);
+    --attribute: var(--l-attribute);
+    --error: var(--l-error);
 }

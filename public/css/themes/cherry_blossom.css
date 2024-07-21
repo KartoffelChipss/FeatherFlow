@@ -1,0 +1,66 @@
+:root {
+    --name: "Cherry Blossom";
+    --index: 7;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #ffe4e9; /* light pink */
+    --d-font-color-dark: #ffccd5; /* darker light pink */
+
+    --d-accent-color-1: #ff66a3; /* bright pink */
+    --d-accent-color-2: #cc3366; /* deep pink */
+
+    --d-button-active: rgba(255, 102, 163, 0.3); /* bright pink translucent */
+
+    --d-bg-1: #2e1a27; /* dark pinkish purple */
+    --d-bg-2: #3f2433; /* deeper pinkish purple */
+    --d-bg-3: #452738; /* darkest pinkish purple */
+
+    --d-selection: rgba(255, 102, 163, 0.3); /* bright pink translucent */
+
+    --d-keyword: #ff99cc; /* pastel pink */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #ffb3de; /* light pastel pink */
+    --d-number: #ffa07a; /* light salmon */
+    --d-type: #f5a3ff; /* lavender pink */
+    --d-comment: #b38399; /* greyish pink */
+    --d-qualifier: #ffa07a; /* light salmon */
+    --d-tag: #ff4c88; /* bright pink */
+    --d-attribute: #ffa07a; /* light salmon */
+    --d-error: #ff4c88; /* bright pink */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #4e2a35; /* deep pinkish brown */
+    --l-font-color-dark: #3d1f29; /* darker deep pinkish brown */
+
+    --l-accent-color-1: #ff66a3; /* bright pink */
+    --l-accent-color-2: #cc3366; /* deep pink */
+
+    --l-button-active: rgba(255, 102, 163, 0.1); /* bright pink translucent */
+
+    --l-bg-1: #ffeaf1; /* very light pink */
+    --l-bg-2: #ffd6e2; /* lighter pink */
+    --l-bg-3: #ffccda; /* light pink */
+
+    --l-selection: rgba(255, 102, 163, 0.3); /* bright pink translucent */
+
+    --l-keyword: #cc0066; /* strong pink */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #ff66b2; /* vibrant pink */
+    --l-number: #ff6347; /* tomato */
+    --l-type: #e066ff; /* orchid */
+    --l-comment: #a57d90; /* greyish pink */
+    --l-qualifier: #ff6347; /* tomato */
+    --l-tag: #ff1493; /* deep pink */
+    --l-attribute: #ff6347; /* tomato */
+    --l-error: #ff1493; /* deep pink */
+}

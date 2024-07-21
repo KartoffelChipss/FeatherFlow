@@ -57,7 +57,7 @@ const store = new Store({
         },
         theme: {
             type: 'string',
-            default: 'Default',
+            default: 'default',
         },
         lineNumbers: {
             type: 'boolean',

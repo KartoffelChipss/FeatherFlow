@@ -1,0 +1,66 @@
+:root {
+    --name: "Vintage";
+    --index: 8;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #d8cfc4; /* muted beige */
+    --d-font-color-dark: #b5a79d; /* darker beige */
+
+    --d-accent-color-1: #a69f91; /* muted brown */
+    --d-accent-color-2: #6e6b5e; /* earthy olive */
+
+    --d-button-active: rgba(166, 159, 145, 0.3); /* muted brown translucent */
+
+    --d-bg-1: #2e2a23; /* dark grayish brown */
+    --d-bg-2: #3e3b31; /* darker grayish brown */
+    --d-bg-3: #4a4740; /* darkest grayish brown */
+
+    --d-selection: rgba(166, 159, 145, 0.3); /* muted brown translucent */
+
+    --d-keyword: #b0a7a0; /* soft taupe */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #c5b9a2; /* light beige */
+    --d-number: #8c6e58; /* muted brown */
+    --d-type: #9e9e9e; /* classic grey */
+    --d-comment: #7d6a54; /* muted brownish grey */
+    --d-qualifier: #8c6e58; /* muted brown */
+    --d-tag: #a67c6e; /* soft brown */
+    --d-attribute: #8c6e58; /* muted brown */
+    --d-error: #a67c6e; /* soft brown */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #3f3b32; /* dark grayish brown */
+    --l-font-color-dark: #2a261e; /* darker grayish brown */
+
+    --l-accent-color-1: #a69f91; /* muted brown */
+    --l-accent-color-2: #6e6b5e; /* earthy olive */
+
+    --l-button-active: rgba(166, 159, 145, 0.1); /* muted brown translucent */
+
+    --l-bg-1: #f5f2e5; /* very light beige */
+    --l-bg-2: #e6e3d6; /* lighter beige */
+    --l-bg-3: #dcd8cb; /* light beige */
+
+    --l-selection: rgba(166, 159, 145, 0.3); /* muted brown translucent */
+
+    --l-keyword: #9e9e9e; /* classic grey */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #b5a79d; /* soft beige */
+    --l-number: #8c6e58; /* muted brown */
+    --l-type: #9e9e9e; /* classic grey */
+    --l-comment: #7d6a54; /* muted brownish grey */
+    --l-qualifier: #8c6e58; /* muted brown */
+    --l-tag: #a67c6e; /* soft brown */
+    --l-attribute: #8c6e58; /* muted brown */
+    --l-error: #a67c6e; /* soft brown */
+}

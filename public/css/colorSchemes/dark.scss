@@ -1,34 +1,34 @@
 :root {
     --color-scheme: dark;
 
-    --font-color: #e9e9e9;
-    --font-color-dark: #aaafb6;
+    --font-color: var(--d-font-color);
+    --font-color-dark: var(--d-font-color-dark);
 
-    --accent-color-1: #00BFFF;
-    --accent-color-2: #007BFF;
+    --accent-color-1: var(--d-accent-color-1);
+    --accent-color-2: var(--d-accent-color-2);
 
     --orange: #f2a965;
     --green: #097969;
 
-    --button-active: rgba(0, 0, 0, 0.3);
+    --button-active: var(--d-selection);
 
-    --bg-1: #101215;
-    --bg-2: #171b22;
-    --bg-3: #181c21;
+    --bg-1: var(--d-bg-1);
+    --bg-2: var(--d-bg-2);
+    --bg-3: var(--d-bg-3);
 
-    --selection: rgba(0, 122, 255, 0.3);
+    --selection: var(--d-selection);
 
-    --keyword: #c4a1fa;
-    --variable-1: var(--font-color-dark);
-    --def: var(--font-color-dark);
-    --atom: var(--accent-color-1);
-    --property: var(--accent-color-1);
-    --string: #b3ec78;
-    --number: #c99d6e;
-    --type: #70b4c0;
-    --comment: #515761;
-    --qualifier: #bd946a;
-    --tag: #d17377;
-    --attribute: #bd946a;
-    --error: #d17377;
+    --keyword: var(--d-keyword);
+    --variable-1: var(--d-variable-1);
+    --def: var(--d-def);
+    --atom: var(--d-atom);
+    --property: var(--d-property);
+    --string: var(--d-string);
+    --number: var(--d-number);
+    --type: var(--d-type);
+    --comment: var(--d-comment);
+    --qualifier: var(--d-qualifier);
+    --tag: var(--d-tag);
+    --attribute: var(--d-attribute);
+    --error: var(--d-error);
 }

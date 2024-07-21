@@ -6,7 +6,8 @@
 
     <link rel="stylesheet" href="css/assets.css">
     <link rel="stylesheet" href="css/settings.css">
-    <link rel="stylesheet" href="css/colorSchemes/dark.css" id="theme-link">
+    <link rel="stylesheet" href="css/themes/default.css" id="theme-link">
+    <link rel="stylesheet" href="css/colorSchemes/dark.css" id="colorscheme-link">
 </head>
 <body>
     <header>
@@ -64,8 +65,18 @@
                     <span class="title">Theme</span>
                     <span class="description">The theme to use for the app. Each theme has a dark and light color scheme.</span>
                 </label>
-                <select id="settings-theme" oninput="setSetting('theme', this.value); window.api.invoke('updateColorScheme');">
-                    <option value="system">Default</option>
+                <select id="settings-theme" oninput="setSetting('theme', this.value); window.api.invoke('updateTheme');">
+<!--                    <option value="default">Default</option>-->
+<!--                    <option value="subtle_hues">Subtle Hues</option>-->
+<!--                    <option value="aurora">Aurora</option>-->
+<!--                    <option value="ocean">Ocean</option>-->
+<!--                    <option value="zen">Zen</option>-->
+<!--                    <option value="forest">Forest</option>-->
+<!--                    <option value="sunset">Sunset</option>-->
+<!--                    <option value="cherry_blossom">Cherry Blossom</option>-->
+<!--                    <option value="vintage">Vintage</option>-->
+<!--                    <option value="cyberpunk">Cyberpunk</option>-->
+<!--                    <option value="nebula">Nebula</option>-->
                 </select>
             </div>
         </section>

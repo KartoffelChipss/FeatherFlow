@@ -1,0 +1,66 @@
+:root {
+    --name: "Forest";
+    --index: 5;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #d8e3dd; /* light sage */
+    --d-font-color-dark: #a1aead; /* darker sage */
+
+    --d-accent-color-1: #3c763d; /* fern green */
+    --d-accent-color-2: #2e5d30; /* dark fern green */
+
+    --d-button-active: rgba(60, 118, 61, 0.3); /* fern green translucent */
+
+    --d-bg-1: #2b3327; /* dark forest green */
+    --d-bg-2: #1e241d; /* deeper forest green */
+    --d-bg-3: #161b14; /* darkest forest green */
+
+    --d-selection: rgba(60, 118, 61, 0.3); /* fern green translucent */
+
+    --d-keyword: #d8c991; /* sand */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #6b8e23; /* olive green */
+    --d-number: #d2b48c; /* tan */
+    --d-type: #bc8f8f; /* rosy brown */
+    --d-comment: #6c7a59; /* sage green */
+    --d-qualifier: #d8c991; /* sand */
+    --d-tag: #ff6347; /* tomato */
+    --d-attribute: #d8c991; /* sand */
+    --d-error: #ff4500; /* orange red */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #3e4c3f; /* dark sage */
+    --l-font-color-dark: #2b362d; /* darker sage */
+
+    --l-accent-color-1: #3c763d; /* fern green */
+    --l-accent-color-2: #2e5d30; /* dark fern green */
+
+    --l-button-active: rgba(60, 118, 61, 0.1); /* fern green translucent */
+
+    --l-bg-1: #f5f5dc; /* beige */
+    --l-bg-2: #e8e8d0; /* light beige */
+    --l-bg-3: #dcdcdc; /* gainsboro */
+
+    --l-selection: rgba(60, 118, 61, 0.3); /* fern green translucent */
+
+    --l-keyword: #8b4513; /* saddle brown */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #556b2f; /* dark olive green */
+    --l-number: #8b4513; /* saddle brown */
+    --l-type: #6a5acd; /* slate blue */
+    --l-comment: #a9a9a9; /* dark gray */
+    --l-qualifier: #8b4513; /* saddle brown */
+    --l-tag: #ff6347; /* tomato */
+    --l-attribute: #8b4513; /* saddle brown */
+    --l-error: #ff4500; /* orange red */
+}

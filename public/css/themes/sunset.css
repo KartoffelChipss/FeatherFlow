@@ -1,0 +1,66 @@
+:root {
+    --name: "Sunset";
+    --index: 6;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #ffd7b5; /* light peach */
+    --d-font-color-dark: #ffab76; /* darker peach */
+
+    --d-accent-color-1: #ff6b6b; /* sunset red */
+    --d-accent-color-2: #ff8e72; /* sunset orange */
+
+    --d-button-active: rgba(255, 107, 107, 0.3); /* sunset red translucent */
+
+    --d-bg-1: #2e1a0f; /* dark brown */
+    --d-bg-2: #3f2416; /* deeper brown */
+    --d-bg-3: #45291a; /* darkest brown */
+
+    --d-selection: rgba(255, 107, 107, 0.3); /* sunset red translucent */
+
+    --d-keyword: #ff9966; /* pastel orange */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #ffcc99; /* light pastel orange */
+    --d-number: #ffd700; /* gold */
+    --d-type: #ff8c69; /* coral */
+    --d-comment: #b38c6d; /* greyish brown */
+    --d-qualifier: #ffd700; /* gold */
+    --d-tag: #ff6347; /* tomato */
+    --d-attribute: #ffd700; /* gold */
+    --d-error: #ff6347; /* tomato */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #4e2a15; /* deep brown */
+    --l-font-color-dark: #3d1f10; /* darker deep brown */
+
+    --l-accent-color-1: #ff6b6b; /* sunset red */
+    --l-accent-color-2: #ff8e72; /* sunset orange */
+
+    --l-button-active: rgba(255, 107, 107, 0.1); /* sunset red translucent */
+
+    --l-bg-1: #fff5e6; /* very light peach */
+    --l-bg-2: #ffe8cc; /* lighter peach */
+    --l-bg-3: #ffdbb3; /* light peach */
+
+    --l-selection: rgba(255, 107, 107, 0.3); /* sunset red translucent */
+
+    --l-keyword: #ff4500; /* orange red */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #ff8c00; /* dark orange */
+    --l-number: #ff6347; /* tomato */
+    --l-type: #ffa07a; /* light salmon */
+    --l-comment: #a57d59; /* greyish brown */
+    --l-qualifier: #ff6347; /* tomato */
+    --l-tag: #ff4500; /* orange red */
+    --l-attribute: #ff6347; /* tomato */
+    --l-error: #ff4500; /* orange red */
+}

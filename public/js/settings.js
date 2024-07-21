@@ -6,11 +6,20 @@ function setSetting(setting, value, fun) {
 }
 
 function updateSettings() {
-    window.api.invoke("getEditorSettings").then((settings) => {
-        for (const setting in settings) {
-            // console.log(`Setting ${setting} to`, settings[setting]);
-            setInputValue(document.getElementById(`settings-${setting}`), settings[setting]);
+    window.api.invoke("getThemeList").then((themes) => {
+        for (const theme of themes) {
+            let option = document.createElement("option");
+            option.text = theme.themeName;
+            option.value = theme.fileName.split(".")[0];
+            document.getElementById("settings-theme").add(option);
         }
+
+        window.api.invoke("getEditorSettings").then((settings) => {
+            for (const setting in settings) {
+                // console.log(`Setting ${setting} to`, settings[setting]);
+                setInputValue(document.getElementById(`settings-${setting}`), settings[setting]);
+            }
+        });
     });
 }
 

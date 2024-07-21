@@ -1,0 +1,66 @@
+:root {
+    --name: "Cyberpunk";
+    --index: 9;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #e0e0e0; /* light gray */
+    --d-font-color-dark: #b0b0b0; /* darker gray */
+
+    --d-accent-color-1: #ff007f; /* neon pink */
+    --d-accent-color-2: #00d8ff; /* neon cyan */
+
+    --d-button-active: rgba(255, 0, 127, 0.3); /* neon pink translucent */
+
+    --d-bg-1: #0f0f0f; /* dark gray */
+    --d-bg-2: #1a1a1a; /* darker gray */
+    --d-bg-3: #262626; /* darkest gray */
+
+    --d-selection: rgba(0, 216, 255, 0.3); /* neon cyan translucent */
+
+    --d-keyword: #ff00ff; /* bright magenta */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #7d00ff; /* neon purple */
+    --d-number: #ffcc00; /* neon yellow */
+    --d-type: #00ff9f; /* neon green */
+    --d-comment: #666666; /* dark gray */
+    --d-qualifier: #ffcc00; /* neon yellow */
+    --d-tag: #ff007f; /* neon pink */
+    --d-attribute: #ffcc00; /* neon yellow */
+    --d-error: #ff007f; /* neon pink */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #1c1c1c; /* very dark gray */
+    --l-font-color-dark: #333333; /* dark gray */
+
+    --l-accent-color-1: #ff007f; /* neon pink */
+    --l-accent-color-2: #00d8ff; /* neon cyan */
+
+    --l-button-active: rgba(255, 0, 127, 0.1); /* neon pink translucent */
+
+    --l-bg-1: #1e1e1e; /* dark gray */
+    --l-bg-2: #2e2e2e; /* darker gray */
+    --l-bg-3: #3e3e3e; /* lighter gray */
+
+    --l-selection: rgba(0, 216, 255, 0.3); /* neon cyan translucent */
+
+    --l-keyword: #ff00ff; /* bright magenta */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-1);
+    --l-property: var(--l-accent-color-1);
+    --l-string: #7d00ff; /* neon purple */
+    --l-number: #ffcc00; /* neon yellow */
+    --l-type: #00ff9f; /* neon green */
+    --l-comment: #999999; /* gray */
+    --l-qualifier: #ffcc00; /* neon yellow */
+    --l-tag: #ff007f; /* neon pink */
+    --l-attribute: #ffcc00; /* neon yellow */
+    --l-error: #ff007f; /* neon pink */
+}

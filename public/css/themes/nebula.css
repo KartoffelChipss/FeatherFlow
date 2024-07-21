@@ -1,0 +1,66 @@
+:root {
+    --name: "Nebula";
+    --index: 10;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #f0f0f0; /* light gray */
+    --d-font-color-dark: #d0d0d0; /* darker gray */
+
+    --d-accent-color-1: #e94e77; /* neon pink */
+    --d-accent-color-2: #7d4c9e; /* deep purple */
+
+    --d-button-active: rgba(233, 78, 119, 0.3); /* neon pink translucent */
+
+    --d-bg-1: #1a0d3a; /* deep space blue */
+    --d-bg-2: #2c1a5b; /* darker cosmic blue */
+    --d-bg-3: #3d2a6d; /* darkest space purple */
+
+    --d-selection: rgba(125, 76, 158, 0.3); /* deep purple translucent */
+
+    --d-keyword: #9b59b6; /* light purple */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #8e44ad; /* medium purple */
+    --d-number: #f39c12; /* cosmic orange */
+    --d-type: #3498db; /* bright blue */
+    --d-comment: #7f8c8d; /* grayish blue */
+    --d-qualifier: #f39c12; /* cosmic orange */
+    --d-tag: #e94e77; /* neon pink */
+    --d-attribute: #f39c12; /* cosmic orange */
+    --d-error: #e94e77; /* neon pink */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #2c2c2c; /* very dark gray */
+    --l-font-color-dark: #3c3c3c; /* dark gray */
+
+    --l-accent-color-1: #e94e77; /* neon pink */
+    --l-accent-color-2: #7d4c9e; /* deep purple */
+
+    --l-button-active: rgba(233, 78, 119, 0.1); /* neon pink translucent */
+
+    --l-bg-1: #e8d7f2; /* light lavender */
+    --l-bg-2: #d6a0e1; /* pastel purple */
+    --l-bg-3: #b78ee0; /* light cosmic blue */
+
+    --l-selection: rgba(125, 76, 158, 0.3); /* deep purple translucent */
+
+    --l-keyword: #9b59b6; /* light purple */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-1);
+    --l-property: var(--l-accent-color-1);
+    --l-string: #8e44ad; /* medium purple */
+    --l-number: #f39c12; /* cosmic orange */
+    --l-type: #3498db; /* bright blue */
+    --l-comment: #95a5a6; /* grayish blue */
+    --l-qualifier: #f39c12; /* cosmic orange */
+    --l-tag: #e94e77; /* neon pink */
+    --l-attribute: #f39c12; /* cosmic orange */
+    --l-error: #e94e77; /* neon pink */
+}

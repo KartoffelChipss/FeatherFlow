@@ -1,0 +1,66 @@
+:root {
+    --name: "Ocean";
+    --index: 3;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #dce7ff; /* light ocean blue */
+    --d-font-color-dark: #a0b3d6; /* darker ocean blue */
+
+    --d-accent-color-1: #00aaff; /* bright ocean blue */
+    --d-accent-color-2: #005f99; /* deep ocean blue */
+
+    --d-button-active: rgba(0, 170, 255, 0.3); /* bright ocean blue translucent */
+
+    --d-bg-1: #0a1e2e; /* dark ocean blue */
+    --d-bg-2: #0e2a3f; /* deeper ocean blue */
+    --d-bg-3: #112f45; /* darkest ocean blue */
+
+    --d-selection: rgba(0, 170, 255, 0.3); /* bright ocean blue translucent */
+
+    --d-keyword: #1ca3ec; /* sea blue */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #72d6c9; /* turquoise */
+    --d-number: #f5a623; /* coral */
+    --d-type: #50e3c2; /* aquamarine */
+    --d-comment: #728a99; /* grey blue */
+    --d-qualifier: #f5a623; /* coral */
+    --d-tag: #ff4c60; /* sunset red */
+    --d-attribute: #f5a623; /* coral */
+    --d-error: #ff4c60; /* sunset red */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #002b3e; /* deep ocean blue */
+    --l-font-color-dark: #001d2b; /* darker deep ocean blue */
+
+    --l-accent-color-1: #00aaff; /* bright ocean blue */
+    --l-accent-color-2: #005f99; /* deep ocean blue */
+
+    --l-button-active: rgba(0, 170, 255, 0.1); /* bright ocean blue translucent */
+
+    --l-bg-1: #e1f5ff; /* very light blue */
+    --l-bg-2: #ccefff; /* lighter blue */
+    --l-bg-3: #b3e6ff; /* light blue */
+
+    --l-selection: rgba(0, 170, 255, 0.3); /* bright ocean blue translucent */
+
+    --l-keyword: #0066cc; /* ocean blue */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #28bfa4; /* turquoise */
+    --l-number: #ff7e29; /* coral */
+    --l-type: #1de9b6; /* aquamarine */
+    --l-comment: #527a99; /* grey blue */
+    --l-qualifier: #ff7e29; /* coral */
+    --l-tag: #ff3b4a; /* sunset red */
+    --l-attribute: #ff7e29; /* coral */
+    --l-error: #ff3b4a; /* sunset red */
+}

@@ -1,0 +1,66 @@
+:root {
+    --name: "Zen";
+    --index: 4;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #e0e0e0; /* light gray */
+    --d-font-color-dark: #b0b0b0; /* darker gray */
+
+    --d-accent-color-1: #9bcd9b; /* pastel green */
+    --d-accent-color-2: #8fc1e3; /* pastel blue */
+
+    --d-button-active: rgba(155, 205, 155, 0.3); /* pastel green translucent */
+
+    --d-bg-1: #2c3e50; /* deep slate gray */
+    --d-bg-2: #34495e; /* slightly lighter slate gray */
+    --d-bg-3: #4a5b6c; /* darker slate gray */
+
+    --d-selection: rgba(143, 193, 227, 0.3); /* pastel blue translucent */
+
+    --d-keyword: #a2c2e2; /* light pastel blue */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #b5e0b1; /* pastel mint green */
+    --d-number: #e3c5a8; /* soft beige */
+    --d-type: #8fc1e3; /* pastel blue */
+    --d-comment: #7f8c8d; /* muted gray-green */
+    --d-qualifier: #e3c5a8; /* soft beige */
+    --d-tag: #a2c2e2; /* light pastel blue */
+    --d-attribute: #e3c5a8; /* soft beige */
+    --d-error: #f39c12; /* soft orange for visibility */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #2c3e50; /* deep slate gray */
+    --l-font-color-dark: #34495e; /* slightly lighter slate gray */
+
+    --l-accent-color-1: #9bcd9b; /* pastel green */
+    --l-accent-color-2: #8fc1e3; /* pastel blue */
+
+    --l-button-active: rgba(155, 205, 155, 0.1); /* pastel green translucent */
+
+    --l-bg-1: #f4f6f7; /* very light gray */
+    --l-bg-2: #e0e6e9; /* light gray */
+    --l-bg-3: #cbd2d9; /* softer gray */
+
+    --l-selection: rgba(143, 193, 227, 0.3); /* pastel blue translucent */
+
+    --l-keyword: #a2c2e2; /* light pastel blue */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-1);
+    --l-property: var(--l-accent-color-1);
+    --l-string: #b5e0b1; /* pastel mint green */
+    --l-number: #e3c5a8; /* soft beige */
+    --l-type: #8fc1e3; /* pastel blue */
+    --l-comment: #95a5a6; /* light gray-green */
+    --l-qualifier: #e3c5a8; /* soft beige */
+    --l-tag: #a2c2e2; /* light pastel blue */
+    --l-attribute: #e3c5a8; /* soft beige */
+    --l-error: #f39c12; /* soft orange for visibility */
+}

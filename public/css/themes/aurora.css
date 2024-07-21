@@ -1,0 +1,66 @@
+:root {
+    --name: "Aurora";
+    --index: 2;
+
+    /* ---      --- */
+    /* Dark colors */
+    /* ---      --- */
+    --d-font-color: #e0f7fa; /* light cyan */
+    --d-font-color-dark: #b2ebf2; /* darker cyan */
+
+    --d-accent-color-1: #00e5ff; /* bright cyan */
+    --d-accent-color-2: #1de9b6; /* teal */
+
+    --d-button-active: rgba(0, 229, 255, 0.3); /* bright cyan translucent */
+
+    --d-bg-1: #0a1a26; /* deep navy blue */
+    --d-bg-2: #1e2a38; /* darker navy blue */
+    --d-bg-3: #283e4a; /* darkest navy blue */
+
+    --d-selection: rgba(0, 229, 255, 0.3); /* bright cyan translucent */
+
+    --d-keyword: #a5d6ff; /* light sky blue */
+    --d-variable-1: var(--d-font-color-dark);
+    --d-def: var(--d-font-color-dark);
+    --d-atom: var(--d-accent-color-1);
+    --d-property: var(--d-accent-color-1);
+    --d-string: #b39ddb; /* light lavender */
+    --d-number: #ffab91; /* peach */
+    --d-type: #80deea; /* light teal */
+    --d-comment: #9e9e9e; /* grey */
+    --d-qualifier: #ffab91; /* peach */
+    --d-tag: #f48fb1; /* light pink */
+    --d-attribute: #ffab91; /* peach */
+    --d-error: #f48fb1; /* light pink */
+
+    /* ---      --- */
+    /* Light colors */
+    /* ---      --- */
+    --l-font-color: #003b5c; /* dark blue */
+    --l-font-color-dark: #002d40; /* darker dark blue */
+
+    --l-accent-color-1: #00e5ff; /* bright cyan */
+    --l-accent-color-2: #1de9b6; /* teal */
+
+    --l-button-active: rgba(0, 229, 255, 0.1); /* bright cyan translucent */
+
+    --l-bg-1: #e0f7fa; /* very light cyan */
+    --l-bg-2: #b2ebf2; /* lighter cyan */
+    --l-bg-3: #80deea; /* light cyan */
+
+    --l-selection: rgba(0, 229, 255, 0.3); /* bright cyan translucent */
+
+    --l-keyword: #64b5f6; /* sky blue */
+    --l-variable-1: var(--l-font-color-dark);
+    --l-def: var(--l-font-color-dark);
+    --l-atom: var(--l-accent-color-2);
+    --l-property: var(--l-accent-color-2);
+    --l-string: #d1c4e9; /* lavender */
+    --l-number: #ff8a65; /* coral */
+    --l-type: #4dd0e1; /* light teal */
+    --l-comment: #757575; /* grey */
+    --l-qualifier: #ff8a65; /* coral */
+    --l-tag: #ff80ab; /* pink */
+    --l-attribute: #ff8a65; /* coral */
+    --l-error: #ff80ab; /* pink */
+}
