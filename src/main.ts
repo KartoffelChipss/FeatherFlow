@@ -10,12 +10,11 @@ import {updateColorScheme} from "./theme";
 import "./ipcHandler";
 import "dotenv/config";
 import {startCheckingForUpdates} from "./updater";
+import { logPath } from "./locations";
+
+export * from "./locations";
 
 export const devMode = process.env.NODE_ENV === "development";
-
-export const appRoot: string = path.join(`${app.getPath("appData") ?? "."}${path.sep}.featherFlow`,);
-if (!fs.existsSync(appRoot)) fs.mkdirSync(appRoot, {recursive: true});
-export const logPath = path.join(appRoot, "log.log");
 
 logger.transports.file.resolvePathFn = () => logPath;
 logger.transports.file.level = "info";

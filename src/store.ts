@@ -57,7 +57,11 @@ const store = new Store({
         },
         theme: {
             type: 'string',
-            default: 'default',
+            default: 'css/themes/default.css',
+        },
+        bgimage: {
+            type: 'string',
+            default: '',
         },
         lineNumbers: {
             type: 'boolean',

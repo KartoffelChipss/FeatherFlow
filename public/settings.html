@@ -21,6 +21,7 @@
     <main>
         <nav>
             <button type="button" id="sec-btn-general" onclick="changeSection('general')" class="active">General</button>
+            <button type="button" id="sec-btn-appearance" onclick="changeSection('appearance')">Appearance</button>
             <button type="button" id="sec-btn-editor" onclick="changeSection('editor')">Editor</button>
 <!--            <button type="button" id="sec-btn-addons" onclick="changeSection('addons')">Addons</button>-->
 <!--            <button type="button" id="sec-btn-legal" onclick="changeSection('legal')">Legal</button>-->
@@ -46,38 +47,6 @@
                     <span class="title">Check for Updates</span>
                     <span class="description">Automatically check for updates when the app starts</span>
                 </label>
-            </div>
-
-            <div class="settingsbox select">
-                <label for="settings-colorScheme">
-                    <span class="title">Color Scheme</span>
-                    <span class="description">The color scheme to use for the app.</span>
-                </label>
-                <select id="settings-colorScheme" oninput="setSetting('colorScheme', this.value); window.api.invoke('updateColorScheme');">
-                    <option value="system">System</option>
-                    <option value="dark">Dark</option>
-                    <option value="light">Light</option>
-                </select>
-            </div>
-
-            <div class="settingsbox select">
-                <label for="settings-theme">
-                    <span class="title">Theme</span>
-                    <span class="description">The theme to use for the app. Each theme has a dark and light color scheme.</span>
-                </label>
-                <select id="settings-theme" oninput="setSetting('theme', this.value); window.api.invoke('updateTheme');">
-<!--                    <option value="default">Default</option>-->
-<!--                    <option value="subtle_hues">Subtle Hues</option>-->
-<!--                    <option value="aurora">Aurora</option>-->
-<!--                    <option value="ocean">Ocean</option>-->
-<!--                    <option value="zen">Zen</option>-->
-<!--                    <option value="forest">Forest</option>-->
-<!--                    <option value="sunset">Sunset</option>-->
-<!--                    <option value="cherry_blossom">Cherry Blossom</option>-->
-<!--                    <option value="vintage">Vintage</option>-->
-<!--                    <option value="cyberpunk">Cyberpunk</option>-->
-<!--                    <option value="nebula">Nebula</option>-->
-                </select>
             </div>
         </section>
 
@@ -148,6 +117,48 @@
                     <span class="title">Autodelete Line</span>
                     <span class="description">Delete the whole line when empty</span>
                 </label>
+            </div>
+        </section>
+
+        <section class="sec-appearance">
+            <div class="settingsbox select">
+                <label for="settings-colorScheme">
+                    <span class="title">Color Scheme</span>
+                    <span class="description">The color scheme to use for the app.</span>
+                </label>
+                <select id="settings-colorScheme" oninput="setSetting('colorScheme', this.value); window.api.invoke('updateColorScheme');">
+                    <option value="system">System</option>
+                    <option value="dark">Dark</option>
+                    <option value="light">Light</option>
+                </select>
+            </div>
+
+            <div class="settingsbox select">
+                <label for="settings-theme">
+                    <span class="title">Theme</span>
+                    <span class="description">The theme to use for the app. Each theme has a dark and light color scheme.</span>
+                </label>
+                <div class="select-btnbox">
+                    <select id="settings-theme" oninput="setSetting('theme', this.value); window.api.invoke('updateTheme');"></select>
+                    <button type="button" onclick="window.api.invoke('openCustomFolder', 'themes')">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#cecece"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 8.2C3 7.07989 3 6.51984 3.21799 6.09202C3.40973 5.71569 3.71569 5.40973 4.09202 5.21799C4.51984 5 5.0799 5 6.2 5H9.67452C10.1637 5 10.4083 5 10.6385 5.05526C10.8425 5.10425 11.0376 5.18506 11.2166 5.29472C11.4184 5.4184 11.5914 5.59135 11.9373 5.93726L12.0627 6.06274C12.4086 6.40865 12.5816 6.5816 12.7834 6.70528C12.9624 6.81494 13.1575 6.89575 13.3615 6.94474C13.5917 7 13.8363 7 14.3255 7H17.8C18.9201 7 19.4802 7 19.908 7.21799C20.2843 7.40973 20.5903 7.71569 20.782 8.09202C21 8.51984 21 9.0799 21 10.2V15.8C21 16.9201 21 17.4802 20.782 17.908C20.5903 18.2843 20.2843 18.5903 19.908 18.782C19.4802 19 18.9201 19 17.8 19H6.2C5.07989 19 4.51984 19 4.09202 18.782C3.71569 18.5903 3.40973 18.2843 3.21799 17.908C3 17.4802 3 16.9201 3 15.8V8.2Z" stroke="#cecece" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button>
+                </div>
+            </div>
+
+            <div class="settingsbox select">
+                <label for="settings-bgimage">
+                    <span class="title">Background Image</span>
+                    <span class="description">The background image to use for the editor.</span>
+                </label>
+                <div class="select-btnbox">
+                    <select id="settings-bgimage" oninput="setSetting('bgimage', this.value); window.api.invoke('updateBackgroundImage');">
+                        <option value="">None</option>
+                    </select>
+                    <button type="button" onclick="window.api.invoke('openCustomFolder', 'backgroundImages')">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="#cecece"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 8.2C3 7.07989 3 6.51984 3.21799 6.09202C3.40973 5.71569 3.71569 5.40973 4.09202 5.21799C4.51984 5 5.0799 5 6.2 5H9.67452C10.1637 5 10.4083 5 10.6385 5.05526C10.8425 5.10425 11.0376 5.18506 11.2166 5.29472C11.4184 5.4184 11.5914 5.59135 11.9373 5.93726L12.0627 6.06274C12.4086 6.40865 12.5816 6.5816 12.7834 6.70528C12.9624 6.81494 13.1575 6.89575 13.3615 6.94474C13.5917 7 13.8363 7 14.3255 7H17.8C18.9201 7 19.4802 7 19.908 7.21799C20.2843 7.40973 20.5903 7.71569 20.782 8.09202C21 8.51984 21 9.0799 21 10.2V15.8C21 16.9201 21 17.4802 20.782 17.908C20.5903 18.2843 20.2843 18.5903 19.908 18.782C19.4802 19 18.9201 19 17.8 19H6.2C5.07989 19 4.51984 19 4.09202 18.782C3.71569 18.5903 3.40973 18.2843 3.21799 17.908C3 17.4802 3 16.9201 3 15.8V8.2Z" stroke="#cecece" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                    </button>
+                </div>
             </div>
         </section>
 

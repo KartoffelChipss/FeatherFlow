@@ -51,6 +51,28 @@ body {
     overflow: hidden;
 }
 
+button {
+    all: unset;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    font-family: var(--system-font);
+    background-color: transparent;
+    padding: 7px 15px;
+    border-radius: 5px;
+
+    &:hover {
+        //background-color: rgba(255, 255, 255, 0.1);
+        background-color: var(--bg-3);
+        cursor: pointer;
+    }
+
+    &.active {
+        //background-color: rgba(255, 255, 255, 0.15);
+        background-color: var(--bg-2);
+    }
+}
+
 header {
     -webkit-app-region: drag;
 

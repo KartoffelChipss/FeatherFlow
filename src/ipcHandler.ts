@@ -1,5 +1,12 @@
 import {BrowserWindow, dialog, ipcMain, shell} from "electron";
-import {getCalculatedColorSheme, getThemeList, updateColorScheme, updateTheme} from "./theme";
+import {
+    CssFileWithTheme, getBackrgoundImages,
+    getCalculatedColorSheme,
+    getCustomThemeList,
+    getThemeList, updateBackgroundImage,
+    updateColorScheme,
+    updateTheme
+} from "./theme";
 import logger from "electron-log/main";
 import fs from "fs";
 import {closeWindow, createWindow, setPath} from "./windowManager";
@@ -8,6 +15,24 @@ import showUnsavedChangesDialog from "./dialog/unsavedChanges";
 import {popUpContextMenu} from "./menus/contextMenu";
 import {getStore} from "./store";
 import {openFile} from "./main";
+import { themesPath, backgroundImagesPath } from "./locations";
+
+ipcMain.handle("openCustomFolder", (event, customFolderPath) => {
+    switch (customFolderPath) {
+        case "themes": {
+            shell.openPath(themesPath);
+            break;
+        }
+        case "backgroundImages": {
+            shell.openPath(backgroundImagesPath);
+            break;
+        }
+    }
+});
+
+ipcMain.handle("getBackgroundImages", (event, data) => {
+    return getBackrgoundImages();
+});
 
 ipcMain.handle("getColorScheme", (event, data) => {
     return getCalculatedColorSheme();
@@ -25,8 +50,13 @@ ipcMain.handle("updateTheme", (event, data) => {
     updateTheme();
 });
 
-ipcMain.handle("getThemeList", (event, data) => {
-    return getThemeList();
+ipcMain.handle("getThemeList", async (event, data) => {
+    const defaultThemes: CssFileWithTheme[] = await getThemeList();
+    const customThemes: CssFileWithTheme[] = await getCustomThemeList();
+    return {
+        defaultThemes,
+        customThemes,
+    }
 });
 
 ipcMain.handle("saveFile", async (event, data) => {
@@ -87,7 +117,16 @@ ipcMain.handle("getEditorSettings", (event, data) => {
         theme: getStore().get("theme"),
         checkForUpdates: getStore().get("checkForUpdates"),
         replaceTabsWithSpaces: getStore().get("replaceTabsWithSpaces"),
+        bgimage: getStore().get("bgimage"),
     };
+});
+
+ipcMain.handle("getBackgroundImage", (event, data) => {
+    return getStore().get("bgimage");
+});
+
+ipcMain.handle("updateBackgroundImage", (event, data) => {
+    updateBackgroundImage();
 });
 
 ipcMain.handle("setSetting", (event, data) => {

@@ -3,6 +3,7 @@ import {getStore} from './store';
 import {getAllWindows} from './windowManager';
 import fs from "fs";
 import path from "path";
+import { themesPath, backgroundImagesPath } from "./locations";
 
 export type ColorScheme = 'light' | 'dark' | 'system';
 
@@ -47,10 +48,11 @@ export function updateTheme() {
     setTheme(getThemeName());
 }
 
-interface CssFileWithTheme {
+export interface CssFileWithTheme {
     fileName: string;
     themeName: string;
     index: number;
+    path: string;
 }
 
 const extractThemeName = (cssContent: string): string => {
@@ -66,15 +68,11 @@ const extractIndex = (cssContent: string): number => {
 const getCssFilesWithThemes = (dirPath: string): Promise<CssFileWithTheme[]> => {
     return new Promise((resolve, reject) => {
         fs.readdir(dirPath, (err, files) => {
-            if (err) {
-                return reject(err);
-            }
+            if (err) return reject(err);
 
-            // Filter out CSS files
             const cssFiles = files.filter(file => path.extname(file) === '.css');
             const results: CssFileWithTheme[] = [];
 
-            // Read each CSS file and extract the theme name and index
             let filesProcessed = 0;
             cssFiles.forEach(file => {
                 const filePath = path.join(dirPath, file);
@@ -87,28 +85,68 @@ const getCssFilesWithThemes = (dirPath: string): Promise<CssFileWithTheme[]> => 
                     const themeName = extractThemeName(data);
                     const index = extractIndex(data);
 
-                    results.push({ fileName: file, themeName, index });
+                    results.push({
+                        fileName: file,
+                        themeName,
+                        index,
+                        path: filePath,
+                    });
                     filesProcessed++;
 
-                    // Resolve when all files are processed
                     if (filesProcessed === cssFiles.length) {
-                        // Sort results by index
                         results.sort((a, b) => a.index - b.index);
                         resolve(results);
                     }
                 });
             });
 
-            // Handle case where there are no CSS files
-            if (cssFiles.length === 0) {
-                resolve(results);
-            }
+            if (cssFiles.length === 0) resolve(results);
         });
     });
 };
 
-export function getThemeList() {
+export function getThemeList(): Promise<CssFileWithTheme[]> {
     const themesDir = path.resolve(path.join(__dirname, '../public/css/themes'));
     console.log(themesDir);
     return getCssFilesWithThemes(themesDir);
+}
+
+export function getCustomThemeList(): Promise<CssFileWithTheme[]> {
+    const themesDir = path.resolve(themesPath);
+    return getCssFilesWithThemes(themesDir);
+}
+
+export interface BackgroundImage {
+    fileName: string;
+    path: string;
+};
+
+export function getBackrgoundImages(): Promise<BackgroundImage[]> {
+    return new Promise((resolve, reject) => {
+        fs.readdir(backgroundImagesPath, (err, files) => {
+            if (err) return reject(err);
+
+            const allowedExtensions = ['.png', '.jpg', '.jpeg'];
+            const images = files.filter(file => allowedExtensions.includes(path.extname(file)));
+            const results: BackgroundImage[] = [];
+
+            let filesProcessed = 0;
+            images.forEach(file => {
+                results.push({
+                    fileName: file,
+                    path: path.join(backgroundImagesPath, file),
+                });
+
+                filesProcessed++;
+            });
+
+            resolve(results);
+        });
+    });
+}
+
+export function updateBackgroundImage() {
+    for (const window of getAllWindows()) {
+        window?.webContents.send('setBackgroundImage', getStore().get('bgimage'));
+    }
 }

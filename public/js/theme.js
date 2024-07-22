@@ -22,9 +22,18 @@ window.bridge.setColorScheme((e, theme) => updateColorScheme(theme));
 
 function updateTheme(theme) {
     console.log("Setting theme: ", theme);
-    themeLink.setAttribute("href", `css/themes/${theme}.css`);
+    themeLink.setAttribute("href", theme);
 }
 
 window.api.invoke("getTheme").then((theme) => updateTheme(theme));
 
 window.bridge.setTheme((e, theme) => updateTheme(theme));
+
+function updateBackgroundImage(image) {
+    console.log("Setting backgroundImage: ", image);
+    setProperty("--background-image", `url("${image}")`);
+}
+
+window.api.invoke("getBackgroundImage").then((image) => updateBackgroundImage(image));
+
+window.bridge.setBackgroundImage((e, image) => updateBackgroundImage(image));

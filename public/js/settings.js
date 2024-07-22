@@ -1,3 +1,7 @@
+const selectSeperator = document.createElement("option");
+selectSeperator.text = "──────────";
+selectSeperator.disabled = true;
+
 function setSetting(setting, value, fun) {
     let newValue = fun ? fun(value) : value;
     console.log(`Set ${setting} to`, newValue);
@@ -6,14 +10,37 @@ function setSetting(setting, value, fun) {
 }
 
 function updateSettings() {
-    window.api.invoke("getThemeList").then((themes) => {
-        for (const theme of themes) {
+    document.getElementById("settings-theme").innerHTML = "";
+
+    const getThemes = window.api.invoke("getThemeList").then(({ defaultThemes, customThemes }) => {
+        for (const theme of defaultThemes) {
             let option = document.createElement("option");
             option.text = theme.themeName;
-            option.value = theme.fileName.split(".")[0];
+            option.value = theme.path;
             document.getElementById("settings-theme").add(option);
         }
 
+        if (customThemes.length > 0) document.getElementById("settings-theme").add(selectSeperator);
+
+        for (const theme of customThemes) {
+            let option = document.createElement("option");
+            option.text = theme.themeName;
+            option.value = theme.path;
+            document.getElementById("settings-theme").add(option);
+        }
+    });
+
+    document.getElementById("settings-bgimage").innerHTML = "<option value=''>None</option>";
+    const getBGImages = window.api.invoke("getBackgroundImages").then((images) => {
+        for (const image of images) {
+            let option = document.createElement("option");
+            option.text = image.fileName;
+            option.value = image.path;
+            document.getElementById("settings-bgimage").add(option);
+        }
+    });
+
+    Promise.all([getThemes, getBGImages]).then(() => {
         window.api.invoke("getEditorSettings").then((settings) => {
             for (const setting in settings) {
                 // console.log(`Setting ${setting} to`, settings[setting]);
@@ -61,3 +88,5 @@ function setSelectValue(element, value) {
         }
     }
 }
+
+window.bridge.updateSettings(() => updateSettings());

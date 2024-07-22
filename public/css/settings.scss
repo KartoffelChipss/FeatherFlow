@@ -20,28 +20,6 @@ main {
         display: flex;
         flex-direction: column;
         gap: 15px;
-
-        button {
-            all: unset;
-            width: 150px;
-            display: flex;
-            align-items: center;
-            font-family: var(--system-font);
-            background-color: transparent;
-            padding: 7px 15px;
-            border-radius: 5px;
-
-            &:hover {
-                //background-color: rgba(255, 255, 255, 0.1);
-                background-color: var(--bg-3);
-                cursor: pointer;
-            }
-
-            &.active {
-                //background-color: rgba(255, 255, 255, 0.15);
-                background-color: var(--bg-2);
-            }
-        }
     }
 
     section {
@@ -70,6 +48,71 @@ main {
         label span.description {
             font-size: 0.9em;
             color: var(--font-color-dark);
+        }
+
+        .select-btnbox {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+
+            select {
+                flex-grow: 1;
+            }
+
+            button {
+                background-color: var(--bg-2);
+                width: fit-content;
+
+                svg {
+                    height: 20px;
+                    width: 20px;
+                }
+            }
+        }
+
+        .settingsbox.file {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+
+            margin-bottom: 20px;
+
+            label {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+            }
+
+            input {
+                padding: 7px 15px;
+                border-radius: 5px;
+                background-color: var(--bg-2);
+                color: var(--font-color);
+                font-family: var(--system-font);
+                font-weight: 500;
+                border: 1px solid var(--bg-3);
+                cursor: pointer;
+
+                border-right: 16px solid transparent;
+
+                &::file-selector-button {
+                    background-color: transparent;
+                    font-family: var(--system-font);
+                    font-weight: 500;
+                    box-shadow: none;
+                    color: var(--font-color);
+                    padding: 7px 15px;
+                    border-radius: 5px;
+                    font-family: var(--system-font);
+                    font-weight: 500;
+                    cursor: pointer;
+                    border: none;
+                }
+
+                &:hover {
+                    background-color: var(--bg-3);
+                }
+            }
         }
 
         .settingsbox.checkbox {

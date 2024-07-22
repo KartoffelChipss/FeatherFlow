@@ -36,6 +36,10 @@ contextBridge.exposeInMainWorld(
                 "newFile",
                 "openHelp",
                 "setSetting",
+                "openCustomFolder",
+                "getBackgroundImages",
+                "getBackgroundImage",
+                "updateBackgroundImage",
             ];
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);
@@ -64,11 +68,17 @@ contextBridge.exposeInMainWorld(
         setTheme: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("setTheme", message);
         },
+        setBackgroundImage: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("setBackgroundImage", message);
+        },
         setEditorSetting: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("setEditorSetting", message);
         },
         formatEditor: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("formatEditor", message);
+        },
+        updateSettings: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
+            ipcRenderer.on("updateSettings", message);
         },
         openSearch: (message: (event: Electron.IpcRendererEvent, ...args: any[]) => void) => {
             ipcRenderer.on("openSearch", message);

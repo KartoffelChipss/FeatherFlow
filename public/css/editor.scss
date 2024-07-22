@@ -14,6 +14,10 @@
     color: var(--f);
     font-size: var(--font-size-editor);
     font-weight: 500;
+    background-image: var(--background-image);
+    background-position: bottom right;
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .cm-read-only .CodeMirror-cursor {

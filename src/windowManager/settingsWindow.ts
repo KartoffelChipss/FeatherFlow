@@ -45,5 +45,9 @@ export function openSettingsWindow() {
 
     const fileLoaded = settingsWindow.loadFile(path.join(__dirname, '../../public/settings.html'));
 
-    fadeInWindow(settingsWindow, 40, 0.3)
+    fadeInWindow(settingsWindow, 40, 0.3);
+
+    settingsWindow.on("focus", () => {
+        settingsWindow.webContents.send("updateSettings");
+    });
 }
