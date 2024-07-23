@@ -13,8 +13,15 @@ export function closeSettingsWindow() {
 }
 
 export function openSettingsWindow() {
-    const width = 1050;
-    const height = 750;
+    for (const window of BrowserWindow.getAllWindows()) {
+        if (isSettingsWindow(window)) {
+            window.focus();
+            return;
+        }
+    }
+
+    const width = 950;
+    const height = 650;
 
     const settingsWindow = new BrowserWindow({
         minWidth: width,

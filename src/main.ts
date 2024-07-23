@@ -1,7 +1,6 @@
 import {app, BrowserWindow, nativeImage, protocol} from "electron";
 import logger from "electron-log/main";
 import {closeWindow, createWindow, getAllWindows,openMainWindow} from "./windowManager";
-import fs from "fs";
 import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
 import {addRecentFile, getStore} from "./store";

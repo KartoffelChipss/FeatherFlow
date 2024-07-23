@@ -10,9 +10,9 @@ function setSetting(setting, value, fun) {
 }
 
 function updateSettings() {
-    document.getElementById("settings-theme").innerHTML = "";
-
     const getThemes = window.api.invoke("getThemeList").then(({ defaultThemes, customThemes }) => {
+        document.getElementById("settings-theme").innerHTML = "";
+
         for (const theme of defaultThemes) {
             let option = document.createElement("option");
             option.text = theme.themeName;
@@ -30,8 +30,8 @@ function updateSettings() {
         }
     });
 
-    document.getElementById("settings-bgimage").innerHTML = "<option value=''>None</option>";
     const getBGImages = window.api.invoke("getBackgroundImages").then((images) => {
+        document.getElementById("settings-bgimage").innerHTML = "<option value=''>None</option>";
         for (const image of images) {
             let option = document.createElement("option");
             option.text = image.fileName;

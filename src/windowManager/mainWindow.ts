@@ -13,6 +13,8 @@ export function closeMainWindow() {
 }
 
 export function openMainWindow() {
+    if (BrowserWindow.getAllWindows().find(isMainWindow)) return;
+
     const width = 700;
     const height = 400;
 
