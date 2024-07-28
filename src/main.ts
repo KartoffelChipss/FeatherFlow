@@ -1,10 +1,11 @@
 import {app, BrowserWindow, nativeImage, protocol} from "electron";
 import logger from "electron-log/main";
-import {closeWindow, createWindow, getAllWindows,openMainWindow} from "./windowManager";
+import {closeWindow, createWindow, getAllWindows, openMainWindow} from "./windowManager";
 import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
 import {addRecentFile, getStore} from "./store";
 import path from "path";
+import fs from "fs";
 import {updateColorScheme} from "./theme";
 import "./ipcHandler";
 import "dotenv/config";
@@ -39,12 +40,9 @@ app.on("ready", () => {
     startCheckingForUpdates();
 
     let openedInitialFile = false;
-    if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
-    if (!devMode && process.argv.length >= 2) initialFile = process.argv[1];
-
+    initialFile = getInitialFile();
+    
     logger.info("Arguments:", process.argv);
-
-    logger.info("Starting FeatherFlow with initial file:", initialFile);
 
     if (process.platform === "darwin") app.dock.setIcon(nativeImage.createFromPath(iconPath));
 
@@ -117,6 +115,29 @@ function activateAction() {
         default:
             break
     }
+}
+
+function getInitialFile(): string | null {
+    let initialFile: string | null = null;
+
+    if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
+    if (!devMode && process.argv.length >= 2) initialFile = process.argv[1];
+
+    if (initialFile) {
+        // Check if file exists
+        if (!fs.existsSync(initialFile)) {
+            logger.error("Initial file does not exist:", initialFile);
+            return null;
+        }
+
+        // Check if is directory
+        if (fs.lstatSync(initialFile).isDirectory()) {
+            logger.error("Initial file is a directory:", initialFile);
+            return null;
+        }
+    }
+
+    return initialFile;
 }
 
 export async function openFile() {
