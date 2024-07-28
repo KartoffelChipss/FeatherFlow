@@ -1,10 +1,11 @@
 import {app, BrowserWindow, nativeImage, protocol} from "electron";
 import logger from "electron-log/main";
-import {closeWindow, createWindow, getAllWindows,openMainWindow} from "./windowManager";
+import {closeWindow, createWindow, getAllWindows, openMainWindow} from "./windowManager";
 import showOpenFileDialog from "./dialog/openFile";
 import {updateMenu} from "./menus/appMenu";
 import {addRecentFile, getStore} from "./store";
 import path from "path";
+import fs from "fs";
 import {updateColorScheme} from "./theme";
 import "./ipcHandler";
 import "dotenv/config";
@@ -44,7 +45,20 @@ app.on("ready", () => {
 
     logger.info("Arguments:", process.argv);
 
-    logger.info("Starting FeatherFlow with initial file:", initialFile);
+    if (initialFile) {
+        try {
+            const stats = fs.statSync(initialFile);
+            if (stats.isDirectory()) {
+                logger.error("Initial file is a directory, not a file:", initialFile);
+                initialFile = null; // Reset initialFile to prevent trying to open a directory
+            } else {
+                logger.info("Starting FeatherFlow with initial file:", initialFile);
+            }
+        } catch (err) {
+            logger.error("Failed to read initial file:", err);
+            initialFile = null;
+        }
+    }
 
     if (process.platform === "darwin") app.dock.setIcon(nativeImage.createFromPath(iconPath));
 
