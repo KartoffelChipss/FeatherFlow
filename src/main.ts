@@ -40,25 +40,9 @@ app.on("ready", () => {
     startCheckingForUpdates();
 
     let openedInitialFile = false;
-    if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
-    if (!devMode && process.argv.length >= 2) initialFile = process.argv[1];
-
+    initialFile = getInitialFile();
+    
     logger.info("Arguments:", process.argv);
-
-    if (initialFile) {
-        try {
-            const stats = fs.statSync(initialFile);
-            if (stats.isDirectory()) {
-                logger.error("Initial file is a directory, not a file:", initialFile);
-                initialFile = null; // Reset initialFile to prevent trying to open a directory
-            } else {
-                logger.info("Starting FeatherFlow with initial file:", initialFile);
-            }
-        } catch (err) {
-            logger.error("Failed to read initial file:", err);
-            initialFile = null;
-        }
-    }
 
     if (process.platform === "darwin") app.dock.setIcon(nativeImage.createFromPath(iconPath));
 
@@ -131,6 +115,29 @@ function activateAction() {
         default:
             break
     }
+}
+
+function getInitialFile(): string | null {
+    let initialFile: string | null = null;
+
+    if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
+    if (!devMode && process.argv.length >= 2) initialFile = process.argv[1];
+
+    if (initialFile) {
+        // Check if file exists
+        if (!fs.existsSync(initialFile)) {
+            logger.error("Initial file does not exist:", initialFile);
+            return null;
+        }
+
+        // Check if is directory
+        if (fs.lstatSync(initialFile).isDirectory()) {
+            logger.error("Initial file is a directory:", initialFile);
+            return null;
+        }
+    }
+
+    return initialFile;
 }
 
 export async function openFile() {
