@@ -55,7 +55,7 @@ export default function (): MenuItemConstructorOptions {
             },
             recentMenuItem,
             {type: 'separator'},
-            isMac ? {role: 'close', label: "Close"} : {role: 'quit'},
+            {role: 'close', label: "Close"},
             {
                 label: 'Save',
                 accelerator: 'CmdOrCtrl+S',

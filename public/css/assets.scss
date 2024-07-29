@@ -53,7 +53,6 @@ body {
 
 button {
     all: unset;
-    width: 150px;
     display: flex;
     align-items: center;
     font-family: var(--system-font);
@@ -98,6 +97,12 @@ header {
         align-items: center;
         gap: 10px;
 
+        img.icon {
+            height: 17px;
+            width: 17px;
+            display: none;
+        }
+
         .dot {
             display: none;
             width: 10px;
@@ -116,6 +121,9 @@ header {
     }
 
     .right {
+        display: none;
+        height: 100%;
+
         .buttons {
             -webkit-app-region: no-drag;
 
@@ -123,9 +131,8 @@ header {
             align-items: center;
             justify-content: right;
 
-            gap: 5px;
-            margin-right: 20px;
-            padding: 5px 0;
+            padding: 0;
+            height: 100%;
 
             button {
                 display: flex;
@@ -135,8 +142,9 @@ header {
                 border: none;
                 background-color: transparent;
                 margin: 0;
-                padding: 5px 10px;
-                border-radius: 7px;
+                padding: 5px 15px;
+                border-radius: 0;
+                height: calc(100% - 5px * 2);
 
                 &.active {
                     background-color: var(--button-active);
@@ -144,6 +152,17 @@ header {
 
                 &:hover {
                     cursor: pointer;
+                    background-color: rgba(255, 255, 255, 0.1);
+
+                    &.danger {
+                        background-color: #e64848;
+                    }
+                }
+
+                svg {
+                    --hw: 17px;
+                    height: var(--hw);
+                    width: var(--hw);
                 }
             }
 
@@ -152,6 +171,26 @@ header {
                 height: var(--hw);
                 width: var(--hw);
             }
+        }
+    }
+
+    &.notMac {
+        --left-padding: 15px;
+
+        .right {
+            display: block;
+        }
+
+        img.icon {
+            display: block;
+        }
+
+        .fileName {
+            font-size: 17px;
+        }
+
+        .trafficlight {
+            visibility: hidden;
         }
     }
 }

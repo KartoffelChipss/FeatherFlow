@@ -59,6 +59,10 @@ ipcMain.handle("getThemeList", async (event, data) => {
     }
 });
 
+ipcMain.handle("getPlatform", (event, data) => {
+    return process.platform;
+})
+
 ipcMain.handle("saveFile", async (event, data) => {
     try {
         logger.info("Saving file:", data.file + " to " + data.path);
@@ -170,6 +174,16 @@ ipcMain.handle("showUnsavedChangesDialog", async (event, data) => {
 ipcMain.handle("close", (event, data) => {
     const window = BrowserWindow.fromWebContents(event.sender);
     if (window) closeWindow(window);
+});
+
+ipcMain.handle("minimize", (event, data) => {
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) window.minimize();
+});
+
+ipcMain.handle("maximize", (event, data) => {
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) window.isMaximized() ? window.unmaximize() : window.maximize();
 });
 
 ipcMain.handle("openFile", (event) => {

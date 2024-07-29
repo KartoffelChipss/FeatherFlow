@@ -17,24 +17,36 @@
 <body>
     <header>
         <div class="left">
-            <div class="trafficlight"></div>
+            <img class="icon" src="img/logo_file.png">
             <span id="fileName" class="fileName">Unnamed</span>
             <div class="dot" id="dot"></div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+            <div class="buttons windows-nav">
+                <button type="button" onclick="window.api.invoke('minimize')">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+                <button type="button" onclick="window.api.invoke('maximize')"">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="4" y="4" width="16" height="16" rx="2" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect> </g></svg>
+                </button>
+                <button type="button" class="danger" onclick="window.api.invoke('close')">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 4L20 20M20 4L4 20" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+            </div>
+        </div>
     </header>
 
     <div class="searchbox" id="searchbox">
         <input type="text" id="search" class="search" placeholder="Search" oninput="findAll()">
         <span><span id="search-current-result">0</span>/<span id="search-result-count">0</span></span>
         <button type="button" class="search-prev-btn" onclick="findPrev()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 6L7 11M12 6L17 11" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 6L7 11M12 6L17 11" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </button>
         <button type="button" class="search-next-btn" onclick="findNext()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 18L7 13M12 18L17 13" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 18L7 13M12 18L17 13" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </button>
         <button type="button" class="search-close" onclick="closeSearch()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 6L18 18M18 6L6 18" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 6L18 18M18 6L6 18" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
         </button>
     </div>
 
@@ -43,6 +55,8 @@
             <textarea id="editorTextarea" class="editorTextarea"></textarea>
         </section>
     </div>
+
+    <script src="js/platform.js"></script>
 
     <script src="js/libs/codemirror.min.js"></script>
     <script src="js/libs/closetag.min.js"></script>

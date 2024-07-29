@@ -17,7 +17,13 @@
         <div class="left">
             <div class="trafficlight"></div>
         </div>
-        <div class="right"></div>
+        <div class="right">
+            <div class="buttons windows-nav">
+                <button type="button" class="danger" onclick="window.api.invoke('close')">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 4L20 20M20 4L4 20" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+            </div>
+        </div>
     </header>
 
     <main>
@@ -45,6 +51,7 @@
         </div>
     </main>
 
+    <script src="js/platform.js"></script>
     <script src="js/theme.js"></script>
 </body>
 </html>

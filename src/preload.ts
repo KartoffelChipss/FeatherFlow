@@ -40,6 +40,7 @@ contextBridge.exposeInMainWorld(
                 "getBackgroundImages",
                 "getBackgroundImage",
                 "updateBackgroundImage",
+                "getPlatform",
             ];
             if (validChannels.includes(channel)) {
                 return ipcRenderer.invoke(channel, data);
