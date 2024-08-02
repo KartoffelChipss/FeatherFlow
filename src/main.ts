@@ -40,8 +40,8 @@ app.on("ready", () => {
     startCheckingForUpdates();
 
     let openedInitialFile = false;
-    initialFile = getInitialFile();
-    
+    initialFile ?? getInitialFile();
+
     logger.info("Arguments:", process.argv);
 
     if (process.platform === "darwin") app.dock.setIcon(nativeImage.createFromPath(iconPath));
