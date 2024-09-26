@@ -25,8 +25,6 @@ git clone https://github.com/KartoffelChipss/FeatherFlow
 
 Move to the apps directory, install all dependencies and start the app:
 
-app
-
 ```
 cd FeatherFlow
 npm install
