@@ -8,6 +8,16 @@
 > [!NOTE]  
 > Currently the app is only optimised and tested for MacOS, but support for Windows and Linux will follow
 
+## Customization
+
+You can choose between 11 different themes with each having a light and dark mode option or add your own theme and background image.
+
+<p align="center">
+  <img src="https://file.strassburger.dev/ff_mockup_2.jpg" alt="Mockup 1" width="30%" />
+  <img src="https://file.strassburger.dev/ff_mockup_1.jpg" alt="Mockup 2" width="30%" />
+  <img src="https://file.strassburger.dev/ff_mockup_3.jpg" alt="Mockup 3" width="30%" />
+</p>
+
 ## Installation
 
 ### Easy way:
