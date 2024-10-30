@@ -20,6 +20,11 @@ CodeMirror.defineMode("minecraftProperties", function() {
                 return "operator";
             }
 
+            // Boolean values (true or false)
+            if (stream.match(/^(true|false)\b/)) {
+                return "atom"; // Custom style for booleans
+            }
+
             // Numeric values (e.g., integers like 20, 256)
             if (stream.match(/^\d+/)) {
                 return "number"; // Custom style for numbers

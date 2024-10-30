@@ -31,7 +31,7 @@ const modeMapping = {
     'diff': 'diff',
     'patch': 'text/x-diff',
     'csv': 'text/x-csv',
-    'properties': 'text/x-minecraft-properties'
+    'properties': 'text/x-minecraft-properties',
 };
 
 let autoShowHints = true;

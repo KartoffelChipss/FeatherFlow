@@ -22,7 +22,7 @@
     --d-keyword: #c4a1fa;
     --d-variable-1: var(--font-color-dark);
     --d-def: var(--font-color-dark);
-    --d-atom: var(--accent-color-1);
+    --d-atom: #ae81ff;
     --d-property: var(--accent-color-1);
     --d-string: #b3ec78;
     --d-number: #c99d6e;
@@ -55,7 +55,7 @@
     --l-keyword: #6500ff;
     --l-variable-1: var(--font-color-dark);
     --l-def: var(--font-color-dark);
-    --l-atom: var(--accent-color-2);
+    --l-atom: #ff7f50;
     --l-property: var(--accent-color-2);
     --l-string: #27a61d;
     --l-number: #a5631b;
