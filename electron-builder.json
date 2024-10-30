@@ -211,13 +211,11 @@
         ]
     },
     "win": {
-        "target": {
-            "target": "nsis",
-            "arch": [
-                "x64",
-                "arm64"
-            ]
-        },
+        "target": [
+            "nsis",
+            "msi"
+        ],
+        "icon": "public/img/logo.ico",
         "fileAssociations": [
             {
                 "ext": "js",
