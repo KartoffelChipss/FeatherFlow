@@ -40,7 +40,7 @@ app.on("ready", () => {
     startCheckingForUpdates();
 
     let openedInitialFile = false;
-    initialFile ?? getInitialFile();
+    initialFile = initialFile ?? getInitialFile();
 
     logger.info("Arguments:", process.argv);
 
@@ -94,8 +94,14 @@ app.on("before-quit", (event) => {
     }
 });
 
+app.on("will-quit", () => {
+    logger.info("App will quit");
+});
+
 app.on("window-all-closed", () => {
-    if (process.platform !== "darwin") app.quit();
+    if (process.platform !== "darwin") {
+        app.quit();
+    }
 });
 
 app.on("browser-window-focus", updateMenu);
@@ -118,26 +124,26 @@ function activateAction() {
 }
 
 function getInitialFile(): string | null {
-    let initialFile: string | null = null;
+    let localInitialFile: string | null = null;
 
-    if (devMode && process.argv.length >= 3) initialFile = process.argv[2];
-    if (!devMode && process.argv.length >= 2) initialFile = process.argv[1];
+    if (devMode && process.argv.length >= 3) localInitialFile = process.argv[2];
+    if (!devMode && process.argv.length >= 2) localInitialFile = process.argv[1];
 
-    if (initialFile) {
+    if (localInitialFile) {
         // Check if file exists
-        if (!fs.existsSync(initialFile)) {
-            logger.error("Initial file does not exist:", initialFile);
+        if (!fs.existsSync(localInitialFile)) {
+            logger.error("Initial file does not exist:", localInitialFile);
             return null;
         }
 
         // Check if is directory
-        if (fs.lstatSync(initialFile).isDirectory()) {
-            logger.error("Initial file is a directory:", initialFile);
+        if (fs.lstatSync(localInitialFile).isDirectory()) {
+            logger.error("Initial file is a directory:", localInitialFile);
             return null;
         }
     }
 
-    return initialFile;
+    return localInitialFile;
 }
 
 export async function openFile() {

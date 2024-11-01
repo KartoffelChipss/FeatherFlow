@@ -91,7 +91,7 @@ main {
                 font-family: var(--system-font);
                 font-weight: 500;
                 border: 1px solid var(--bg-3);
-                cursor: pointer;
+                cursor: default;
 
                 border-right: 16px solid transparent;
 
@@ -105,7 +105,7 @@ main {
                     border-radius: 5px;
                     font-family: var(--system-font);
                     font-weight: 500;
-                    cursor: pointer;
+                    cursor: default;
                     border: none;
                 }
 
@@ -155,7 +155,7 @@ main {
                 font-family: var(--system-font);
                 font-weight: 500;
                 border: 1px solid var(--bg-3);
-                cursor: pointer;
+                cursor: default;
 
                 border-right: 16px solid transparent;
 

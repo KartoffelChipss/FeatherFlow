@@ -101,7 +101,7 @@ export default function (): MenuItemConstructorOptions {
             {
                 label: "Reveal in Finder",
                 enabled:  !!focusedWindow && !isSpecialWindow(focusedWindow),
-                accelerator: "Option+CmdOrCtrl+R",
+                accelerator: "CmdOrCtrl+Shift+O",
                 click: () => {
                     const focusedWindow = BrowserWindow.getFocusedWindow();
                     if (focusedWindow) {

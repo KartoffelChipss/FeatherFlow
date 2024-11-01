@@ -49,6 +49,8 @@ body {
     margin: 0px;
 
     overflow: hidden;
+
+    cursor: default;
 }
 
 button {
@@ -63,7 +65,7 @@ button {
     &:hover {
         //background-color: rgba(255, 255, 255, 0.1);
         background-color: var(--bg-3);
-        cursor: pointer;
+        cursor: default;
     }
 
     &.active {
@@ -236,13 +238,17 @@ header {
         background-color: transparent;
         border: none;
         outline: none;
-        cursor: pointer;
+        cursor: default;
         padding: 0px;
 
         svg {
             --hw: 20px;
             height: var(--hw);
             width: var(--hw);
+        }
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     }
 }

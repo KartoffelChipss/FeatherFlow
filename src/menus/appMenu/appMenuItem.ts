@@ -38,6 +38,7 @@ export default function (): MenuItemConstructorOptions {
                         submenu: [
                             {
                                 label: "App root",
+                                accelerator: "CmdOrCtrl+Shift+Alt+O",
                                 click: () => {
                                     shell.openPath(appRoot);
                                 }
