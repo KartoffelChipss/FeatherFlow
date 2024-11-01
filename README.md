@@ -5,9 +5,6 @@
   <p align="center" >Lightweight Text editor with Syntax highlighting</p>
 </p>
 
-> [!NOTE]  
-> Currently the app is only optimised and tested for MacOS, but support for Windows and Linux will follow
-
 ## Customization
 
 You can choose between 11 different themes with each having a light and dark mode option or add your own theme and background image.
