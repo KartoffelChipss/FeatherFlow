@@ -615,6 +615,14 @@
                 "name": "CSV File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
+            },
+            {
+                "ext": [
+                    "*"
+                ],
+                "name": "All Files",
+                "role": "Editor",
+                "icon": "public/img/logo_file.icns"
             }
         ]
     },
