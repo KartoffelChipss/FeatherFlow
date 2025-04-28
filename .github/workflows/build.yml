@@ -1,0 +1,58 @@
+name: Build and Release Electron App
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          
+      - uses: oven-sh/setup-bun@v1
+       	  with:
+            bun-version: 1.2.2
+
+      - name: Install dependencies
+        run: bun install
+
+      - name: Build Electron app
+        run: bun run build
+
+      - name: Package Electron app
+        run: |
+          if [[ $RUNNER_OS == 'Linux' ]]; then
+            npm run dist:linux
+          elif [[ $RUNNER_OS == 'Windows' ]]; then
+            npm run dist:win
+          elif [[ $RUNNER_OS == 'macOS' ]]; then
+            npm run dist:mac
+          fi
+      
+      - name: Upload release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            dist/latest.yml
+            dist/**/*.deb
+            dist/**/*.AppImage
+            dist/**/*.rpm
+            dist/**/*.snap
+            dist/**/*.pacman
+            dist/**/*.exe
+            dist/**/*.msi
+            dist/**/*.dmg
+            dist/**/*.pkg
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
