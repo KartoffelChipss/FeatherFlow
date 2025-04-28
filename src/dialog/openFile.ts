@@ -1,6 +1,6 @@
-import { app, dialog } from "electron";
-import {getStore} from "../store";
-import path from "path";
+import { app, dialog } from 'electron'
+import { getStore } from '../store'
+import path from 'path'
 
 /**
  * Open a file dialog
@@ -9,7 +9,7 @@ import path from "path";
 export default async function showOpenFileDialog(): Promise<string | null> {
     const result = await dialog.showOpenDialog({
         title: 'Select a file',
-        properties: ["openFile", "createDirectory"],
+        properties: ['openFile', 'createDirectory'],
         filters: [
             { name: 'All Files', extensions: ['*'] },
             { name: 'JavaScript', extensions: ['js'] },
@@ -38,14 +38,22 @@ export default async function showOpenFileDialog(): Promise<string | null> {
             { name: 'Text', extensions: ['txt'] },
             { name: 'Log', extensions: ['log'] },
             { name: 'Diff', extensions: ['diff', 'patch'] },
-            { name: 'CSV', extensions: ['csv'] }
+            { name: 'CSV', extensions: ['csv'] },
         ],
-        defaultPath: getStore().get('lastOpenFolder') as string || app.getPath('documents'),
-    });
+        defaultPath:
+            (getStore().get('lastOpenFolder') as string) ||
+            app.getPath('documents'),
+    })
 
-    if (result.canceled || !result.filePaths || result.filePaths.length < 1 || !result.filePaths[0]) return null;
+    if (
+        result.canceled ||
+        !result.filePaths ||
+        result.filePaths.length < 1 ||
+        !result.filePaths[0]
+    )
+        return null
 
-    getStore().set('lastOpenFolder', path.dirname(result.filePaths[0]));
+    getStore().set('lastOpenFolder', path.dirname(result.filePaths[0]))
 
-    return result.filePaths[0];
+    return result.filePaths[0]
 }

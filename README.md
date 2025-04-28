@@ -26,6 +26,7 @@ Go to the [Releases](https://github.com/KartoffelChipss/FeatherFlow/releases), d
 You need to have Node.js, npm and git installed.
 
 Clone this repository:
+
 ```
 git clone https://github.com/KartoffelChipss/FeatherFlow
 ```

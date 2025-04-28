@@ -1,4 +1,4 @@
-import { dialog, app } from 'electron';
+import { dialog, app } from 'electron'
 
 /**
  * Save a file dialog
@@ -7,7 +7,7 @@ import { dialog, app } from 'electron';
 export default async function showSaveFileDialog(): Promise<string | null> {
     const result = await dialog.showSaveDialog({
         title: 'Save Markdown file',
-        properties: ["createDirectory"],
+        properties: ['createDirectory'],
         filters: [
             { name: 'All Files', extensions: ['*'] },
             { name: 'JavaScript', extensions: ['js'] },
@@ -36,12 +36,12 @@ export default async function showSaveFileDialog(): Promise<string | null> {
             { name: 'Text', extensions: ['txt'] },
             { name: 'Log', extensions: ['log'] },
             { name: 'Diff', extensions: ['diff', 'patch'] },
-            { name: 'CSV', extensions: ['csv'] }
+            { name: 'CSV', extensions: ['csv'] },
         ],
         defaultPath: app.getPath('documents'),
-    });
+    })
 
-    if (result.canceled || !result.filePath || !result.filePath) return null;
+    if (result.canceled || !result.filePath || !result.filePath) return null
 
-    return result.filePath;
+    return result.filePath
 }

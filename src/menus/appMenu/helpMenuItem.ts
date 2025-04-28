@@ -1,4 +1,4 @@
-import {MenuItemConstructorOptions, shell} from "electron";
+import { MenuItemConstructorOptions, shell } from 'electron'
 
 export default function (): MenuItemConstructorOptions {
     return {
@@ -8,21 +8,25 @@ export default function (): MenuItemConstructorOptions {
             {
                 label: 'GitHub Repository',
                 click: async () => {
-                    await shell.openExternal('https://github.com/Kartoffelchipss/FeatherFlow');
-                }
+                    await shell.openExternal(
+                        'https://github.com/Kartoffelchipss/FeatherFlow'
+                    )
+                },
             },
             {
                 label: 'Report Issue',
                 click: async () => {
-                    await shell.openExternal('https://github.com/Kartoffelchipss/FeatherFlow/issues');
-                }
+                    await shell.openExternal(
+                        'https://github.com/Kartoffelchipss/FeatherFlow/issues'
+                    )
+                },
             },
             {
                 label: 'Support Discord',
                 click: async () => {
-                    await shell.openExternal('https://strassburger.org/discord');
-                }
-            }
-        ]
-    };
+                    await shell.openExternal('https://strassburger.org/discord')
+                },
+            },
+        ],
+    }
 }

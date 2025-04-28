@@ -1,103 +1,264 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Unnamed</title>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unnamed</title>
+        <link rel="stylesheet" href="css/assets.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/hint/show-hint.min.css"
+            integrity="sha512-OmcLQEy8iGiD7PSm85s06dnR7G7C9C0VqahIPAj/KHk5RpOCmnC6R2ob1oK4/uwYhWa9BF1GC6tzxsC8TIx7Jg=="
+            crossorigin="anonymous"
+            referrerpolicy="no-referrer"
+        />
+        <link rel="stylesheet" href="css/themes/default.css" id="theme-link" />
+        <link
+            rel="stylesheet"
+            href="css/colorSchemes/dark.css"
+            id="colorscheme-link"
+        />
+        <link rel="stylesheet" href="css/editor.css" />
+    </head>
 
-    <link rel="stylesheet" href="css/assets.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/6.65.7/addon/hint/show-hint.min.css" integrity="sha512-OmcLQEy8iGiD7PSm85s06dnR7G7C9C0VqahIPAj/KHk5RpOCmnC6R2ob1oK4/uwYhWa9BF1GC6tzxsC8TIx7Jg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/themes/default.css" id="theme-link">
-    <link rel="stylesheet" href="css/colorSchemes/dark.css" id="colorscheme-link">
-    <link rel="stylesheet" href="css/editor.css">
-</head>
-
-<body>
-    <header>
-        <div class="left">
-            <img class="icon" src="img/logo_file.png">
-            <span id="fileName" class="fileName">Unnamed</span>
-            <div class="dot" id="dot"></div>
-        </div>
-        <div class="right">
-            <div class="buttons windows-nav">
-                <button type="button" onclick="window.api.invoke('minimize')">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 12L18 12" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                </button>
-                <button type="button" onclick="window.api.invoke('maximize')">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <rect x="4" y="4" width="16" height="16" rx="2" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect> </g></svg>
-                </button>
-                <button type="button" class="danger" onclick="window.api.invoke('close')">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" stroke="var(--font-color)"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M4 4L20 20M20 4L4 20" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-                </button>
+    <body>
+        <header>
+            <div class="left">
+                <img class="icon" src="img/logo_file.png" />
+                <span id="fileName" class="fileName">Unnamed</span>
+                <div class="dot" id="dot"></div>
             </div>
+            <div class="right">
+                <div class="buttons windows-nav">
+                    <button
+                        type="button"
+                        onclick="window.api.invoke('minimize')"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            stroke="var(--font-color)"
+                        >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                                id="SVGRepo_tracerCarrier"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M6 12L18 12"
+                                    stroke="var(--font-color)"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </g>
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        onclick="window.api.invoke('maximize')"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            stroke="var(--font-color)"
+                        >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                                id="SVGRepo_tracerCarrier"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <rect
+                                    x="4"
+                                    y="4"
+                                    width="16"
+                                    height="16"
+                                    rx="2"
+                                    stroke="var(--font-color)"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></rect>
+                            </g>
+                        </svg>
+                    </button>
+                    <button
+                        type="button"
+                        class="danger"
+                        onclick="window.api.invoke('close')"
+                    >
+                        <svg
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                            stroke="var(--font-color)"
+                        >
+                            <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                            <g
+                                id="SVGRepo_tracerCarrier"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></g>
+                            <g id="SVGRepo_iconCarrier">
+                                <path
+                                    d="M4 4L20 20M20 4L4 20"
+                                    stroke="var(--font-color)"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                ></path>
+                            </g>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="searchbox" id="searchbox">
+            <input
+                type="text"
+                id="search"
+                class="search"
+                placeholder="Search"
+                oninput="findAll()"
+            />
+            <span
+                ><span id="search-current-result">0</span>/<span
+                    id="search-result-count"
+                    >0</span
+                ></span
+            >
+            <button type="button" class="search-prev-btn" onclick="findPrev()">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M12 6V18M12 6L7 11M12 6L17 11"
+                            stroke="var(--font-color)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path>
+                    </g>
+                </svg>
+            </button>
+            <button type="button" class="search-next-btn" onclick="findNext()">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M12 6V18M12 18L7 13M12 18L17 13"
+                            stroke="var(--font-color)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path>
+                    </g>
+                </svg>
+            </button>
+            <button type="button" class="search-close" onclick="closeSearch()">
+                <svg
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                        id="SVGRepo_tracerCarrier"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                        <path
+                            d="M6 6L18 18M18 6L6 18"
+                            stroke="var(--font-color)"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        ></path>
+                    </g>
+                </svg>
+            </button>
         </div>
-    </header>
 
-    <div class="searchbox" id="searchbox">
-        <input type="text" id="search" class="search" placeholder="Search" oninput="findAll()">
-        <span><span id="search-current-result">0</span>/<span id="search-result-count">0</span></span>
-        <button type="button" class="search-prev-btn" onclick="findPrev()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 6L7 11M12 6L17 11" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        </button>
-        <button type="button" class="search-next-btn" onclick="findNext()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M12 6V18M12 18L7 13M12 18L17 13" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        </button>
-        <button type="button" class="search-close" onclick="closeSearch()">
-            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M6 6L18 18M18 6L6 18" stroke="var(--font-color)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
-        </button>
-    </div>
+        <div class="sections">
+            <section id="editor" class="editor active" style="width: 100%">
+                <textarea id="editorTextarea" class="editorTextarea"></textarea>
+            </section>
+        </div>
 
-    <div class="sections">
-        <section id="editor" class="editor active" style="width: 100%;">
-            <textarea id="editorTextarea" class="editorTextarea"></textarea>
-        </section>
-    </div>
+        <script src="js/platform.js"></script>
 
-    <script src="js/platform.js"></script>
+        <script src="js/libs/codemirror.min.js"></script>
+        <script src="js/libs/closetag.min.js"></script>
+        <script src="js/libs/active-line.min.js"></script>
+        <script src="js/libs/matchbrackets.min.js"></script>
+        <script src="js/libs/search.min.js"></script>
+        <script src="js/libs/searchcursor.min.js"></script>
+        <script src="js/libs/match-highlighter.min.js"></script>
+        <script src="js/libs/jump-to-line.min.js"></script>
+        <script src="js/libs/closebrackets.min.js"></script>
 
-    <script src="js/libs/codemirror.min.js"></script>
-    <script src="js/libs/closetag.min.js"></script>
-    <script src="js/libs/active-line.min.js"></script>
-    <script src="js/libs/matchbrackets.min.js"></script>
-    <script src="js/libs/search.min.js"></script>
-    <script src="js/libs/searchcursor.min.js"></script>
-    <script src="js/libs/match-highlighter.min.js"></script>
-    <script src="js/libs/jump-to-line.min.js"></script>
-    <script src="js/libs/closebrackets.min.js"></script>
+        <script src="js/libs/hints/show-hint.min.js"></script>
+        <script src="js/libs/hints/anyword-hint.min.js"></script>
+        <script src="js/libs/hints/css-hint.min.js"></script>
+        <script src="js/libs/hints/html-hint.min.js"></script>
+        <script src="js/libs/hints/javascript-hint.min.js"></script>
+        <script src="js/libs/hints/sql-hint.min.js"></script>
+        <script src="js/libs/hints/xml-hint.min.js"></script>
 
-    <script src="js/libs/hints/show-hint.min.js"></script>
-    <script src="js/libs/hints/anyword-hint.min.js"></script>
-    <script src="js/libs/hints/css-hint.min.js"></script>
-    <script src="js/libs/hints/html-hint.min.js"></script>
-    <script src="js/libs/hints/javascript-hint.min.js"></script>
-    <script src="js/libs/hints/sql-hint.min.js"></script>
-    <script src="js/libs/hints/xml-hint.min.js"></script>
+        <script src="js/libs/modes/clike.min.js"></script>
+        <script src="js/libs/modes/css.min.js"></script>
+        <script src="js/libs/modes/javascript.min.js"></script>
+        <script src="js/libs/modes/diff.min.js"></script>
+        <script src="js/libs/modes/go.min.js"></script>
+        <script src="js/libs/modes/htmlmixed.min.js"></script>
+        <script src="js/libs/modes/markdown.min.js"></script>
+        <script src="js/libs/modes/php.min.js"></script>
+        <script src="js/libs/modes/python.min.js"></script>
+        <script src="js/libs/modes/ruby.min.js"></script>
+        <script src="js/libs/modes/sass.min.js"></script>
+        <script src="js/libs/modes/shell.min.js"></script>
+        <script src="js/libs/modes/swift.min.js"></script>
+        <script src="js/libs/modes/xml.min.js"></script>
+        <script src="js/libs/modes/yaml.min.js"></script>
+        <script src="js/libs/modes/minecraftProperties.js"></script>
+        <script src="js/libs/modes/toml.js"></script>
+        <script src="js/libs/modes/sql.min.js"></script>
 
-    <script src="js/libs/modes/clike.min.js"></script>
-    <script src="js/libs/modes/css.min.js"></script>
-    <script src="js/libs/modes/javascript.min.js"></script>
-    <script src="js/libs/modes/diff.min.js"></script>
-    <script src="js/libs/modes/go.min.js"></script>
-    <script src="js/libs/modes/htmlmixed.min.js"></script>
-    <script src="js/libs/modes/markdown.min.js"></script>
-    <script src="js/libs/modes/php.min.js"></script>
-    <script src="js/libs/modes/python.min.js"></script>
-    <script src="js/libs/modes/ruby.min.js"></script>
-    <script src="js/libs/modes/sass.min.js"></script>
-    <script src="js/libs/modes/shell.min.js"></script>
-    <script src="js/libs/modes/swift.min.js"></script>
-    <script src="js/libs/modes/xml.min.js"></script>
-    <script src="js/libs/modes/yaml.min.js"></script>
-    <script src="js/libs/modes/minecraftProperties.js"></script>
-    <script src="js/libs/modes/toml.js"></script>
-    <script src="js/libs/modes/sql.min.js"></script>
-
-    <script src="js/editor.js"></script>
-    <script src="js/files.js"></script>
-    <script src="js/theme.js"></script>
-    <script src="js/search.js"></script>
-    <script src="js/main.js"></script>
-</body>
+        <script src="js/editor.js"></script>
+        <script src="js/files.js"></script>
+        <script src="js/theme.js"></script>
+        <script src="js/search.js"></script>
+        <script src="js/main.js"></script>
+    </body>
+</html>

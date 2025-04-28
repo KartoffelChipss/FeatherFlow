@@ -1,5 +1,5 @@
 :root {
-    --name: "Ocean";
+    --name: 'Ocean';
     --index: 3;
 
     /* ---      --- */
@@ -11,7 +11,12 @@
     --d-accent-color-1: #00aaff; /* bright ocean blue */
     --d-accent-color-2: #005f99; /* deep ocean blue */
 
-    --d-button-active: rgba(0, 170, 255, 0.3); /* bright ocean blue translucent */
+    --d-button-active: rgba(
+        0,
+        170,
+        255,
+        0.3
+    ); /* bright ocean blue translucent */
 
     --d-bg-1: #0a1e2e; /* dark ocean blue */
     --d-bg-2: #0e2a3f; /* deeper ocean blue */
@@ -42,7 +47,12 @@
     --l-accent-color-1: #00aaff; /* bright ocean blue */
     --l-accent-color-2: #005f99; /* deep ocean blue */
 
-    --l-button-active: rgba(0, 170, 255, 0.1); /* bright ocean blue translucent */
+    --l-button-active: rgba(
+        0,
+        170,
+        255,
+        0.1
+    ); /* bright ocean blue translucent */
 
     --l-bg-1: #e1f5ff; /* very light blue */
     --l-bg-2: #ccefff; /* lighter blue */

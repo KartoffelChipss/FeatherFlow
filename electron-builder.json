@@ -9,13 +9,7 @@
     "linux": {
         "category": "Development",
         "icon": "public/img/logo.icns",
-        "target": [
-            "deb",
-            "AppImage",
-            "rpm",
-            "snap",
-            "pacman"
-        ],
+        "target": ["deb", "AppImage", "rpm", "snap", "pacman"],
         "fileAssociations": [
             {
                 "ext": "js",
@@ -132,10 +126,7 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [
-                    "yml",
-                    "yaml"
-                ],
+                "ext": ["yml", "yaml"],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
@@ -201,9 +192,7 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [
-                    "*"
-                ],
+                "ext": ["*"],
                 "name": "All Files",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
@@ -211,10 +200,7 @@
         ]
     },
     "win": {
-        "target": [
-            "nsis",
-            "msi"
-        ],
+        "target": ["nsis", "msi"],
         "icon": "public/img/logo.ico",
         "fileAssociations": [
             {
@@ -332,10 +318,7 @@
                 "icon": "public/img/logo_file.ico"
             },
             {
-                "ext": [
-                    "yml",
-                    "yaml"
-                ],
+                "ext": ["yml", "yaml"],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.ico"
@@ -401,9 +384,7 @@
                 "icon": "public/img/logo_file.ico"
             },
             {
-                "ext": [
-                    "*"
-                ],
+                "ext": ["*"],
                 "name": "All Files",
                 "role": "Editor",
                 "icon": "public/img/logo_file.ico"
@@ -419,10 +400,7 @@
         "icon": "public/img/logo.icns",
         "target": {
             "target": "default",
-            "arch": [
-                "x64",
-                "arm64"
-            ]
+            "arch": ["x64", "arm64"]
         },
         "extendInfo": {
             "NSHumanReadableCopyright": "© 2024 Jan Straßburger"
@@ -548,10 +526,7 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [
-                    "yml",
-                    "yaml"
-                ],
+                "ext": ["yml", "yaml"],
                 "name": "YAML File",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"
@@ -617,9 +592,7 @@
                 "icon": "public/img/logo_file.icns"
             },
             {
-                "ext": [
-                    "*"
-                ],
+                "ext": ["*"],
                 "name": "All Files",
                 "role": "Editor",
                 "icon": "public/img/logo_file.icns"

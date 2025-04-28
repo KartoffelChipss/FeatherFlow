@@ -1,75 +1,75 @@
-import {app, MenuItemConstructorOptions, shell} from "electron";
-import {openSettingsWindow} from "../../windowManager";
-import {appRoot, logPath} from "../../main";
-import {getStore} from "../../store";
-import {checkForUpdates} from "../../updater";
+import { app, MenuItemConstructorOptions, shell } from 'electron'
+import { openSettingsWindow } from '../../windowManager'
+import { appRoot, logPath } from '../../main'
+import { getStore } from '../../store'
+import { checkForUpdates } from '../../updater'
 
 export default function (): MenuItemConstructorOptions {
-    const store = getStore();
+    const store = getStore()
 
     return {
         label: app.name,
         submenu: [
             {
                 role: 'about',
-                label: 'About FeatherFlow'
+                label: 'About FeatherFlow',
             },
             {
-                label: "Check for Updates",
+                label: 'Check for Updates',
                 click: () => {
-                    checkForUpdates(true);
-                }
+                    checkForUpdates(true)
+                },
             },
-            {type: 'separator'},
+            { type: 'separator' },
             {
-                label: "Settings",
-                accelerator: "CmdOrCtrl+,",
+                label: 'Settings',
+                accelerator: 'CmdOrCtrl+,',
                 click: () => {
-                    openSettingsWindow();
-                }
+                    openSettingsWindow()
+                },
             },
-            {type: 'separator'},
-            {role: 'services'},
+            { type: 'separator' },
+            { role: 'services' },
             {
-                label: "Developer",
+                label: 'Developer',
                 submenu: [
                     {
                         label: 'Open',
                         submenu: [
                             {
-                                label: "App root",
-                                accelerator: "CmdOrCtrl+Shift+Alt+O",
+                                label: 'App root',
+                                accelerator: 'CmdOrCtrl+Shift+Alt+O',
                                 click: () => {
-                                    shell.openPath(appRoot);
-                                }
+                                    shell.openPath(appRoot)
+                                },
                             },
                             {
-                                label: "Config file",
+                                label: 'Config file',
                                 click: () => {
-                                    store.openInEditor();
-                                }
+                                    store.openInEditor()
+                                },
                             },
                             {
-                                label: "Log file",
+                                label: 'Log file',
                                 click: () => {
-                                    shell.openPath(logPath);
-                                }
-                            }
-                        ]
+                                    shell.openPath(logPath)
+                                },
+                            },
+                        ],
                     },
-                    {role: 'toggleDevTools'},
-                    {role: 'forceReload'},
-                ]
+                    { role: 'toggleDevTools' },
+                    { role: 'forceReload' },
+                ],
             },
-            {type: 'separator'},
-            {role: 'hide'},
-            {role: 'hideOthers'},
-            {role: 'unhide'},
-            {type: 'separator'},
+            { type: 'separator' },
+            { role: 'hide' },
+            { role: 'hideOthers' },
+            { role: 'unhide' },
+            { type: 'separator' },
             {
                 role: 'quit',
                 label: 'Quit FeatherFlow',
-            }
-        ]
-    };
+            },
+        ],
+    }
 }

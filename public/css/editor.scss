@@ -56,7 +56,8 @@
         }
     }
 
-    .CodeMirror-hint-active, .CodeMirror-hint-active:hover {
+    .CodeMirror-hint-active,
+    .CodeMirror-hint-active:hover {
         background-color: var(--accent-color-2);
     }
 }

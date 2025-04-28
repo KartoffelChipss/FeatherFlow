@@ -3,14 +3,20 @@
 
     --color-scheme: dark;
 
-    --system-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-    --system-font-mono: "SF Mono", "Menlo", "Monaco", "Consolas", "Liberation Mono", "DejaVu Sans Mono", "Courier New", Courier, "Lucida Sans Typewriter", "Lucida Typewriter", monospace;
+    --system-font:
+        -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue',
+        Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+    --system-font-mono:
+        'SF Mono', 'Menlo', 'Monaco', 'Consolas', 'Liberation Mono',
+        'DejaVu Sans Mono', 'Courier New', Courier, 'Lucida Sans Typewriter',
+        'Lucida Typewriter', monospace;
 
     --font-color: #e9e9e9;
     --font-color-dark: #aaafb6;
 
-    --accent-color-1: #8abffa;//00BFFF
-    --accent-color-2: #007BFF;//007BFF
+    --accent-color-1: #8abffa; //00BFFF
+    --accent-color-2: #007bff; //007BFF
 
     --orange: #f2a965;
     --green: #097969;

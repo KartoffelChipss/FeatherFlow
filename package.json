@@ -1,43 +1,44 @@
 {
-  "name": "featherflow",
-  "description": "Lightweight Text editor with Syntax highlighting",
-  "module": "index.ts",
-  "main": "dist/main.js",
-  "version": "0.3.3",
-  "scripts": {
-    "build": "tsc",
-    "start": "npm run build && electron .",
-    "startfile": "npm run build && electron . /Users/jan/Documents/testfiles/test.js",
-    "startfilewin": "npm run build && electron . C:\\\\Users\\\\janst\\\\Documents\\\\testfiles\\\\test.js",
-    "dist": "npm run build && electron-builder",
-    "dist:win": "npm run build && electron-builder --win",
-    "dist:linux": "npm run build && electron-builder --linux",
-    "dist:mac": "npm run build && electron-builder --mac --x64 --arm64"
-  },
-  "author": {
-    "name": "Jan Straßburger",
-    "email": "contact@strassburger.org",
-    "url": "https://strassburger.org"
-  },
-  "repository": "https://github.com/KartoffelChipss/FeatherFlow",
-  "publish": {
-    "provider": "github",
-    "owner": "KartoffelChipss",
-    "repo": "FeatherFlow",
-    "releaseType": "release"
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5",
-    "electron-log": "^5.1.5",
-    "electron-store": "8.2.0",
-    "electron-updater": "^6.2.1"
-  },
-  "devDependencies": {
-    "@types/bun": "latest",
-    "electron": "^31.1.0",
-    "electron-builder": "^24.13.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5.0.0"
-  }
+    "name": "featherflow",
+    "description": "Lightweight Text editor with Syntax highlighting",
+    "module": "index.ts",
+    "main": "dist/main.js",
+    "version": "0.3.3",
+    "scripts": {
+        "build": "tsc",
+        "start": "npm run build && electron .",
+        "startfile": "npm run build && electron . /Users/jan/Documents/testfiles/test.js",
+        "startfilewin": "npm run build && electron . C:\\\\Users\\\\janst\\\\Documents\\\\testfiles\\\\test.js",
+        "dist": "npm run build && electron-builder",
+        "dist:win": "npm run build && electron-builder --win",
+        "dist:linux": "npm run build && electron-builder --linux",
+        "dist:mac": "npm run build && electron-builder --mac --x64 --arm64"
+    },
+    "author": {
+        "name": "Jan Straßburger",
+        "email": "contact@strassburger.org",
+        "url": "https://strassburger.org"
+    },
+    "repository": "https://github.com/KartoffelChipss/FeatherFlow",
+    "publish": {
+        "provider": "github",
+        "owner": "KartoffelChipss",
+        "repo": "FeatherFlow",
+        "releaseType": "release"
+    },
+    "dependencies": {
+        "dotenv": "^16.4.5",
+        "electron-log": "^5.1.5",
+        "electron-store": "8.2.0",
+        "electron-updater": "^6.2.1"
+    },
+    "devDependencies": {
+        "@types/bun": "latest",
+        "electron": "^31.1.0",
+        "electron-builder": "^24.13.3",
+        "prettier": "^3.5.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5.0.0"
+    }
 }
