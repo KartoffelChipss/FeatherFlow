@@ -16,10 +16,9 @@ import './ipcHandler'
 import 'dotenv/config'
 import { startCheckingForUpdates } from './updater'
 import { logPath } from './locations'
+import isDev from 'electron-is-dev'
 
 export * from './locations'
-
-export const devMode = process.env.NODE_ENV === 'development'
 
 logger.transports.file.resolvePathFn = () => logPath
 logger.transports.file.level = 'info'
@@ -41,7 +40,7 @@ app.on('ready', () => {
     logger.log(' ')
     logger.log('====== ======')
     logger.log('App Started!')
-    if (devMode) logger.log('Running in development mode')
+    if (isDev) logger.log('Running in development mode')
     logger.log('====== ======\n')
 
     startCheckingForUpdates()
@@ -138,8 +137,8 @@ function activateAction() {
 function getInitialFile(): string | null {
     let localInitialFile: string | null = null
 
-    if (devMode && process.argv.length >= 3) localInitialFile = process.argv[2]
-    if (!devMode && process.argv.length >= 2) localInitialFile = process.argv[1]
+    if (isDev && process.argv.length >= 3) localInitialFile = process.argv[2]
+    if (!isDev && process.argv.length >= 2) localInitialFile = process.argv[1]
 
     if (localInitialFile) {
         // Check if file exists

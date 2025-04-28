@@ -1,5 +1,5 @@
 import { BrowserWindow } from 'electron'
-import { devMode } from '../main'
+import isDev from 'electron-is-dev'
 import path from 'path'
 import { fadeInWindow } from './index'
 
@@ -23,7 +23,7 @@ export function openMainWindow() {
         minHeight: height,
         width: width,
         height: height,
-        resizable: devMode,
+        resizable: isDev,
         backgroundColor: '#101215',
         darkTheme: true,
         frame: false,

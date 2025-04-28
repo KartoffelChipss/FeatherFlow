@@ -5,14 +5,15 @@
     "main": "dist/main.js",
     "version": "0.3.3",
     "scripts": {
-        "build": "tsc",
+        "build": "tsc && npm run scss",
         "start": "npm run build && electron .",
         "startfile": "npm run build && electron . /Users/jan/Documents/testfiles/test.js",
         "startfilewin": "npm run build && electron . C:\\\\Users\\\\janst\\\\Documents\\\\testfiles\\\\test.js",
         "dist": "npm run build && electron-builder",
         "dist:win": "npm run build && electron-builder --win",
         "dist:linux": "npm run build && electron-builder --linux",
-        "dist:mac": "npm run build && electron-builder --mac --x64 --arm64"
+        "dist:mac": "npm run build && electron-builder --mac --x64 --arm64",
+        "scss": "sass public/css:public/css"
     },
     "author": {
         "name": "Jan Straßburger",
@@ -28,6 +29,7 @@
     },
     "dependencies": {
         "dotenv": "^16.4.5",
+        "electron-is-dev": "^2.0.0",
         "electron-log": "^5.1.5",
         "electron-store": "8.2.0",
         "electron-updater": "^6.2.1"
@@ -36,7 +38,8 @@
         "@types/bun": "latest",
         "electron": "^31.1.0",
         "electron-builder": "^24.13.3",
-        "prettier": "^3.5.3"
+        "prettier": "^3.5.3",
+        "sass": "^1.87.0"
     },
     "peerDependencies": {
         "typescript": "^5.0.0"
