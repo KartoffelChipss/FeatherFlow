@@ -10,7 +10,7 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -20,9 +20,10 @@ jobs:
         with:
           node-version: 20
           
-      - uses: oven-sh/setup-bun@v2
-       	  with:
-            bun-version: 1.2.2
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: 1.2.2
 
       - name: Install dependencies
         run: bun install
@@ -39,7 +40,7 @@ jobs:
           elif [[ $RUNNER_OS == 'macOS' ]]; then
             npm run dist:mac
           fi
-      
+
       - name: Upload release assets
         uses: softprops/action-gh-release@v2
         with:
