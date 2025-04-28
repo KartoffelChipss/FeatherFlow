@@ -1,27 +1,27 @@
-import { BrowserWindow } from 'electron'
-import isDev from 'electron-is-dev'
-import path from 'path'
-import { fadeInWindow } from './index'
+import { BrowserWindow } from 'electron';
+import isDev from 'electron-is-dev';
+import path from 'path';
+import { fadeInWindow } from './index';
 
 export function isSettingsWindow(BrowserWindow: BrowserWindow) {
-    return BrowserWindow.getTitle() === 'Settings'
+    return BrowserWindow.getTitle() === 'Settings';
 }
 
 export function closeSettingsWindow() {
-    const settingsWindow = BrowserWindow.getAllWindows().find(isSettingsWindow)
-    if (settingsWindow) settingsWindow.close()
+    const settingsWindow = BrowserWindow.getAllWindows().find(isSettingsWindow);
+    if (settingsWindow) settingsWindow.close();
 }
 
 export function openSettingsWindow() {
     for (const window of BrowserWindow.getAllWindows()) {
         if (isSettingsWindow(window)) {
-            window.focus()
-            return
+            window.focus();
+            return;
         }
     }
 
-    const width = 950
-    const height = 650
+    const width = 950;
+    const height = 650;
 
     const settingsWindow = new BrowserWindow({
         minWidth: width,
@@ -50,15 +50,15 @@ export function openSettingsWindow() {
             nodeIntegration: false,
             sandbox: true,
         },
-    })
+    });
 
     const fileLoaded = settingsWindow.loadFile(
         path.join(__dirname, '../../public/settings.html')
-    )
+    );
 
-    fadeInWindow(settingsWindow, 40, 0.3)
+    fadeInWindow(settingsWindow, 40, 0.3);
 
     settingsWindow.on('focus', () => {
-        settingsWindow.webContents.send('updateSettings')
-    })
+        settingsWindow.webContents.send('updateSettings');
+    });
 }

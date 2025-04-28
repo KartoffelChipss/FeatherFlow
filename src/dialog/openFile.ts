@@ -1,6 +1,6 @@
-import { app, dialog } from 'electron'
-import { getStore } from '../store'
-import path from 'path'
+import { app, dialog } from 'electron';
+import { getStore } from '../store';
+import path from 'path';
 
 /**
  * Open a file dialog
@@ -43,7 +43,7 @@ export default async function showOpenFileDialog(): Promise<string | null> {
         defaultPath:
             (getStore().get('lastOpenFolder') as string) ||
             app.getPath('documents'),
-    })
+    });
 
     if (
         result.canceled ||
@@ -51,9 +51,9 @@ export default async function showOpenFileDialog(): Promise<string | null> {
         result.filePaths.length < 1 ||
         !result.filePaths[0]
     )
-        return null
+        return null;
 
-    getStore().set('lastOpenFolder', path.dirname(result.filePaths[0]))
+    getStore().set('lastOpenFolder', path.dirname(result.filePaths[0]));
 
-    return result.filePaths[0]
+    return result.filePaths[0];
 }

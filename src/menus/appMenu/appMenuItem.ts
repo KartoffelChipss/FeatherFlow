@@ -1,11 +1,11 @@
-import { app, MenuItemConstructorOptions, shell } from 'electron'
-import { openSettingsWindow } from '../../windowManager'
-import { appRoot, logPath } from '../../main'
-import { getStore } from '../../store'
-import { checkForUpdates } from '../../updater'
+import { app, MenuItemConstructorOptions, shell } from 'electron';
+import { openSettingsWindow } from '../../windowManager';
+import { appRoot, logPath } from '../../main';
+import { getStore } from '../../store';
+import { checkForUpdates } from '../../updater';
 
 export default function (): MenuItemConstructorOptions {
-    const store = getStore()
+    const store = getStore();
 
     return {
         label: app.name,
@@ -17,7 +17,7 @@ export default function (): MenuItemConstructorOptions {
             {
                 label: 'Check for Updates',
                 click: () => {
-                    checkForUpdates(true)
+                    checkForUpdates(true);
                 },
             },
             { type: 'separator' },
@@ -25,7 +25,7 @@ export default function (): MenuItemConstructorOptions {
                 label: 'Settings',
                 accelerator: 'CmdOrCtrl+,',
                 click: () => {
-                    openSettingsWindow()
+                    openSettingsWindow();
                 },
             },
             { type: 'separator' },
@@ -40,19 +40,19 @@ export default function (): MenuItemConstructorOptions {
                                 label: 'App root',
                                 accelerator: 'CmdOrCtrl+Shift+Alt+O',
                                 click: () => {
-                                    shell.openPath(appRoot)
+                                    shell.openPath(appRoot);
                                 },
                             },
                             {
                                 label: 'Config file',
                                 click: () => {
-                                    store.openInEditor()
+                                    store.openInEditor();
                                 },
                             },
                             {
                                 label: 'Log file',
                                 click: () => {
-                                    shell.openPath(logPath)
+                                    shell.openPath(logPath);
                                 },
                             },
                         ],
@@ -71,5 +71,5 @@ export default function (): MenuItemConstructorOptions {
                 label: 'Quit FeatherFlow',
             },
         ],
-    }
+    };
 }

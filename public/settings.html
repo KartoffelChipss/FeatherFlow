@@ -421,19 +421,19 @@
         <script>
             function changeSection(section) {
                 document.querySelectorAll('section').forEach((el) => {
-                    el.classList.remove('_shown')
-                })
+                    el.classList.remove('_shown');
+                });
 
                 document.querySelectorAll('nav button').forEach((el) => {
-                    el.classList.remove('active')
-                })
+                    el.classList.remove('active');
+                });
 
                 document
                     .querySelector(`.sec-${section}`)
-                    .classList.add('_shown')
+                    .classList.add('_shown');
                 document
                     .querySelector(`#sec-btn-${section}`)
-                    .classList.add('active')
+                    .classList.add('active');
             }
         </script>
     </body>

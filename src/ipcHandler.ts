@@ -1,4 +1,4 @@
-import { BrowserWindow, dialog, ipcMain, shell } from 'electron'
+import { BrowserWindow, dialog, ipcMain, shell } from 'electron';
 import {
     CssFileWithTheme,
     getBackrgoundImages,
@@ -8,104 +8,104 @@ import {
     updateBackgroundImage,
     updateColorScheme,
     updateTheme,
-} from './theme'
-import logger from 'electron-log/main'
-import fs from 'fs'
-import { closeWindow, createWindow, setPath } from './windowManager'
-import path, { basename } from 'path'
-import showUnsavedChangesDialog from './dialog/unsavedChanges'
-import { popUpContextMenu } from './menus/contextMenu'
-import { getStore } from './store'
-import { openFile } from './main'
-import { themesPath, backgroundImagesPath } from './locations'
+} from './theme';
+import logger from 'electron-log/main';
+import fs from 'fs';
+import { closeWindow, createWindow, setPath } from './windowManager';
+import path, { basename } from 'path';
+import showUnsavedChangesDialog from './dialog/unsavedChanges';
+import { popUpContextMenu } from './menus/contextMenu';
+import { getStore } from './store';
+import { openFile } from './main';
+import { themesPath, backgroundImagesPath } from './locations';
 
 ipcMain.handle('openCustomFolder', (event, customFolderPath) => {
     switch (customFolderPath) {
         case 'themes': {
-            shell.openPath(themesPath)
-            break
+            shell.openPath(themesPath);
+            break;
         }
         case 'backgroundImages': {
-            shell.openPath(backgroundImagesPath)
-            break
+            shell.openPath(backgroundImagesPath);
+            break;
         }
     }
-})
+});
 
 ipcMain.handle('getBackgroundImages', (event, data) => {
-    return getBackrgoundImages()
-})
+    return getBackrgoundImages();
+});
 
 ipcMain.handle('getColorScheme', (event, data) => {
-    return getCalculatedColorSheme()
-})
+    return getCalculatedColorSheme();
+});
 
 ipcMain.handle('updateColorScheme', (event, data) => {
-    updateColorScheme()
-})
+    updateColorScheme();
+});
 
 ipcMain.handle('getTheme', (event, data) => {
-    return getStore().get('theme')
-})
+    return getStore().get('theme');
+});
 
 ipcMain.handle('updateTheme', (event, data) => {
-    updateTheme()
-})
+    updateTheme();
+});
 
 ipcMain.handle('getThemeList', async (event, data) => {
-    const defaultThemes: CssFileWithTheme[] = await getThemeList()
-    const customThemes: CssFileWithTheme[] = await getCustomThemeList()
+    const defaultThemes: CssFileWithTheme[] = await getThemeList();
+    const customThemes: CssFileWithTheme[] = await getCustomThemeList();
     return {
         defaultThemes,
         customThemes,
-    }
-})
+    };
+});
 
 ipcMain.handle('getPlatform', (event, data) => {
-    return process.platform
-})
+    return process.platform;
+});
 
 ipcMain.handle('saveFile', async (event, data) => {
     try {
-        logger.info('Saving file:', data.file + ' to ' + data.path)
-        await fs.promises.writeFile(data.path, data.content)
+        logger.info('Saving file:', data.file + ' to ' + data.path);
+        await fs.promises.writeFile(data.path, data.content);
 
-        const window = BrowserWindow.fromWebContents(event.sender)
-        if (window) setPath(window, data.path)
+        const window = BrowserWindow.fromWebContents(event.sender);
+        if (window) setPath(window, data.path);
 
         window?.webContents.send('fileOpened', {
             content: data.content,
             name: basename(data.path),
             path: data.path,
-        })
+        });
 
         return {
             content: data.content,
             name: basename(data.path),
             path: data.path,
-        }
+        };
     } catch (error) {
-        logger.error('Error saving file:', error)
+        logger.error('Error saving file:', error);
         dialog.showErrorBox(
             'Error saving file',
             'An error occurred while saving the file. Please try again.'
-        )
-        throw error
+        );
+        throw error;
     }
-})
+});
 
 ipcMain.handle('openLink', (event, data) => {
-    logger.info('Opening link:', data)
-    shell.openExternal(data)
-})
+    logger.info('Opening link:', data);
+    shell.openExternal(data);
+});
 
 ipcMain.handle('openLinkInFinder', (event, data) => {
-    const basePath = path.dirname(data.path)
-    const fullPath = path.resolve(basePath, data.url)
+    const basePath = path.dirname(data.path);
+    const fullPath = path.resolve(basePath, data.url);
 
-    logger.info('Reveal in Finder:', fullPath)
-    shell.showItemInFolder(fullPath)
-})
+    logger.info('Reveal in Finder:', fullPath);
+    shell.showItemInFolder(fullPath);
+});
 
 ipcMain.handle('getEditorSettings', (event, data) => {
     return {
@@ -124,78 +124,78 @@ ipcMain.handle('getEditorSettings', (event, data) => {
         checkForUpdates: getStore().get('checkForUpdates'),
         replaceTabsWithSpaces: getStore().get('replaceTabsWithSpaces'),
         bgimage: getStore().get('bgimage'),
-    }
-})
+    };
+});
 
 ipcMain.handle('getBackgroundImage', (event, data) => {
-    return getStore().get('bgimage')
-})
+    return getStore().get('bgimage');
+});
 
 ipcMain.handle('updateBackgroundImage', (event, data) => {
-    updateBackgroundImage()
-})
+    updateBackgroundImage();
+});
 
 ipcMain.handle('setSetting', (event, data) => {
-    console.log(data)
-    getStore().set(data.setting, data.value)
-})
+    console.log(data);
+    getStore().set(data.setting, data.value);
+});
 
 ipcMain.handle('showContextMenu', (event, data) => {
-    popUpContextMenu()
-})
+    popUpContextMenu();
+});
 
 ipcMain.handle('showUnsavedChangesDialog', async (event, data) => {
-    const action = await showUnsavedChangesDialog()
+    const action = await showUnsavedChangesDialog();
 
     if (action === 'save') {
         try {
-            logger.info('Saving file:', data.file + ' to ' + data.path)
-            await fs.promises.writeFile(data.path, data.content)
+            logger.info('Saving file:', data.file + ' to ' + data.path);
+            await fs.promises.writeFile(data.path, data.content);
 
-            const window = BrowserWindow.fromWebContents(event.sender)
-            if (window) closeWindow(window)
+            const window = BrowserWindow.fromWebContents(event.sender);
+            if (window) closeWindow(window);
         } catch (error) {
-            logger.error('Error saving file:', error)
+            logger.error('Error saving file:', error);
             dialog.showErrorBox(
                 'Error saving file',
                 'An error occurred while saving the file. Please try again.'
-            )
-            throw error
+            );
+            throw error;
         }
     }
 
     if (action === 'discard') {
-        const window = BrowserWindow.fromWebContents(event.sender)
-        if (window) closeWindow(window)
-        return
+        const window = BrowserWindow.fromWebContents(event.sender);
+        if (window) closeWindow(window);
+        return;
     }
 
-    if (action === 'cancel') return
-})
+    if (action === 'cancel') return;
+});
 
 ipcMain.handle('close', (event, data) => {
-    const window = BrowserWindow.fromWebContents(event.sender)
-    if (window) closeWindow(window)
-})
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) closeWindow(window);
+});
 
 ipcMain.handle('minimize', (event, data) => {
-    const window = BrowserWindow.fromWebContents(event.sender)
-    if (window) window.minimize()
-})
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) window.minimize();
+});
 
 ipcMain.handle('maximize', (event, data) => {
-    const window = BrowserWindow.fromWebContents(event.sender)
-    if (window) window.isMaximized() ? window.unmaximize() : window.maximize()
-})
+    const window = BrowserWindow.fromWebContents(event.sender);
+    if (window) window.isMaximized() ? window.unmaximize() : window.maximize();
+});
 
 ipcMain.handle('openFile', (event) => {
-    openFile()
-})
+    openFile();
+});
 
 ipcMain.handle('newFile', (event) => {
-    createWindow()
-})
+    createWindow();
+});
 
 ipcMain.handle('openHelp', (event) => {
-    shell.openExternal('https://github.com/Kartoffelchipss/FeatherFlow')
-})
+    shell.openExternal('https://github.com/Kartoffelchipss/FeatherFlow');
+});

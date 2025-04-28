@@ -1,4 +1,4 @@
-import { app, dialog } from 'electron'
+import { app, dialog } from 'electron';
 
 export default async function (): Promise<boolean> {
     const result = await dialog.showMessageBox({
@@ -7,7 +7,7 @@ export default async function (): Promise<boolean> {
         defaultId: 0,
         title: 'No Update Available',
         message: 'No update available!\nCurrent version: ' + app.getVersion(),
-    })
+    });
 
-    return true
+    return true;
 }

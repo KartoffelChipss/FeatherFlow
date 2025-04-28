@@ -1,8 +1,8 @@
-import { getFocusedWindow, isSpecialWindow } from '../../windowManager'
-import type { MenuItemConstructorOptions } from 'electron'
+import { getFocusedWindow, isSpecialWindow } from '../../windowManager';
+import type { MenuItemConstructorOptions } from 'electron';
 
 export default function (): MenuItemConstructorOptions {
-    const focusedWindow = getFocusedWindow()
+    const focusedWindow = getFocusedWindow();
 
     return {
         label: 'Edit',
@@ -22,9 +22,9 @@ export default function (): MenuItemConstructorOptions {
                 accelerator: 'CmdOrCtrl+F',
                 enabled: !!focusedWindow && !isSpecialWindow(focusedWindow),
                 click: () => {
-                    getFocusedWindow()?.webContents.send('openSearch')
+                    getFocusedWindow()?.webContents.send('openSearch');
                 },
             },
         ],
-    }
+    };
 }

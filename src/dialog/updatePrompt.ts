@@ -1,4 +1,4 @@
-import { dialog } from 'electron'
+import { dialog } from 'electron';
 
 export default async function (): Promise<
     'update' | 'remindlater' | 'discard'
@@ -10,9 +10,9 @@ export default async function (): Promise<
         title: 'Update Available',
         message:
             'A new version of FeatherFlow is available. Would you like to update now?',
-    })
+    });
 
-    if (result.response == 0) return 'update'
-    else if (result.response == 1) return 'remindlater'
-    else return 'discard'
+    if (result.response == 0) return 'update';
+    else if (result.response == 1) return 'remindlater';
+    else return 'discard';
 }

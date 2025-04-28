@@ -1,4 +1,4 @@
-import { dialog, app } from 'electron'
+import { dialog, app } from 'electron';
 
 /**
  * Save a file dialog
@@ -39,9 +39,9 @@ export default async function showSaveFileDialog(): Promise<string | null> {
             { name: 'CSV', extensions: ['csv'] },
         ],
         defaultPath: app.getPath('documents'),
-    })
+    });
 
-    if (result.canceled || !result.filePath || !result.filePath) return null
+    if (result.canceled || !result.filePath || !result.filePath) return null;
 
-    return result.filePath
+    return result.filePath;
 }

@@ -43,11 +43,11 @@ const modeMapping = {
     patch: 'text/x-diff',
     csv: 'text/x-csv',
     properties: 'text/x-minecraft-properties',
-}
+};
 
-let autoShowHints = true
-let autoLineDelete = true
-let alloReplaceTabsWithSpaces = true
+let autoShowHints = true;
+let autoLineDelete = true;
+let alloReplaceTabsWithSpaces = true;
 
 const editor = CodeMirror.fromTextArea(
     document.getElementById('editorTextarea'),
@@ -68,10 +68,10 @@ const editor = CodeMirror.fromTextArea(
             'Ctrl-F': false,
             'Ctrl-Space': 'autocomplete',
             Backspace: (cm) => {
-                const doc = cm.getDoc()
-                const cursor = doc.getCursor()
-                const line = doc.getLine(cursor.line)
-                const selection = doc.getSelection()
+                const doc = cm.getDoc();
+                const cursor = doc.getCursor();
+                const line = doc.getLine(cursor.line);
+                const selection = doc.getSelection();
 
                 if (
                     autoLineDelete &&
@@ -83,162 +83,162 @@ const editor = CodeMirror.fromTextArea(
                         '',
                         { line: cursor.line, ch: 0 },
                         { line: cursor.line, ch: line.length }
-                    )
+                    );
                 }
 
-                CodeMirror.commands.delCharBefore(cm)
+                CodeMirror.commands.delCharBefore(cm);
             },
         },
     }
-)
+);
 
-editor.refresh()
+editor.refresh();
 
-editor.focus()
+editor.focus();
 
 function replaceTabsWithSpaces(str, tabSize) {
-    var spaces = ' '.repeat(tabSize)
-    return str.replace(/\t/g, spaces)
+    var spaces = ' '.repeat(tabSize);
+    return str.replace(/\t/g, spaces);
 }
 
-let replacingTabs = false
+let replacingTabs = false;
 
 editor.on('change', function (instance, changeObj) {
-    if (replacingTabs || !alloReplaceTabsWithSpaces) return
+    if (replacingTabs || !alloReplaceTabsWithSpaces) return;
 
-    console.log('Allow: ' + alloReplaceTabsWithSpaces)
+    console.log('Allow: ' + alloReplaceTabsWithSpaces);
 
     if (changeObj.text.some((line) => line.includes('\t'))) {
-        console.log('REPLACING TABS YAYYY!')
-        replacingTabs = true
+        console.log('REPLACING TABS YAYYY!');
+        replacingTabs = true;
 
-        const tabSize = instance.getOption('tabSize')
-        let cursor = instance.getCursor()
+        const tabSize = instance.getOption('tabSize');
+        let cursor = instance.getCursor();
 
         let newContent = instance
             .getValue()
             .split('\n')
             .map((line, index) => {
-                let newLine = replaceTabsWithSpaces(line, tabSize)
+                let newLine = replaceTabsWithSpaces(line, tabSize);
                 if (index === cursor.line) {
-                    var addedSpaces = newLine.length - line.length
-                    cursor.ch += addedSpaces
+                    var addedSpaces = newLine.length - line.length;
+                    cursor.ch += addedSpaces;
                 }
-                return newLine
+                return newLine;
             })
-            .join('\n')
+            .join('\n');
 
-        instance.setValue(newContent)
-        instance.setCursor(cursor)
+        instance.setValue(newContent);
+        instance.setCursor(cursor);
 
-        replacingTabs = false
+        replacingTabs = false;
     }
-})
+});
 
 function setEditorMode(filePath) {
-    const fileExtension = filePath.split('.').pop()
-    const mode = modeMapping[fileExtension]
+    const fileExtension = filePath.split('.').pop();
+    const mode = modeMapping[fileExtension];
 
-    console.log('Setting mode to ', mode)
+    console.log('Setting mode to ', mode);
 
-    if (mode) editor.setOption('mode', mode)
-    else editor.setOption('mode', 'text/plain')
+    if (mode) editor.setOption('mode', mode);
+    else editor.setOption('mode', 'text/plain');
 
-    console.log(editor.getOption('mode'))
+    console.log(editor.getOption('mode'));
 }
 
 editor.on('contextmenu', function (editor, event) {
-    event.preventDefault()
+    event.preventDefault();
 
-    const line = editor.lineAtHeight(event.y)
-    const lineNumber = line + 1
+    const line = editor.lineAtHeight(event.y);
+    const lineNumber = line + 1;
 
-    window.api.invoke('showContextMenu', lineNumber, event.x, event.y)
-})
+    window.api.invoke('showContextMenu', lineNumber, event.x, event.y);
+});
 
 function triggerAutocomplete() {
-    editor.showHint({ completeSingle: false })
+    editor.showHint({ completeSingle: false });
 }
 
 editor.on('inputRead', function (cm, event) {
     if (autoShowHints) {
-        let cursor = cm.getCursor()
-        let token = cm.getTokenAt(cursor)
-        const lineEndCharacters = [';', '{', '}', '(', ')', '[', ']']
+        let cursor = cm.getCursor();
+        let token = cm.getTokenAt(cursor);
+        const lineEndCharacters = [';', '{', '}', '(', ')', '[', ']'];
         if (
             !cm.state.completionActive &&
             /\S/.test(token.string) &&
             !lineEndCharacters.includes(token.string)
         )
-            triggerAutocomplete()
+            triggerAutocomplete();
     }
-})
+});
 
 editor.on('keydown', function (cm, event) {
     if (event.key === 'Enter' && cm.state.completionActive) {
-        cm.state.completionActive.close()
+        cm.state.completionActive.close();
     }
-})
+});
 
 editor.on('update', function (cm, change) {
     if (cm.getOption('readOnly'))
-        cm.getWrapperElement().classList.add('cm-read-only')
-    else cm.getWrapperElement().classList.remove('cm-read-only')
-})
+        cm.getWrapperElement().classList.add('cm-read-only');
+    else cm.getWrapperElement().classList.remove('cm-read-only');
+});
 
 function setSetting(setting, value) {
-    console.log('Setting ', setting, ' to ', value)
+    console.log('Setting ', setting, ' to ', value);
 
     if (setting === 'autoShowHints') {
-        autoShowHints = value
-        return
+        autoShowHints = value;
+        return;
     }
 
     if (setting === 'autoLineDelete') {
-        autoLineDelete = value
-        return
+        autoLineDelete = value;
+        return;
     }
 
     if (setting === 'replaceTabsWithSpaces') {
-        alloReplaceTabsWithSpaces = value
-        return
+        alloReplaceTabsWithSpaces = value;
+        return;
     }
 
-    if (setting === 'theme') return
+    if (setting === 'theme') return;
 
-    editor.setOption(setting, value)
+    editor.setOption(setting, value);
 }
 
 window.bridge.setEditorSetting((event, setting, value) => {
-    setSetting(setting, value)
-})
+    setSetting(setting, value);
+});
 
 window.api.invoke('getEditorSettings').then((settings) => {
     for (const setting in settings) {
-        setSetting(setting, settings[setting])
+        setSetting(setting, settings[setting]);
     }
-})
+});
 
 window.bridge.toggleReadMode((event, value) => {
-    console.log('Setting readOnly to ', !editor.getOption('readOnly'))
-    editor.setOption('readOnly', !editor.getOption('readOnly'))
-})
+    console.log('Setting readOnly to ', !editor.getOption('readOnly'));
+    editor.setOption('readOnly', !editor.getOption('readOnly'));
+});
 
 window.bridge.formatEditor((event, format) => {
     switch (format) {
         case 'copy':
-            navigator.clipboard.writeText(editor.getSelection())
-            break
+            navigator.clipboard.writeText(editor.getSelection());
+            break;
         case 'cut':
-            navigator.clipboard.writeText(editor.getSelection())
-            editor.replaceSelection('')
-            editor.focus()
-            break
+            navigator.clipboard.writeText(editor.getSelection());
+            editor.replaceSelection('');
+            editor.focus();
+            break;
         case 'paste':
             navigator.clipboard.readText().then((text) => {
-                editor.replaceSelection(text)
-                editor.focus()
-            })
-            break
+                editor.replaceSelection(text);
+                editor.focus();
+            });
+            break;
     }
-})
+});

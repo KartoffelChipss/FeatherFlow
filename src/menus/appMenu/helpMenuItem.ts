@@ -1,4 +1,4 @@
-import { MenuItemConstructorOptions, shell } from 'electron'
+import { MenuItemConstructorOptions, shell } from 'electron';
 
 export default function (): MenuItemConstructorOptions {
     return {
@@ -10,7 +10,7 @@ export default function (): MenuItemConstructorOptions {
                 click: async () => {
                     await shell.openExternal(
                         'https://github.com/Kartoffelchipss/FeatherFlow'
-                    )
+                    );
                 },
             },
             {
@@ -18,15 +18,17 @@ export default function (): MenuItemConstructorOptions {
                 click: async () => {
                     await shell.openExternal(
                         'https://github.com/Kartoffelchipss/FeatherFlow/issues'
-                    )
+                    );
                 },
             },
             {
                 label: 'Support Discord',
                 click: async () => {
-                    await shell.openExternal('https://strassburger.org/discord')
+                    await shell.openExternal(
+                        'https://strassburger.org/discord'
+                    );
                 },
             },
         ],
-    }
+    };
 }

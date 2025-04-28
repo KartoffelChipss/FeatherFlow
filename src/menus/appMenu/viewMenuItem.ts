@@ -1,13 +1,13 @@
-import { BrowserWindow, type MenuItemConstructorOptions } from 'electron'
+import { BrowserWindow, type MenuItemConstructorOptions } from 'electron';
 import {
     getFocusedWindow,
     getPath,
     openFileInWindow,
     isSpecialWindow,
-} from '../../windowManager'
+} from '../../windowManager';
 
 export default function (): MenuItemConstructorOptions {
-    const focusedWindow = getFocusedWindow()
+    const focusedWindow = getFocusedWindow();
 
     return {
         label: 'View',
@@ -17,14 +17,14 @@ export default function (): MenuItemConstructorOptions {
                 accelerator: 'CmdOrCtrl+R',
                 enabled: !!focusedWindow,
                 click: async () => {
-                    const focusedWindow = BrowserWindow.getFocusedWindow()
+                    const focusedWindow = BrowserWindow.getFocusedWindow();
                     if (focusedWindow) {
-                        focusedWindow.reload()
+                        focusedWindow.reload();
                         setTimeout(() => {
-                            const filePath = getPath(focusedWindow)
+                            const filePath = getPath(focusedWindow);
                             if (filePath)
-                                openFileInWindow(filePath, focusedWindow)
-                        }, 100)
+                                openFileInWindow(filePath, focusedWindow);
+                        }, 100);
                     }
                 },
             },
@@ -33,7 +33,7 @@ export default function (): MenuItemConstructorOptions {
                 label: 'Toggle Read Mode',
                 enabled: !!focusedWindow && !isSpecialWindow(focusedWindow),
                 click: () => {
-                    getFocusedWindow()?.webContents.send('toggleReadMode')
+                    getFocusedWindow()?.webContents.send('toggleReadMode');
                 },
             },
             { type: 'separator' },
@@ -45,7 +45,7 @@ export default function (): MenuItemConstructorOptions {
                     getFocusedWindow()?.webContents.send('changeZoom', {
                         instruction: 'reset',
                         value: 0,
-                    })
+                    });
                 },
             },
             {
@@ -56,7 +56,7 @@ export default function (): MenuItemConstructorOptions {
                     getFocusedWindow()?.webContents.send('changeZoom', {
                         instruction: 'increase',
                         value: 0.1,
-                    })
+                    });
                 },
             },
             {
@@ -67,11 +67,11 @@ export default function (): MenuItemConstructorOptions {
                     getFocusedWindow()?.webContents.send('changeZoom', {
                         instruction: 'decrease',
                         value: 0.1,
-                    })
+                    });
                 },
             },
             { type: 'separator' },
             { role: 'togglefullscreen' },
         ],
-    }
+    };
 }
