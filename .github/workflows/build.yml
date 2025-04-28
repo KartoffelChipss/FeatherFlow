@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -27,6 +27,9 @@ jobs:
 
       - name: Install dependencies
         run: bun install
+
+      - name: Clean up previous build artifacts
+        run: rm -rf release/mac
 
       - name: Build Electron app
         run: bun run build
